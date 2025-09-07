@@ -1,0 +1,1456 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTO DINERO 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-31 11:21+0000\n"
+"PO-Revision-Date: 2025-08-31 12:00+0000\n"
+"Last-Translator: AUTO DINERO <info@moeauto.mk>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dealership_app/templates/admin_custom/car_list.html:256
+#: dealership_app/templates/frontend/index.html:891
+#: dealership_app/templates/frontend/vehicle_detail.html:1453
+#: dealership_app/templates/frontend/vehicles.html:792
+msgid "Година"
+msgstr "Year"
+
+#: dealership_app/templates/admin_custom/car_list.html:263
+#: dealership_app/templates/frontend/components/vehicle_filters.html:95
+#: dealership_app/templates/frontend/index.html:815
+#: dealership_app/templates/frontend/index.html:898
+#: dealership_app/templates/frontend/vehicle_detail.html:1467
+#: dealership_app/templates/frontend/vehicles.html:682
+#: dealership_app/templates/frontend/vehicles.html:799
+msgid "Гориво"
+msgstr "Fuel"
+
+#: dealership_app/templates/admin_custom/car_list.html:270
+#: dealership_app/templates/frontend/components/vehicle_filters.html:67
+#: dealership_app/templates/frontend/index.html:905
+#: dealership_app/templates/frontend/vehicle_detail.html:1474
+#: dealership_app/templates/frontend/vehicle_detail.html:1536
+#: dealership_app/templates/frontend/vehicles.html:696
+#: dealership_app/templates/frontend/vehicles.html:806
+msgid "Менувач"
+msgstr "Transmission"
+
+#: dealership_app/templates/frontend/about.html:5
+#: dealership_app/templates/frontend/base.html:133
+#: dealership_app/templates/frontend/base.html:444
+msgid "За нас"
+msgstr "About"
+
+#: dealership_app/templates/frontend/about.html:274
+msgid "За AUTO DINERO"
+msgstr "About AUTO DINERO"
+
+#: dealership_app/templates/frontend/about.html:275
+msgid ""
+"Повеќе од 15 години искуство во продажба на квалитетни автомобили и "
+"професионална услуга"
+msgstr ""
+"Over 15 years of experience in selling quality vehicles and professional "
+"service"
+
+#: dealership_app/templates/frontend/about.html:286
+msgid "Нашата Приказна"
+msgstr "Our Story"
+
+#: dealership_app/templates/frontend/about.html:287
+msgid ""
+"AUTO DINERO е основана во 2008 година со цел да обезбеди најквалитетни "
+"автомобили на македонскиот пазар. Се специјализираме за увоз и продажба на "
+"автомобили од премиум класа."
+msgstr ""
+"AUTO DINERO was founded in 2008 with the goal of providing the highest quality "
+"vehicles in the Macedonian market. We specialize in importing and selling "
+"premium class automobiles."
+
+#: dealership_app/templates/frontend/about.html:288
+msgid ""
+"Нашиот тим од стручни лица има богато искуство во автомобилската индустрија "
+"и се посветени на обезбедување на најдобрата можна услуга за нашите клиенти."
+msgstr ""
+"Our team of professionals has extensive experience in the automotive "
+"industry and is dedicated to providing the best possible service for our "
+"clients."
+
+#: dealership_app/templates/frontend/about.html:293
+#: dealership_app/templates/frontend/index.html:838
+msgid "Продадени возила"
+msgstr "Vehicles Sold"
+
+#: dealership_app/templates/frontend/about.html:299
+#: dealership_app/templates/frontend/index.html:846
+msgid "Години искуство"
+msgstr "Years of Experience"
+
+#: dealership_app/templates/frontend/about.html:321
+msgid "Наш Тим"
+msgstr "Our Team"
+
+#: dealership_app/templates/frontend/about.html:322
+msgid "Запознајте се со луѓето кои стојат зад AUTO DINERO"
+msgstr "Meet the people behind AUTO DINERO"
+
+#: dealership_app/templates/frontend/about.html:331
+msgid "Марко Петковски"
+msgstr "Marko Petkovski"
+
+#: dealership_app/templates/frontend/about.html:332
+msgid "Генерален Директор"
+msgstr "General Manager"
+
+#: dealership_app/templates/frontend/about.html:333
+msgid ""
+"Со повеќе од 20 години искуство во автомобилската индустрија, Марко го води "
+"тимот кон совршенство."
+msgstr ""
+"With over 20 years of experience in the automotive industry, Marko leads our "
+"team toward excellence."
+
+#: dealership_app/templates/frontend/about.html:341
+msgid "Ана Стојановска"
+msgstr "Ana Stojanovska"
+
+#: dealership_app/templates/frontend/about.html:342
+msgid "Раководител Продажба"
+msgstr "Sales Manager"
+
+#: dealership_app/templates/frontend/about.html:343
+msgid ""
+"Ана е експерт за односи со клиенти и ќе ви помогне да го најдете совршениот "
+"автомобил."
+msgstr ""
+"Ana is an expert in customer relations and will help you find the perfect "
+"vehicle."
+
+#: dealership_app/templates/frontend/about.html:351
+msgid "Димитар Николовски"
+msgstr "Dimitar Nikolovski"
+
+#: dealership_app/templates/frontend/about.html:352
+msgid "Технички Раководител"
+msgstr "Technical Manager"
+
+#: dealership_app/templates/frontend/about.html:353
+msgid ""
+"Димитар се грижи за техничката проверка и квалитет на секој автомобил што го "
+"нудиме."
+msgstr ""
+"Dimitar oversees the technical inspection and quality of every vehicle we "
+"offer."
+
+#: dealership_app/templates/frontend/about.html:362
+msgid "Мисија и Визија"
+msgstr "Mission and Vision"
+
+#: dealership_app/templates/frontend/about.html:369
+msgid "Наша Мисија"
+msgstr "Our Mission"
+
+#: dealership_app/templates/frontend/about.html:370
+msgid ""
+"Да обезбедиме најквалитетни автомобили со професионална услуга, градејќи "
+"долгорочни односи засновани на доверба и транспарентност."
+msgstr ""
+"To provide the highest quality vehicles with professional service, building "
+"long-term relationships based on trust and transparency."
+
+#: dealership_app/templates/frontend/about.html:378
+msgid "Наша Визија"
+msgstr "Our Vision"
+
+#: dealership_app/templates/frontend/about.html:379
+msgid ""
+"Да бидеме водечка автокуќа во Македонија, препознатлива по квалитет, "
+"иновации и исклучителна грижа за клиентите."
+msgstr ""
+"To be the leading car dealership in Macedonia, recognized for quality, "
+"innovation, and exceptional customer care."
+
+#: dealership_app/templates/frontend/about.html:387
+msgid "Имате прашања?"
+msgstr "Have Questions?"
+
+#: dealership_app/templates/frontend/about.html:388
+msgid ""
+"Нашиот тим е тука да ви помогне. Контактирајте не за било какви прашања или "
+"информации."
+msgstr "Our team is here to help. Contact us for any questions or information."
+
+#: dealership_app/templates/frontend/about.html:389
+#: dealership_app/templates/frontend/contact.html:409
+msgid "Контактирајте не"
+msgstr "Contact Us"
+
+#: dealership_app/templates/frontend/base.html:127
+#: dealership_app/templates/frontend/base.html:442
+#: dealership_app/templates/frontend/vehicle_detail.html:1377
+msgid "Дома"
+msgstr "Home"
+
+#: dealership_app/templates/frontend/base.html:130
+#: dealership_app/templates/frontend/base.html:443
+#: dealership_app/templates/frontend/vehicle_detail.html:1380
+#: dealership_app/templates/frontend/vehicle_detail.html:1382
+#: dealership_app/templates/frontend/vehicles.html:5
+msgid "Возила"
+msgstr "Vehicles"
+
+#: dealership_app/templates/frontend/base.html:136
+#: dealership_app/templates/frontend/base.html:445
+#: dealership_app/templates/frontend/base.html:470
+#: dealership_app/templates/frontend/contact.html:5
+#: dealership_app/templates/frontend/contact.html:527
+msgid "Контакт"
+msgstr "Contact"
+
+#: dealership_app/templates/frontend/base.html:143
+msgid "ДОМА"
+msgstr "HOME"
+
+#: dealership_app/templates/frontend/base.html:144
+#: dealership_app/templates/frontend/base.html:179
+msgid "ВОЗИЛА"
+msgstr "VEHICLES"
+
+#: dealership_app/templates/frontend/base.html:145
+msgid "ЗА НАС"
+msgstr "ABOUT"
+
+#: dealership_app/templates/frontend/base.html:146
+msgid "КОНТАКТ"
+msgstr "CONTACT"
+
+#: dealership_app/templates/frontend/base.html:171
+msgid "Раб.време"
+msgstr "Hours"
+
+#: dealership_app/templates/frontend/base.html:172
+msgid "Пон-Саб (08:00-16:00)"
+msgstr "Mon-Sat (08:00-16:00)"
+
+#: dealership_app/templates/frontend/base.html:176
+msgid "Повици"
+msgstr "Call"
+
+#: dealership_app/templates/frontend/base.html:179
+#: dealership_app/templates/frontend/index.html:825
+msgid "Пребарај"
+msgstr "Search"
+
+#: dealership_app/templates/frontend/base.html:419
+msgid ""
+"Водечка компанија за продажба на квалитетни автомобили во Македонија. Веќе "
+"15+ години ви помагаме да го најдете совршениот автомобил."
+msgstr ""
+"Leading company for quality car sales in Macedonia. For over 15+ years we "
+"have been helping you find the perfect car."
+
+#: dealership_app/templates/frontend/base.html:440
+msgid "Линкови"
+msgstr "Links"
+
+#: dealership_app/templates/frontend/base.html:451
+#: dealership_app/templates/frontend/contact.html:490
+msgid "Работно време"
+msgstr "Working Hours"
+
+#: dealership_app/templates/frontend/base.html:454
+msgid "Понеделник - Петок:"
+msgstr "Monday - Friday:"
+
+#: dealership_app/templates/frontend/base.html:458
+msgid "Сабота:"
+msgstr "Saturday:"
+
+#: dealership_app/templates/frontend/base.html:462
+msgid "Недела:"
+msgstr "Sunday:"
+
+#: dealership_app/templates/frontend/base.html:463
+#: dealership_app/templates/frontend/contact.html:504
+msgid "Затворено"
+msgstr "Closed"
+
+#: dealership_app/templates/frontend/base.html:482
+msgid "ул. Македонија 123"
+msgstr "123 Macedonia Street"
+
+#: dealership_app/templates/frontend/base.html:482
+msgid "1000 Скопје, Македонија"
+msgstr "1000 Skopje, Macedonia"
+
+#: dealership_app/templates/frontend/base.html:492
+msgid "Сите права задржани."
+msgstr "All rights reserved."
+
+#: dealership_app/templates/frontend/base.html:495
+msgid "Приватност"
+msgstr "Privacy"
+
+#: dealership_app/templates/frontend/base.html:496
+msgid "Услови"
+msgstr "Terms"
+
+#: dealership_app/templates/frontend/base.html:1212
+msgid "Колачиња и приватност"
+msgstr "Cookies and Privacy"
+
+#: dealership_app/templates/frontend/base.html:1217
+msgid ""
+"Користиме колачиња за да го подобриме вашето искуство на нашата веб-"
+"страница, да анализираме сообраќај и да персонализираме содржини."
+msgstr ""
+"We use cookies to improve your experience on our website, analyze traffic "
+"and personalize content."
+
+#: dealership_app/templates/frontend/base.html:1220
+msgid "Неопходни колачиња:"
+msgstr "Essential Cookies:"
+
+#: dealership_app/templates/frontend/base.html:1220
+msgid "Потребни за основно функционирање на страницата."
+msgstr "Required for basic website functionality."
+
+#: dealership_app/templates/frontend/base.html:1221
+msgid "Аналитички колачиња:"
+msgstr "Analytics Cookies:"
+
+#: dealership_app/templates/frontend/base.html:1221
+msgid "Помагаат да разбереме како ја користите страницата."
+msgstr "Help us understand how you use our website."
+
+#: dealership_app/templates/frontend/base.html:1224
+msgid "Повеќе за приватноста"
+msgstr "More about privacy"
+
+#: dealership_app/templates/frontend/base.html:1231
+msgid "Прифаќам"
+msgstr "Accept"
+
+#: dealership_app/templates/frontend/base.html:1235
+msgid "Само неопходни"
+msgstr "Only Essential"
+
+#: dealership_app/templates/frontend/components/contact_info.html:8
+#: dealership_app/templates/frontend/privacy.html:144
+#: dealership_app/templates/frontend/terms.html:92
+msgid "Адреса"
+msgstr "Address"
+
+#: dealership_app/templates/frontend/components/contact_info.html:15
+#: dealership_app/templates/frontend/contact.html:445
+#: dealership_app/templates/frontend/privacy.html:143
+#: dealership_app/templates/frontend/terms.html:91
+msgid "Телефон"
+msgstr "Phone"
+
+#: dealership_app/templates/frontend/components/contact_info.html:22
+#: dealership_app/templates/frontend/contact.html:441
+msgid "Е-пошта"
+msgstr "Email"
+
+#: dealership_app/templates/frontend/components/features_section.html:7
+#: dealership_app/templates/frontend/index.html:953
+msgid "Зошто да не изберете?"
+msgstr "Why choose us?"
+
+#: dealership_app/templates/frontend/components/features_section.html:8
+#: dealership_app/templates/frontend/index.html:954
+msgid "Професионална услуга и квалитет на кој можете да се потпрете"
+msgstr "Professional service and quality you can rely on"
+
+#: dealership_app/templates/frontend/components/features_section.html:17
+#: dealership_app/templates/frontend/index.html:962
+msgid "Гаранција"
+msgstr "Warranty"
+
+#: dealership_app/templates/frontend/components/features_section.html:18
+#: dealership_app/templates/frontend/index.html:963
+msgid "Сите наши автомобили доаѓаат со гаранција за квалитет и безбедност."
+msgstr "All our vehicles come with warranty for quality and safety."
+
+#: dealership_app/templates/frontend/components/features_section.html:26
+#: dealership_app/templates/frontend/contact.html:455
+#: dealership_app/templates/frontend/index.html:986
+msgid "Сервис"
+msgstr "Service"
+
+#: dealership_app/templates/frontend/components/features_section.html:27
+#: dealership_app/templates/frontend/index.html:987
+msgid "Професионален сервис и одржување за вашиот автомобил."
+msgstr "Professional service and maintenance for your vehicle."
+
+#: dealership_app/templates/frontend/components/features_section.html:35
+#: dealership_app/templates/frontend/index.html:970
+msgid "Доверба"
+msgstr "Trust"
+
+#: dealership_app/templates/frontend/components/features_section.html:36
+#: dealership_app/templates/frontend/index.html:971
+msgid "Градиме долгорочни односи засновани на доверба и квалитет."
+msgstr "We build long-term relationships based on trust and quality."
+
+#: dealership_app/templates/frontend/components/features_section.html:44
+#: dealership_app/templates/frontend/index.html:978
+msgid "Квалитет"
+msgstr "Quality"
+
+#: dealership_app/templates/frontend/components/features_section.html:45
+#: dealership_app/templates/frontend/index.html:979
+msgid "Само најквалитетни автомобили кои ги препорачуваме лично."
+msgstr "Only the highest quality vehicles that we personally recommend."
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:4
+msgid "Филтери"
+msgstr "Filters"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:10
+#: dealership_app/templates/frontend/index.html:788
+#: dealership_app/templates/frontend/vehicles.html:654
+msgid "Марка"
+msgstr "Brand"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:12
+#: dealership_app/templates/frontend/vehicles.html:656
+msgid "Сите марки"
+msgstr "All Brands"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:24
+#: dealership_app/templates/frontend/index.html:797
+#: dealership_app/templates/frontend/vehicles.html:668
+msgid "Модел"
+msgstr "Model"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:27
+#: dealership_app/templates/frontend/components/vehicle_filters.html:192
+#: dealership_app/templates/frontend/vehicles.html:670
+#: dealership_app/templates/frontend/vehicles.html:887
+msgid "Сите модели"
+msgstr "All Models"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:39
+msgid "Ценовен опсег"
+msgstr "Price Range"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:41
+#: dealership_app/templates/frontend/vehicles.html:727
+msgid "Сите цени"
+msgstr "All Prices"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:53
+msgid "Возраст"
+msgstr "Age"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:55
+msgid "Сите години"
+msgstr "All Years"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:69
+msgid "Сите менувачи"
+msgstr "All Transmissions"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:81
+#: dealership_app/templates/frontend/vehicle_detail.html:1481
+#: dealership_app/templates/frontend/vehicle_detail.html:1557
+#: dealership_app/templates/frontend/vehicles.html:711
+msgid "Каросерија"
+msgstr "Body Type"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:83
+msgid "Сите каросерии"
+msgstr "All Body Types"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:97
+msgid "Сите горива"
+msgstr "All Fuels"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:109
+#: dealership_app/templates/frontend/vehicle_detail.html:1550
+msgid "Боја"
+msgstr "Color"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:111
+msgid "Сите бои"
+msgstr "All Colors"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:131
+msgid "Автомобили за почетници (≤ 77 kW)"
+msgstr "Beginner Cars (≤ 77 kW)"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:140
+msgid "Сортирање"
+msgstr "Sort"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:143
+msgid "По цена"
+msgstr "By Price"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:146
+msgid "Евтино → Скапо"
+msgstr "Low to High"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:147
+msgid "Скапо → Евтино"
+msgstr "High to Low"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:152
+msgid "По километража"
+msgstr "By Mileage"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:155
+#: dealership_app/templates/frontend/vehicles.html:739
+msgid "Малку → Многу"
+msgstr "Low to High"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:156
+#: dealership_app/templates/frontend/vehicles.html:740
+msgid "Многу → Малку"
+msgstr "High to Low"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:161
+msgid "По година"
+msgstr "By Year"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:164
+msgid "Стари → Нови"
+msgstr "Older to Newer"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:165
+msgid "Нови → Стари"
+msgstr "Newer to Older"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:174
+#: dealership_app/templates/frontend/vehicles.html:760
+msgid "Примени"
+msgstr "Apply"
+
+#: dealership_app/templates/frontend/components/vehicle_filters.html:178
+#: dealership_app/templates/frontend/vehicles.html:763
+msgid "Ресетирај"
+msgstr "Reset"
+
+#: dealership_app/templates/frontend/contact.html:410
+msgid ""
+"Тука сме за да ви помогнеме. Контактирајте не за било какви прашања или "
+"закажете средба"
+msgstr ""
+"We are here to help you. Contact us for any questions or to schedule an "
+"appointment"
+
+#: dealership_app/templates/frontend/contact.html:429
+msgid "Испратете порака"
+msgstr "Send a Message"
+
+#: dealership_app/templates/frontend/contact.html:433
+msgid "Име"
+msgstr "First Name"
+
+#: dealership_app/templates/frontend/contact.html:437
+msgid "Презиме"
+msgstr "Last Name"
+
+#: dealership_app/templates/frontend/contact.html:449
+msgid "Предмет"
+msgstr "Subject"
+
+#: dealership_app/templates/frontend/contact.html:451
+msgid "Изберете предмет"
+msgstr "Select Subject"
+
+#: dealership_app/templates/frontend/contact.html:452
+msgid "Општо прашање"
+msgstr "General Inquiry"
+
+#: dealership_app/templates/frontend/contact.html:453
+msgid "Купување автомобил"
+msgstr "Vehicle Purchase"
+
+#: dealership_app/templates/frontend/contact.html:454
+msgid "Продажба автомобил"
+msgstr "Vehicle Sale"
+
+#: dealership_app/templates/frontend/contact.html:456
+msgid "Друго"
+msgstr "Other"
+
+#: dealership_app/templates/frontend/contact.html:460
+msgid "Порака"
+msgstr "Message"
+
+#: dealership_app/templates/frontend/contact.html:465
+msgid "Испрати порака"
+msgstr "Send Message"
+
+#: dealership_app/templates/frontend/contact.html:494
+msgid "Понedelник - Петок"
+msgstr "Monday - Friday"
+
+#: dealership_app/templates/frontend/contact.html:498
+msgid "Сабота"
+msgstr "Saturday"
+
+#: dealership_app/templates/frontend/contact.html:503
+msgid "Недела"
+msgstr "Sunday"
+
+#: dealership_app/templates/frontend/contact.html:517
+msgid "Други начини за контакт"
+msgstr "Other Contact Methods"
+
+#: dealership_app/templates/frontend/contact.html:518
+msgid "Изберете го најпогодниот начин за вас"
+msgstr "Choose the most convenient method for you"
+
+#: dealership_app/templates/frontend/contact.html:525
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: dealership_app/templates/frontend/contact.html:526
+msgid "Брза комуникација"
+msgstr "Quick Communication"
+
+#: dealership_app/templates/frontend/contact.html:533
+msgid "Facebook"
+msgstr "Facebook"
+
+#: dealership_app/templates/frontend/contact.html:534
+msgid "Проследете не на социјални мрежи"
+msgstr "Follow us on social media"
+
+#: dealership_app/templates/frontend/contact.html:535
+msgid "Посетете"
+msgstr "Visit"
+
+#: dealership_app/templates/frontend/contact.html:541
+msgid "Instagram"
+msgstr "Instagram"
+
+#: dealership_app/templates/frontend/contact.html:542
+msgid "Видете ги најновите автомобили"
+msgstr "See our latest vehicles"
+
+#: dealership_app/templates/frontend/contact.html:543
+msgid "Проследете"
+msgstr "Follow"
+
+#: dealership_app/templates/frontend/contact.html:549
+msgid "Закажи средба"
+msgstr "Schedule Appointment"
+
+#: dealership_app/templates/frontend/contact.html:550
+msgid "Дојдете во нашиот салон"
+msgstr "Visit our showroom"
+
+#: dealership_app/templates/frontend/contact.html:551
+msgid "Повикајте"
+msgstr "Call Us"
+
+#: dealership_app/templates/frontend/contact.html:563
+msgid "Често поставувани прашања"
+msgstr "Frequently Asked Questions"
+
+#: dealership_app/templates/frontend/contact.html:564
+msgid "Одговори на најчесто поставувани прашања"
+msgstr "Answers to the most frequently asked questions"
+
+#: dealership_app/templates/frontend/contact.html:573
+msgid "Дали нудите гаранција на автомобилите?"
+msgstr "Do you offer warranty on the vehicles?"
+
+#: dealership_app/templates/frontend/contact.html:578
+msgid ""
+"Да, сите наши автомобили доаѓаат со гаранција која варира во зависност од "
+"возрастта и моделот на автомобилот. Детални информации за гаранцијата можете "
+"да добиете при посета."
+msgstr ""
+"Yes, all our vehicles come with a warranty that varies depending on the age "
+"and model of the vehicle. Detailed warranty information can be obtained "
+"during your visit."
+
+#: dealership_app/templates/frontend/contact.html:585
+msgid "Дали можам да го тестирам автомобилот пред купување?"
+msgstr "Can I test drive the vehicle before purchasing?"
+
+#: dealership_app/templates/frontend/contact.html:590
+msgid ""
+"Апсолутно! Секој клиент има право на тест-возење пред донесување на одлука "
+"за купување. Само закажете термин и дојдете со важечка возачка дозвола."
+msgstr ""
+"Absolutely! Every customer has the right to a test drive before making a "
+"purchase decision. Just schedule an appointment and come with a valid "
+"driver's license."
+
+#: dealership_app/templates/frontend/contact.html:597
+msgid "Дали примате автомобил во замена?"
+msgstr "Do you accept trade-in vehicles?"
+
+#: dealership_app/templates/frontend/contact.html:602
+msgid ""
+"Да, примаме автомобили во замена. Нашите стручњаци ќе направат проценка на "
+"вашиот автомобил и ќе ви понудат фер цена која може да се искористи за "
+"купување на нов автомобил."
+msgstr ""
+"Yes, we accept trade-in vehicles. Our experts will appraise your vehicle and "
+"offer you a fair price that can be used toward purchasing a new vehicle."
+
+#: dealership_app/templates/frontend/contact.html:630
+msgid "Ве молиме пополнете ги сите задолжителни полиња."
+msgstr "Please fill in all required fields."
+
+#: dealership_app/templates/frontend/contact.html:637
+msgid "Се испраќа..."
+msgstr "Sending..."
+
+#: dealership_app/templates/frontend/contact.html:641
+msgid "Вашата порака е успешно испратена! Ќе ви одговориме во најкратко време."
+msgstr ""
+"Your message has been sent successfully! We will respond to you shortly."
+
+#: dealership_app/templates/frontend/index.html:4
+#: dealership_app/templates/frontend/index.html:768
+msgid "Најди го твојот автомобил"
+msgstr "Find Your Car"
+
+#: dealership_app/templates/frontend/index.html:769
+msgid "Широк избор на квалитетни возила • Проверена историја • Најдобри цени"
+msgstr "Wide Selection of Quality Vehicles • Verified History • Best Prices"
+
+#: dealership_app/templates/frontend/index.html:777
+msgid "Пронајди го совршениот автомобил за тебе"
+msgstr "Find the Perfect Car for You"
+
+#: dealership_app/templates/frontend/index.html:782
+#: dealership_app/templates/frontend/index.html:942
+msgid "Види ги сите возила"
+msgstr "View All Vehicles"
+
+#: dealership_app/templates/frontend/index.html:790
+msgid "Избери марка"
+msgstr "Select brand"
+
+#: dealership_app/templates/frontend/index.html:799
+#: dealership_app/templates/frontend/index.html:1013
+#: dealership_app/templates/frontend/index.html:1022
+#: dealership_app/templates/frontend/vehicles.html:670
+msgid "Избери прво марка"
+msgstr "Select brand first"
+
+#: dealership_app/templates/frontend/index.html:803
+msgid "Цена од (€)"
+msgstr "Price from (€)"
+
+#: dealership_app/templates/frontend/index.html:807
+msgid "Цена до (€)"
+msgstr "Price to (€)"
+
+#: dealership_app/templates/frontend/index.html:811
+msgid "Година од"
+msgstr "Year from"
+
+#: dealership_app/templates/frontend/index.html:817
+msgid "Избери гориво"
+msgstr "Select fuel"
+
+#: dealership_app/templates/frontend/index.html:842
+msgid "Задоволни клиенти"
+msgstr "Satisfied Customers"
+
+#: dealership_app/templates/frontend/index.html:850
+msgid "Марки возила"
+msgstr "Vehicle Brands"
+
+#: dealership_app/templates/frontend/index.html:860
+msgid "Препорачани автомобили"
+msgstr "Recommended Vehicles"
+
+#: dealership_app/templates/frontend/index.html:861
+msgid "Ексклузивен избор на најдобрите понуди од нашиот инвентар"
+msgstr "Exclusive selection of the best deals from our inventory"
+
+#: dealership_app/templates/frontend/index.html:880
+msgid "Препорачано"
+msgstr "Recommended"
+
+#: dealership_app/templates/frontend/index.html:912
+#: dealership_app/templates/frontend/vehicles.html:813
+msgid "Детали"
+msgstr "Details"
+
+#: dealership_app/templates/frontend/index.html:920
+msgid "Нема достапни возила"
+msgstr "No available vehicles"
+
+#: dealership_app/templates/frontend/index.html:921
+msgid "Проверете подоцна за нови понуди"
+msgstr "Check back later for new offers"
+
+#: dealership_app/templates/frontend/index.html:996
+msgid "Готови сте да го најдете вашиот автомобил?"
+msgstr "Ready to find your vehicle?"
+
+#: dealership_app/templates/frontend/index.html:997
+msgid ""
+"Прегледајте ја нашата колекција и откријте го совршениот автомобил за вас "
+"денес"
+msgstr "Browse our collection and discover the perfect vehicle for you today"
+
+#: dealership_app/templates/frontend/index.html:999
+msgid "Започнете сега"
+msgstr "Start Now"
+
+#: dealership_app/templates/frontend/index.html:1017
+#: dealership_app/templates/frontend/vehicles.html:882
+msgid "Се вчитува..."
+msgstr "Loading..."
+
+#: dealership_app/templates/frontend/index.html:1032
+#: dealership_app/templates/frontend/vehicles.html:901
+msgid "Грешка при вчитување"
+msgstr "Loading error"
+
+#: dealership_app/templates/frontend/privacy.html:5
+#: dealership_app/templates/frontend/privacy.html:15
+#: dealership_app/templates/frontend/terms.html:46
+msgid "Политика за приватност"
+msgstr "Privacy Policy"
+
+#: dealership_app/templates/frontend/privacy.html:19
+#: dealership_app/templates/frontend/terms.html:19
+msgid "Последно ажурирано"
+msgstr "Last Updated"
+
+#: dealership_app/templates/frontend/privacy.html:24
+msgid "1. Вовед"
+msgstr "1. Introduction"
+
+#: dealership_app/templates/frontend/privacy.html:25
+msgid ""
+"AUTO DINERO се обврзува да ја заштити вашата приватност и да ги заштити вашите "
+"лични податоци. Оваа Политика за приватност објаснува како собираме, "
+"користиме и заштитуваме информации кога ја посетувате нашата веб-страница "
+"python.krstevski.me."
+msgstr ""
+"AUTO DINERO is committed to protecting your privacy and safeguarding your "
+"personal data. This Privacy Policy explains how we collect, use, and protect "
+"information when you visit our website python.krstevski.me."
+
+#: dealership_app/templates/frontend/privacy.html:26
+msgid ""
+"Оваа политика е во согласност со <strong>Општата регулатива за заштита на "
+"податоци (GDPR)</strong> на Европската Унија."
+msgstr ""
+"This policy is in accordance with the <strong>General Data Protection "
+"Regulation (GDPR)</strong> of the European Union."
+
+#: dealership_app/templates/frontend/privacy.html:30
+msgid "2. Информации што ги собираме"
+msgstr "2. Information We Collect"
+
+#: dealership_app/templates/frontend/privacy.html:32
+msgid "2.1 Лични податоци"
+msgstr "2.1 Personal Data"
+
+#: dealership_app/templates/frontend/privacy.html:33
+msgid "Ние може да собираме следниве лични податоци:"
+msgstr "We may collect the following personal data:"
+
+#: dealership_app/templates/frontend/privacy.html:35
+msgid "Име и презиме"
+msgstr "Name and surname"
+
+#: dealership_app/templates/frontend/privacy.html:36
+msgid "Email адреса"
+msgstr "Email address"
+
+#: dealership_app/templates/frontend/privacy.html:37
+msgid "Телефонски број"
+msgstr "Phone number"
+
+#: dealership_app/templates/frontend/privacy.html:38
+msgid "Пораки и барања за контакт"
+msgstr "Messages and contact requests"
+
+#: dealership_app/templates/frontend/privacy.html:41
+msgid "2.2 Автоматски собрани податоци"
+msgstr "2.2 Automatically Collected Data"
+
+#: dealership_app/templates/frontend/privacy.html:43
+msgid "IP адреса"
+msgstr "IP address"
+
+#: dealership_app/templates/frontend/privacy.html:44
+msgid "Тип на прелистувач и уред"
+msgstr "Browser and device type"
+
+#: dealership_app/templates/frontend/privacy.html:45
+msgid "Време на посета"
+msgstr "Visit time"
+
+#: dealership_app/templates/frontend/privacy.html:46
+msgid "Страници што ги посетивте"
+msgstr "Pages you visited"
+
+#: dealership_app/templates/frontend/privacy.html:47
+msgid "Статистики за користење"
+msgstr "Usage statistics"
+
+#: dealership_app/templates/frontend/privacy.html:52
+#: dealership_app/templates/frontend/terms.html:39
+msgid "3. Колачиња (Cookies)"
+msgstr "3. Cookies"
+
+#: dealership_app/templates/frontend/privacy.html:53
+#, fuzzy
+#| msgid ""
+#| "Нашата веб-страница користи колачиња за подобрување на корисничкото "
+#| "искуство. Колачињата ни помагаат да:"
+msgid ""
+"Нашата веб-страница користи колачиња за подобрување на вашето искуство. Ние "
+"користиме следниве типови колачиња:"
+msgstr ""
+"Our website uses cookies to improve user experience. Cookies help us to:"
+
+#: dealership_app/templates/frontend/privacy.html:58
+msgid "Основни колачиња"
+msgstr "Essential Cookies"
+
+#: dealership_app/templates/frontend/privacy.html:59
+msgid "Неопходни за функционирањето на веб-страницата"
+msgstr "Essential for website functionality"
+
+#: dealership_app/templates/frontend/privacy.html:64
+msgid "Аналитички колачиња"
+msgstr "Analytics Cookies"
+
+#: dealership_app/templates/frontend/privacy.html:65
+msgid "Помагаат да го подобриме квалитетот на услугата"
+msgstr "Help us improve service quality"
+
+#: dealership_app/templates/frontend/privacy.html:70
+msgid ""
+"Вие можете да ги контролирате колачињата преку поставките на вашиот "
+"прелистувач."
+msgstr "You can control cookies through your browser settings."
+
+#: dealership_app/templates/frontend/privacy.html:74
+msgid "4. Како ги користиме вашите податоци"
+msgstr "4. How We Use Your Data"
+
+#: dealership_app/templates/frontend/privacy.html:75
+msgid "Вашите податоци ги користиме за:"
+msgstr "We use your data for:"
+
+#: dealership_app/templates/frontend/privacy.html:77
+#, fuzzy
+#| msgid "Одговори на најчесто поставувани прашања"
+msgid "Одговарање на вашите барања и прашања"
+msgstr "Answers to the most frequently asked questions"
+
+#: dealership_app/templates/frontend/privacy.html:78
+#, fuzzy
+#| msgid "Детални информации за возилото"
+msgid "Обезбедување информации за возила"
+msgstr "Detailed Vehicle Information"
+
+#: dealership_app/templates/frontend/privacy.html:79
+#, fuzzy
+#| msgid "Дојдете во нашиот салон"
+msgid "Подобрување на нашите услуги"
+msgstr "Visit our showroom"
+
+#: dealership_app/templates/frontend/privacy.html:80
+#, fuzzy
+#| msgid "Користење на филтри за пребарување"
+msgid "Испраќање на важни известувања"
+msgstr "Using search filters"
+
+#: dealership_app/templates/frontend/privacy.html:81
+msgid "Заштита од измами и злоупотреби"
+msgstr "Protection from fraud and abuse"
+
+#: dealership_app/templates/frontend/privacy.html:86
+msgid "5. Ваши права според GDPR"
+msgstr "5. Your Rights Under GDPR"
+
+#: dealership_app/templates/frontend/privacy.html:87
+msgid "Според GDPR, вие имате право на:"
+msgstr "Under GDPR, you have the right to:"
+
+#: dealership_app/templates/frontend/privacy.html:91
+msgid "<strong>Пристап</strong> - да ги видите своите податоци"
+msgstr "<strong>Access</strong> - to view your data"
+
+#: dealership_app/templates/frontend/privacy.html:92
+msgid "<strong>Исправка</strong> - да ги поправите неточните податоци"
+msgstr "<strong>Rectification</strong> - to correct inaccurate data"
+
+#: dealership_app/templates/frontend/privacy.html:93
+msgid "<strong>Бришење</strong> - да побарате бришење на податоци"
+msgstr "<strong>Erasure</strong> - to request data deletion"
+
+#: dealership_app/templates/frontend/privacy.html:98
+msgid "<strong>Преносливост</strong> - да ги преземете своите податоци"
+msgstr "<strong>Portability</strong> - to download your data"
+
+#: dealership_app/templates/frontend/privacy.html:99
+msgid "<strong>Ограничување</strong> - да ја ограничите обработката"
+msgstr "<strong>Restriction</strong> - to limit processing"
+
+#: dealership_app/templates/frontend/privacy.html:100
+msgid "<strong>Приговор</strong> - да се спротивставите на обработката"
+msgstr "<strong>Objection</strong> - to object to processing"
+
+#: dealership_app/templates/frontend/privacy.html:107
+msgid "6. Безбедност на податоците"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:108
+msgid ""
+"Ние презземаме соодветни технички и организациски мерки за заштита на вашите "
+"лични податоци:"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:110
+msgid "SSL енкрипција за сите преноси на податоци"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:111
+msgid "Безбедни сервери и бази на податоци"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:112
+msgid "Ограничен пристап до податоците"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:113
+#, fuzzy
+#| msgid "Последно ажурирано"
+msgid "Редовни безбедносни ажурирања"
+msgstr "Last Updated"
+
+#: dealership_app/templates/frontend/privacy.html:118
+msgid "7. Делење на податоци"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:119
+msgid ""
+"Ние <strong>не ги продаваме, изнајмуваме или делиме</strong> вашите лични "
+"податоци со трети страни, освен:"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:121
+#, fuzzy
+#| msgid "Ве молиме пополнете ги сите задолжителни полиња."
+msgid "Кога е тоа законски задолжително"
+msgstr "Please fill in all required fields."
+
+#: dealership_app/templates/frontend/privacy.html:122
+msgid "За заштита на нашите права или безбедност"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:123
+#, fuzzy
+#| msgid "Политика за приватност"
+msgid "Со ваша изречна согласност"
+msgstr "Privacy Policy"
+
+#: dealership_app/templates/frontend/privacy.html:128
+#, fuzzy
+#| msgid "Најди го твојот автомобил"
+msgid "8. Чување на податоци"
+msgstr "Find Your Car"
+
+#: dealership_app/templates/frontend/privacy.html:129
+msgid ""
+"Вашите лични податоци ги чуваме само толку долго колку што е потребно за "
+"целите за кои се собрани, или според законските обврски."
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:130
+msgid ""
+"Контактните податоци обично се чуваат до 3 години од последната комуникација."
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:134
+#, fuzzy
+#| msgid "Види ги сите возила"
+msgid "9. Промени на политиката"
+msgstr "View All Vehicles"
+
+#: dealership_app/templates/frontend/privacy.html:135
+msgid ""
+"Ние може да ја ажурираме оваа Политика за приватност од време на време. "
+"Значајните промени ќе бидат објавени на нашата веб-страница."
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:139
+#, fuzzy
+#| msgid "Контакт"
+msgid "10. Контакт"
+msgstr "Contact"
+
+#: dealership_app/templates/frontend/privacy.html:140
+msgid ""
+"За прашања во врска со оваа политика или за остварување на вашите права, "
+"контактирајте не:"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:142
+#: dealership_app/templates/frontend/terms.html:90
+msgid "Email"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:144
+msgid "ул. Македонија 123, 1000 Скопје, Македонија"
+msgstr ""
+
+#: dealership_app/templates/frontend/privacy.html:151
+#: dealership_app/templates/frontend/terms.html:99
+msgid "Назад кон почетната"
+msgstr "Back to Home"
+
+#: dealership_app/templates/frontend/privacy.html:154
+#: dealership_app/templates/frontend/terms.html:5
+#: dealership_app/templates/frontend/terms.html:15
+msgid "Услови за користење"
+msgstr "Terms of Service"
+
+#: dealership_app/templates/frontend/terms.html:24
+msgid "1. Општи одредби"
+msgstr "1. General Provisions"
+
+#: dealership_app/templates/frontend/terms.html:25
+msgid ""
+"Со користењето на веб-страницата AUTO DINERO (python.krstevski.me), Вие се "
+"согласувате со овие Услови за користење. Овие услови се однесуваат на сите "
+"корисници на нашата веб-страница."
+msgstr ""
+"By using the AUTO DINERO website (python.krstevski.me), you agree to these Terms "
+"of Service. These terms apply to all users of our website."
+
+#: dealership_app/templates/frontend/terms.html:29
+msgid "2. Користење на услугите"
+msgstr "2. Use of Services"
+
+#: dealership_app/templates/frontend/terms.html:30
+msgid "Нашите услуги се наменети за:"
+msgstr "Our services are intended for:"
+
+#: dealership_app/templates/frontend/terms.html:32
+msgid "Прегледување на достапни возила"
+msgstr "Browsing available vehicles"
+
+#: dealership_app/templates/frontend/terms.html:33
+msgid "Контактирање за повеќе информации"
+msgstr "Contacting for more information"
+
+#: dealership_app/templates/frontend/terms.html:34
+msgid "Користење на филтри за пребарување"
+msgstr "Using search filters"
+
+#: dealership_app/templates/frontend/terms.html:40
+msgid ""
+"Нашата веб-страница користи колачиња за подобрување на корисничкото "
+"искуство. Колачињата ни помагаат да:"
+msgstr ""
+"Our website uses cookies to improve user experience. Cookies help us to:"
+
+#: dealership_app/templates/frontend/terms.html:42
+msgid "Запомниме ги вашите претпочитања"
+msgstr "Remember your preferences"
+
+#: dealership_app/templates/frontend/terms.html:43
+msgid "Анализираме го сообраќајот на веб-страницата"
+msgstr "Analyze website traffic"
+
+#: dealership_app/templates/frontend/terms.html:44
+msgid "Обезбедиме подобра функционалност"
+msgstr "Provide better functionality"
+
+#: dealership_app/templates/frontend/terms.html:46
+msgid ""
+"Со продолжување на користењето на нашата веб-страница, се согласувате со "
+"користењето на колачиња согласно со нашата"
+msgstr ""
+"By continuing to use our website, you agree to the use of cookies according "
+"to our"
+
+#: dealership_app/templates/frontend/terms.html:50
+msgid "4. Забрани"
+msgstr "4. Prohibitions"
+
+#: dealership_app/templates/frontend/terms.html:51
+msgid "При користењето на нашата веб-страница забрането е:"
+msgstr "When using our website, it is prohibited to:"
+
+#: dealership_app/templates/frontend/terms.html:53
+#, fuzzy
+#| msgid "При користењето на нашата веб-страница забрането е:"
+msgid "Користење на веб-страницата за незаконски цели"
+msgstr "When using our website, it is prohibited to:"
+
+#: dealership_app/templates/frontend/terms.html:54
+msgid "Нарушување на функционалноста на системот"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:55
+#, fuzzy
+#| msgid "Прегледување на достапни возила"
+msgid "Копирање на содржини без дозвола"
+msgstr "Browsing available vehicles"
+
+#: dealership_app/templates/frontend/terms.html:56
+#, fuzzy
+#| msgid "Контактирање за повеќе информации"
+msgid "Објавување на навредливи содржини"
+msgstr "Contacting for more information"
+
+#: dealership_app/templates/frontend/terms.html:61
+msgid "5. Заштита на податоци (GDPR)"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:62
+msgid "Во согласност со Општата регулатива за заштита на податоци (GDPR), ние:"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:64
+msgid "Ги заштитуваме вашите лични податоци"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:65
+msgid "Барате согласност пред собирање на податоци"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:66
+msgid "Ви даваме право на бришење на податоци"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:67
+#, fuzzy
+#| msgid "Анализираме го сообраќајот на веб-страницата"
+msgid "Обезбедуваме транспарентност во обработката"
+msgstr "Analyze website traffic"
+
+#: dealership_app/templates/frontend/terms.html:72
+msgid "6. Одговорност"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:73
+msgid "AUTO DINERO не презема одговорност за:"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:75
+#, fuzzy
+#| msgid "Детални информации за возилото"
+msgid "Точноста на сите информации за возилата"
+msgstr "Detailed Vehicle Information"
+
+#: dealership_app/templates/frontend/terms.html:76
+msgid "Технички проблеми или недостапност на услугата"
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:77
+#, fuzzy
+#| msgid "Анализираме го сообраќајот на веб-страницата"
+msgid "Штета настаната од користењето на веб-страницата"
+msgstr "Analyze website traffic"
+
+#: dealership_app/templates/frontend/terms.html:82
+#, fuzzy
+#| msgid "2. Користење на услугите"
+msgid "7. Промени на условите"
+msgstr "2. Use of Services"
+
+#: dealership_app/templates/frontend/terms.html:83
+msgid ""
+"Ние си задржуваме право да ги менуваме овие услови во секое време. Промените "
+"ќе бидат објавени на оваа страница со ажурирана дата."
+msgstr ""
+
+#: dealership_app/templates/frontend/terms.html:87
+#, fuzzy
+#| msgid "Контакт"
+msgid "8. Контакт"
+msgstr "Contact"
+
+#: dealership_app/templates/frontend/terms.html:88
+msgid "За прашања во врска со овие услови, контактирајте не на:"
+msgstr ""
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1393
+msgid "Назад кон листа"
+msgstr "Back to List"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1398
+msgid "Детални информации за возилото"
+msgstr "Detailed Vehicle Information"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1412
+msgid "Отвори"
+msgstr "Open"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1443
+msgid "луѓето го гледаат ова во моментов"
+msgstr ""
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1446
+#: dealership_app/templates/frontend/vehicles.html:725
+msgid "Цена"
+msgstr "Price"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1460
+#: dealership_app/templates/frontend/vehicle_detail.html:1522
+#: dealership_app/templates/frontend/vehicles.html:736
+msgid "Километража"
+msgstr "Mileage"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1488
+msgid "Заинтересирани сте?"
+msgstr "Interested?"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1490
+msgid "Повикајте нас"
+msgstr "Call Us"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1493
+msgid "Испратете е-мејл"
+msgstr "Send Email"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1501
+msgid "Детални спецификации"
+msgstr "Detailed Specifications"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1508
+msgid "МОЌНОСТ"
+msgstr "POWER"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1515
+msgid "Регистрација"
+msgstr "Registration"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1529
+msgid "Број на седишта"
+msgstr "Number of Seats"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1543
+msgid "Мотор"
+msgstr "Engine"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1565
+msgid "Опрема"
+msgstr "Equipment"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1580
+#, fuzzy
+#| msgid "Види ги сите возила"
+msgid "Препорачани возила"
+msgstr "View All Vehicles"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1581
+msgid "Слични возила што можеби ќе ве интересираат"
+msgstr "Similar vehicles that might interest you"
+
+#: dealership_app/templates/frontend/vehicle_detail.html:1632
+#: dealership_app/templates/frontend/vehicle_detail.html:1637
+msgid "Назад"
+msgstr "Back"
+
+#: dealership_app/templates/frontend/vehicles.html:618
+msgid "Нашата колекција"
+msgstr "Our Collection"
+
+#: dealership_app/templates/frontend/vehicles.html:619
+#, fuzzy
+#| msgid "Пронајди го совршениот автомобил за тебе"
+msgid "Пронајдете го совршениот автомобил од нашиот широк избор"
+msgstr "Find the Perfect Car for You"
+
+#: dealership_app/templates/frontend/vehicles.html:629
+#: dealership_app/templates/frontend/vehicles.html:919
+#: dealership_app/templates/frontend/vehicles.html:934
+msgid "Затвори филтер"
+msgstr "Close Filter"
+
+#: dealership_app/templates/frontend/vehicles.html:635
+msgid "Филтрирај возила"
+msgstr "Filter Vehicles"
+
+#: dealership_app/templates/frontend/vehicles.html:637
+#, fuzzy
+#| msgid "Возила"
+msgid "возила"
+msgstr "Vehicles"
+
+#: dealership_app/templates/frontend/vehicles.html:643
+msgid "Не е пронајдено такво возило"
+msgstr "No such vehicle found"
+
+#: dealership_app/templates/frontend/vehicles.html:684
+#: dealership_app/templates/frontend/vehicles.html:698
+#: dealership_app/templates/frontend/vehicles.html:713
+msgid "Сите типови"
+msgstr "All Types"
+
+#: dealership_app/templates/frontend/vehicles.html:728
+msgid "Ниска → Висока"
+msgstr "Low to High"
+
+#: dealership_app/templates/frontend/vehicles.html:729
+msgid "Висока → Ниска"
+msgstr "High to Low"
+
+#: dealership_app/templates/frontend/vehicles.html:738
+msgid "Сите километражи"
+msgstr "All Mileages"
+
+#: dealership_app/templates/frontend/vehicles.html:750
+msgid "Автомобил за почетници"
+msgstr "Beginner Car"
+
+#: dealership_app/templates/frontend/vehicles.html:780
+msgid "ПРЕПОРАЧАНО"
+msgstr "RECOMMENDED"
+
+#: dealership_app/templates/frontend/vehicles.html:823
+#, fuzzy
+#| msgid "Види ги сите возила"
+msgid "Нема пронајдени возила"
+msgstr "View All Vehicles"
+
+#: dealership_app/templates/frontend/vehicles.html:824
+msgid "Пробајте со различни критериуми за пребарување"
+msgstr "Try different search criteria"
+
+#: dealership_app/templates/frontend/vehicles.html:826
+msgid "Ресетирај пребарување"
+msgstr "Reset Search"
+
+#: dealership_app/templates/frontend/vehicles.html:838
+msgid "Претходна"
+msgstr ""
+
+#: dealership_app/templates/frontend/vehicles.html:858
+msgid "Следна"
+msgstr ""
+
+#: dealership_app/templates/frontend/vehicles.html:878
+msgid "Избери бренд"
+msgstr ""
+
+#: dealership_app/templates/frontend/vehicles.html:922
+#: dealership_app/templates/frontend/vehicles.html:940
+msgid "Филтри"
+msgstr ""

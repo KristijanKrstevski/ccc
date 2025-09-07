@@ -1,0 +1,32 @@
+# LiteSpeed configuration for Django with Viber-style compressed images
+# Smaller limits since images are now heavily compressed (max 300kb each)
+
+# LiteSpeed request body limit - 20MB (enough for compressed images + form data)
+LimitRequestBody 20971520
+
+# PHP upload limits - reasonable since images are compressed
+php_flag file_uploads On
+php_value max_input_vars 10000
+php_value upload_max_filesize 5M
+php_value post_max_size 20M
+php_value memory_limit 128M
+php_value max_execution_time 300
+php_value max_file_uploads 20
+php_value max_input_time 300
+
+# LiteSpeed-specific directives
+<IfModule mod_lsapi.c>
+    php_admin_flag file_uploads On
+    php_admin_value max_input_vars 10000
+    php_admin_value upload_max_filesize 5M
+    php_admin_value post_max_size 20M
+    php_admin_value memory_limit 128M
+    php_admin_value max_execution_time 300
+    php_admin_value max_file_uploads 20
+    php_admin_value max_input_time 300
+</IfModule>
+
+# Force LiteSpeed to accept requests
+<Limit POST PUT>
+    LimitRequestBody 20971520
+</Limit>

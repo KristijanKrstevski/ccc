@@ -1,0 +1,242 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Политика за приватност" %} - AUTO DINERO{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h1 class="text-center mb-4 text-primary">
+                        <i class="fas fa-user-shield me-2"></i>
+                        {% trans "Политика за приватност" %}
+                    </h1>
+                    
+                    <div class="text-muted text-center mb-5">
+                        {% trans "Последно ажурирано" %}: {{ now|date:"d.m.Y" }}
+                    </div>
+                    
+                    <div class="legal-content">
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "1. Вовед" %}</h3>
+                            <p>{% trans "AUTO DINERO се обврзува да ја заштити вашата приватност и да ги заштити вашите лични податоци. Оваа Политика за приватност објаснува како собираме, користиме и заштитуваме информации кога ја посетувате нашата веб-страница python.krstevski.me." %}</p>
+                            <p>{% trans "Оваа политика е во согласност со <strong>Општата регулатива за заштита на податоци (GDPR)</strong> на Европската Унија." %}</p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "2. Информации што ги собираме" %}</h3>
+                            
+                            <h5 class="fw-bold mt-4 mb-3">{% trans "2.1 Лични податоци" %}</h5>
+                            <p>{% trans "Ние може да собираме следниве лични податоци:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-user text-primary me-2"></i>{% trans "Име и презиме" %}</li>
+                                <li><i class="fas fa-envelope text-primary me-2"></i>{% trans "Email адреса" %}</li>
+                                <li><i class="fas fa-phone text-primary me-2"></i>{% trans "Телефонски број" %}</li>
+                                <li><i class="fas fa-comment text-primary me-2"></i>{% trans "Пораки и барања за контакт" %}</li>
+                            </ul>
+                            
+                            <h5 class="fw-bold mt-4 mb-3">{% trans "2.2 Автоматски собрани податоци" %}</h5>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-globe text-info me-2"></i>{% trans "IP адреса" %}</li>
+                                <li><i class="fas fa-desktop text-info me-2"></i>{% trans "Тип на прелистувач и уред" %}</li>
+                                <li><i class="fas fa-clock text-info me-2"></i>{% trans "Време на посета" %}</li>
+                                <li><i class="fas fa-mouse-pointer text-info me-2"></i>{% trans "Страници што ги посетивте" %}</li>
+                                <li><i class="fas fa-chart-line text-info me-2"></i>{% trans "Статистики за користење" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "3. Колачиња (Cookies)" %}</h3>
+                            <p>{% trans "Нашата веб-страница користи колачиња за подобрување на вашето искуство. Ние користиме следниве типови колачиња:" %}</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-3">
+                                    <div class="cookie-type-card h-100">
+                                        <h6 class="fw-bold text-success">{% trans "Основни колачиња" %}</h6>
+                                        <p class="small">{% trans "Неопходни за функционирањето на веб-страницата" %}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="cookie-type-card h-100">
+                                        <h6 class="fw-bold text-warning">{% trans "Аналитички колачиња" %}</h6>
+                                        <p class="small">{% trans "Помагаат да го подобриме квалитетот на услугата" %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="mt-3">{% trans "Вие можете да ги контролирате колачињата преку поставките на вашиот прелистувач." %}</p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "4. Како ги користиме вашите податоци" %}</h3>
+                            <p>{% trans "Вашите податоци ги користиме за:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-handshake text-success me-2"></i>{% trans "Одговарање на вашите барања и прашања" %}</li>
+                                <li><i class="fas fa-car text-success me-2"></i>{% trans "Обезбедување информации за возила" %}</li>
+                                <li><i class="fas fa-chart-bar text-success me-2"></i>{% trans "Подобрување на нашите услуги" %}</li>
+                                <li><i class="fas fa-bell text-success me-2"></i>{% trans "Испраќање на важни известувања" %}</li>
+                                <li><i class="fas fa-shield-alt text-success me-2"></i>{% trans "Заштита од измами и злоупотреби" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "5. Ваши права според GDPR" %}</h3>
+                            <p>{% trans "Според GDPR, вие имате право на:" %}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-eye text-primary me-2"></i>{% trans "<strong>Пристап</strong> - да ги видите своите податоци" %}</li>
+                                        <li class="mb-2"><i class="fas fa-edit text-warning me-2"></i>{% trans "<strong>Исправка</strong> - да ги поправите неточните податоци" %}</li>
+                                        <li class="mb-2"><i class="fas fa-trash text-danger me-2"></i>{% trans "<strong>Бришење</strong> - да побарате бришење на податоци" %}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-download text-info me-2"></i>{% trans "<strong>Преносливост</strong> - да ги преземете своите податоци" %}</li>
+                                        <li class="mb-2"><i class="fas fa-ban text-secondary me-2"></i>{% trans "<strong>Ограничување</strong> - да ја ограничите обработката" %}</li>
+                                        <li class="mb-2"><i class="fas fa-times-circle text-dark me-2"></i>{% trans "<strong>Приговор</strong> - да се спротивставите на обработката" %}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "6. Безбедност на податоците" %}</h3>
+                            <p>{% trans "Ние презземаме соодветни технички и организациски мерки за заштита на вашите лични податоци:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-lock text-success me-2"></i>{% trans "SSL енкрипција за сите преноси на податоци" %}</li>
+                                <li><i class="fas fa-server text-success me-2"></i>{% trans "Безбедни сервери и бази на податоци" %}</li>
+                                <li><i class="fas fa-user-lock text-success me-2"></i>{% trans "Ограничен пристап до податоците" %}</li>
+                                <li><i class="fas fa-history text-success me-2"></i>{% trans "Редовни безбедносни ажурирања" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "7. Делење на податоци" %}</h3>
+                            <p>{% trans "Ние <strong>не ги продаваме, изнајмуваме или делиме</strong> вашите лични податоци со трети страни, освен:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-gavel text-warning me-2"></i>{% trans "Кога е тоа законски задолжително" %}</li>
+                                <li><i class="fas fa-shield-alt text-warning me-2"></i>{% trans "За заштита на нашите права или безбедност" %}</li>
+                                <li><i class="fas fa-handshake text-warning me-2"></i>{% trans "Со ваша изречна согласност" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "8. Чување на податоци" %}</h3>
+                            <p>{% trans "Вашите лични податоци ги чуваме само толку долго колку што е потребно за целите за кои се собрани, или според законските обврски." %}</p>
+                            <p>{% trans "Контактните податоци обично се чуваат до 3 години од последната комуникација." %}</p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "9. Промени на политиката" %}</h3>
+                            <p>{% trans "Ние може да ја ажурираме оваа Политика за приватност од време на време. Значајните промени ќе бидат објавени на нашата веб-страница." %}</p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "10. Контакт" %}</h3>
+                            <p>{% trans "За прашања во врска со оваа политика или за остварување на вашите права, контактирајте не:" %}</p>
+                            <div class="contact-info mt-3">
+                                <p><i class="fas fa-envelope text-primary me-2"></i><strong>{% trans "Email" %}:</strong> info@moeauto.mk</p>
+                                <p><i class="fas fa-phone text-primary me-2"></i><strong>{% trans "Телефон" %}:</strong> +389 70 123 456</p>
+                                <p><i class="fas fa-map-marker-alt text-primary me-2"></i><strong>{% trans "Адреса" %}:</strong> {% trans "ул. Македонија 123, 1000 Скопје, Македонија" %}</p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <a href="{% url 'frontend_index' %}" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-home me-2"></i>{% trans "Назад кон почетната" %}
+                        </a>
+                        <a href="{% url 'frontend_terms' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-file-contract me-2"></i>{% trans "Услови за користење" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .legal-content {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #495057;
+    }
+    
+    .legal-content h3 {
+        color: #ff8c00 !important;
+        border-bottom: 2px solid #ff8c00;
+        padding-bottom: 0.5rem;
+    }
+    
+    .legal-content h5 {
+        color: #495057 !important;
+        margin-top: 2rem;
+    }
+    
+    .legal-content p {
+        margin-bottom: 1.2rem;
+        text-align: justify;
+    }
+    
+    .legal-content ul {
+        margin-bottom: 1.5rem;
+    }
+    
+    .legal-content li {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .cookie-type-card {
+        background: #F8F9FA;
+        padding: 1.2rem;
+        border-radius: 10px;
+        border-left: 4px solid;
+        height: 100%;
+    }
+    
+    .cookie-type-card:first-child {
+        border-left-color: #28A745;
+    }
+    
+    .cookie-type-card:last-child {
+        border-left-color: #FFC107;
+    }
+    
+    .contact-info {
+        background: #F8F9FA;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #ff8c00;
+    }
+    
+    .contact-info p {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+        .legal-content {
+            font-size: 1rem;
+        }
+        
+        .card-body {
+            padding: 2rem !important;
+        }
+        
+        .btn-lg {
+            font-size: 1rem !important;
+            padding: 0.8rem 1.2rem !important;
+        }
+    }
+</style>
+{% endblock %}

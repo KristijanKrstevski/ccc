@@ -1,0 +1,17 @@
+<!-- Hero Section Component -->
+<div class="hero-section bg-primary text-white py-5 mb-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h1 class="display-4 fw-bold mb-3">{{ hero_title|default:"Добредојдовте во AUTO DINERO" }}</h1>
+        <p class="lead mb-4">{{ hero_subtitle|default:"Вашиот партнер за најдобри автомобили со гаранција за квалитет и професионална услуга." }}</p>
+        {% if hero_button_text and hero_button_url %}
+        <a href="{{ hero_button_url }}" class="btn btn-light btn-lg px-4">{{ hero_button_text }}</a>
+        {% endif %}
+      </div>
+      <div class="col-lg-4 text-center">
+        <i class="fas fa-car fa-5x opacity-75"></i>
+      </div>
+    </div>
+  </div>
+</div>

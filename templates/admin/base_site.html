@@ -1,0 +1,415 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | AUTO DINERO Admin{% endblock %}
+
+{% block branding %}
+<div class="admin-branding">
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">
+            <i class="fas fa-car me-2"></i>
+            AUTO DINERO Admin
+        </a>
+    </h1>
+</div>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary-red: #ff8c00;
+        --primary-blue: #1D3557;
+        --secondary-blue: #457B9D;
+        --light-gray: #F1F3F4;
+        --medium-gray: #6C757D;
+        --dark-gray: #212529;
+        --white: #FFFFFF;
+        --success-green: #20C997;
+        --warning-orange: #FD7E14;
+        --danger-red: #DC3545;
+        --shadow: 0 4px 20px rgba(0,0,0,0.1);
+        --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+        --gradient: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    }
+
+    * {
+        font-family: 'Inter', sans-serif !important;
+    }
+
+    /* Header Styling */
+    #header {
+        background: var(--gradient) !important;
+        color: var(--white) !important;
+        box-shadow: var(--shadow);
+        border-bottom: none !important;
+    }
+
+    .admin-branding h1 {
+        font-family: 'Poppins', sans-serif !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+    }
+
+    .admin-branding h1 a {
+        color: var(--white) !important;
+        text-decoration: none !important;
+        font-size: 1.6rem !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    #user-tools {
+        color: var(--white) !important;
+        font-weight: 500 !important;
+    }
+
+    #user-tools a {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
+        padding: 8px 12px !important;
+        border-radius: 8px !important;
+    }
+
+    #user-tools a:hover {
+        color: var(--white) !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        text-decoration: none !important;
+    }
+
+    /* Content Area */
+    .main {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+        min-height: 100vh !important;
+    }
+
+    #content {
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(10px) !important;
+        border-radius: 20px !important;
+        margin: 20px !important;
+        padding: 30px !important;
+        box-shadow: var(--shadow) !important;
+    }
+
+    /* Breadcrumbs */
+    .breadcrumbs {
+        background: var(--gradient) !important;
+        color: var(--white) !important;
+        border-radius: 12px !important;
+        padding: 15px 20px !important;
+        margin-bottom: 25px !important;
+        font-weight: 500 !important;
+    }
+
+    .breadcrumbs a {
+        color: rgba(255, 255, 255, 0.9) !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .breadcrumbs a:hover {
+        color: var(--white) !important;
+        text-decoration: underline !important;
+    }
+
+    /* Module Styling */
+    .module {
+        background: var(--white) !important;
+        border: none !important;
+        border-radius: 16px !important;
+        box-shadow: var(--shadow) !important;
+        margin-bottom: 25px !important;
+        overflow: hidden !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .module:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: var(--shadow-hover) !important;
+    }
+
+    .module h2 {
+        background: var(--gradient) !important;
+        color: var(--white) !important;
+        padding: 20px !important;
+        margin: 0 !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1.3rem !important;
+    }
+
+    .module h3 {
+        background: var(--gradient) !important;
+        color: var(--white) !important;
+        padding: 15px 20px !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* Tables */
+    .results {
+        background: var(--white) !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: var(--shadow) !important;
+    }
+
+    .results thead th {
+        background: var(--gradient) !important;
+        color: var(--white) !important;
+        border: none !important;
+        padding: 20px 15px !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        font-size: 0.9rem !important;
+    }
+
+    .results tbody tr {
+        transition: all 0.2s ease !important;
+    }
+
+    .results tbody tr:hover {
+        background: rgba(230, 57, 70, 0.05) !important;
+        transform: scale(1.01) !important;
+    }
+
+    .results tbody td {
+        padding: 15px !important;
+        border-color: rgba(0,0,0,0.05) !important;
+        vertical-align: middle !important;
+    }
+
+    /* Buttons */
+    .button, .default {
+        background: var(--gradient) !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 12px 25px !important;
+        font-weight: 600 !important;
+        color: var(--white) !important;
+        transition: all 0.3s ease !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .button:hover, .default:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: var(--shadow-hover) !important;
+        color: var(--white) !important;
+        text-decoration: none !important;
+    }
+
+    .button.cancel-link {
+        background: var(--medium-gray) !important;
+    }
+
+    .deletelink {
+        background: var(--danger-red) !important;
+        color: var(--white) !important;
+        border-radius: 8px !important;
+        padding: 8px 15px !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .deletelink:hover {
+        background: #c82333 !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4) !important;
+        color: var(--white) !important;
+        text-decoration: none !important;
+    }
+
+    /* Forms */
+    .form-row {
+        margin-bottom: 20px !important;
+    }
+
+    .form-row label {
+        font-weight: 600 !important;
+        color: var(--dark-gray) !important;
+        margin-bottom: 8px !important;
+        display: block !important;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], 
+    input[type="number"], textarea, select {
+        border: 2px solid rgba(230, 57, 70, 0.1) !important;
+        border-radius: 12px !important;
+        padding: 12px 16px !important;
+        font-size: 1rem !important;
+        transition: all 0.3s ease !important;
+        background: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus, 
+    input[type="email"]:focus, input[type="number"]:focus, 
+    textarea:focus, select:focus {
+        border-color: var(--primary-red) !important;
+        box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.15) !important;
+        background: var(--white) !important;
+        outline: none !important;
+    }
+
+    /* Messages */
+    .messagelist {
+        margin: 0 0 20px 0 !important;
+        padding: 0 !important;
+    }
+
+    .messagelist li {
+        background: var(--success-green) !important;
+        color: var(--white) !important;
+        padding: 15px 20px !important;
+        border-radius: 12px !important;
+        margin-bottom: 10px !important;
+        font-weight: 500 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    .messagelist li.error {
+        background: var(--danger-red) !important;
+    }
+
+    .messagelist li.warning {
+        background: var(--warning-orange) !important;
+    }
+
+    .messagelist li::before {
+        content: '\f058' !important;
+        font-family: 'Font Awesome 6 Free' !important;
+        font-weight: 900 !important;
+    }
+
+    .messagelist li.error::before {
+        content: '\f06a' !important;
+    }
+
+    .messagelist li.warning::before {
+        content: '\f071' !important;
+    }
+
+    /* Dashboard Modules */
+    .module table {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .module table th, .module table td {
+        padding: 12px 15px !important;
+        text-align: left !important;
+    }
+
+    .addlink::before, .changelink::before, .deletelink::before,
+    .viewlink::before {
+        font-family: 'Font Awesome 6 Free' !important;
+        font-weight: 900 !important;
+        margin-right: 8px !important;
+    }
+
+    .addlink::before {
+        content: '\f067' !important;
+    }
+
+    .changelink::before {
+        content: '\f044' !important;
+    }
+
+    .deletelink::before {
+        content: '\f2ed' !important;
+    }
+
+    .viewlink::before {
+        content: '\f06e' !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        #content {
+            margin: 10px !important;
+            padding: 20px !important;
+            border-radius: 15px !important;
+        }
+        
+        .admin-branding h1 a {
+            font-size: 1.3rem !important;
+        }
+    }
+
+    /* Loading Animation */
+    .loading {
+        position: relative !important;
+    }
+
+    .loading::after {
+        content: '' !important;
+        position: absolute !important;
+        width: 20px !important;
+        height: 20px !important;
+        border: 2px solid rgba(255,255,255,.3) !important;
+        border-radius: 50% !important;
+        border-top-color: #fff !important;
+        animation: spin 1s ease-in-out infinite !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+
+    @keyframes spin {
+        to { transform: translateY(-50%) rotate(360deg) !important; }
+    }
+</style>
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add loading states to form submissions
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function() {
+            const submitBtn = form.querySelector('input[type="submit"], button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+            }
+        });
+    });
+
+    // Add confirmation to delete actions
+    const deleteLinks = document.querySelectorAll('.deletelink');
+    deleteLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (!confirm('Are you sure you want to delete this item?')) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    // Animate modules on page load
+    const modules = document.querySelectorAll('.module');
+    modules.forEach((module, index) => {
+        module.style.opacity = '0';
+        module.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            module.style.transition = 'all 0.6s ease';
+            module.style.opacity = '1';
+            module.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+});
+</script>
+{% endblock %}

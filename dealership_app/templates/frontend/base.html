@@ -1,0 +1,1677 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Car Dealership{% endblock %}</title>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="{% block og_title %}AUTO DINERO - Car Dealership{% endblock %}" />
+  <meta property="og:description" content="{% block og_description %}Find your perfect car at AUTO DINERO. Quality vehicles with excellent service.{% endblock %}" />
+  <meta property="og:image" content="{% static 'logo-grey.jpg' %}" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AUTO DINERO" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{% block twitter_title %}AUTO DINERO - Car Dealership{% endblock %}" />
+  <meta name="twitter:description" content="{% block twitter_description %}Find your perfect car at AUTO DINERO. Quality vehicles with excellent service.{% endblock %}" />
+  <meta name="twitter:image" content="{% static 'logo-grey.jpg' %}" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+  {% block extra_css %}{% endblock %}
+  <style>
+    /* Footer stick to bottom if content is short */
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1 0 auto;
+    }
+    footer {
+      flex-shrink: 0;
+    }
+    
+    /* Navbar Scroll Animation */
+    .navbar-scrollable {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+    }
+    
+    .navbar-scrollable.navbar-hidden {
+      transform: translateY(-100%);
+    }
+    
+    .navbar-scrollable.navbar-visible {
+      transform: translateY(0);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Body padding to compensate for fixed navbar */
+    body {
+      padding-top: 80px;
+    }
+    
+    /* Ensure main content doesn't overlap with fixed navbar */
+    @media (max-width: 991px) {
+      body {
+        padding-top: 90px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      body {
+        padding-top: 70px;
+      }
+    }
+    
+    /* Remove focus outlines from buttons and links to prevent black borders */
+    button:focus,
+    .btn:focus,
+    a:focus,
+    .back-btn:focus,
+    .floating-back-btn:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* Keep focus styling for accessibility but without ugly black borders */
+    .btn:focus-visible {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+    }
+    
+    .back-btn:focus-visible,
+    .floating-back-btn:focus-visible {
+      box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Modern Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom navbar-scrollable">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'frontend_index' %}" style="font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 700; color: #ff8c00; text-decoration: none;">
+        <i class="fas fa-car me-2" style="font-size: 1.4rem;"></i>AUTO DINERO
+      </a>
+      <button class="navbar-toggler border-0 ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <!-- Desktop menu -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-none d-lg-flex">
+          <li class="nav-item">
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_index' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "Дома" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_vehicles' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "Возила" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_about' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "За нас" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_contact' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "Контакт" %}</a>
+          </li>
+        </ul>
+        
+        <!-- Mobile menu - 4 buttons horizontally -->
+        <div class="d-lg-none w-100">
+          <div class="mobile-nav-grid mobile-nav-functional">
+            <!-- Language Switcher -->
+            <div class="mobile-nav-item">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              <div class="mobile-language-switcher">
+                {% for language in languages %}
+                  <form action="{% url 'set_language' %}" method="post" class="language-form-mobile">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                    <input name="language" type="hidden" value="{{ language.code }}" />
+                    <button type="submit" class="mobile-language-btn {% if language.code == LANGUAGE_CODE %}active{% endif %}" data-lang="{{ language.code }}">
+                      {% if language.code == 'en' %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322" 
+                             srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1600px-English_language.svg.png?20250726011322 1.5x" 
+                             alt="English language" class="mobile-flag-icon">
+                      {% else %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215" 
+                             srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1600px-Flag_of_North_Macedonia.svg.png?20231224094215 1.5x" 
+                             alt="North Macedonian flag" class="mobile-flag-icon">
+                      {% endif %}
+                    </button>
+                  </form>
+                {% endfor %}
+              </div>
+            </div>
+            
+            <!-- Working Hours -->
+            <a href="{% url 'frontend_contact' %}" class="mobile-nav-btn mobile-hours-btn">
+              <i class="fas fa-clock"></i>
+              <div class="mobile-btn-text">
+                <div class="mobile-btn-title">{% trans "Раб.време" %}</div>
+                <div class="mobile-btn-subtitle">{% trans "Пон-Саб" %}</div>
+              </div>
+            </a>
+            
+            <!-- Phone -->
+            <a href="tel:+38970123456" class="mobile-nav-btn mobile-phone-btn">
+              <i class="fas fa-phone"></i>
+              <div class="mobile-btn-text">
+                <div class="mobile-btn-title">{% trans "Повици" %}</div>
+                <div class="mobile-btn-subtitle">123 456</div>
+              </div>
+            </a>
+            
+            <!-- Search Vehicles -->
+            <a href="{% url 'frontend_vehicles' %}" class="mobile-nav-btn mobile-search-btn">
+              <i class="fas fa-car"></i>
+              <div class="mobile-btn-text">
+                <div class="mobile-btn-title">{% trans "ВОЗИЛА" %}</div>
+                <div class="mobile-btn-subtitle">{% trans "Пребарај" %}</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="d-none d-lg-flex align-items-center">
+          <div class="d-flex align-items-center me-2">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+              <form action="{% url 'set_language' %}" method="post" class="language-form">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                <input name="language" type="hidden" value="{{ language.code }}" />
+                <button type="submit" class="language-link {% if language.code == LANGUAGE_CODE %}active{% endif %} {% if forloop.last %}{% else %}me-1{% endif %}" data-lang="{{ language.code }}">
+                  {% if language.code == 'en' %}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322" 
+                         srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1600px-English_language.svg.png?20250726011322 1.5x" 
+                         alt="English language" class="flag-icon">
+                  {% else %}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215" 
+                         srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1600px-Flag_of_North_Macedonia.svg.png?20231224094215 1.5x" 
+                         alt="North Macedonian flag" class="flag-icon">
+                  {% endif %}
+                </button>
+              </form>
+            {% endfor %}
+          </div>
+          <a href="{% url 'frontend_contact' %}" class="btn btn-outline-secondary me-2" style="border-color: #6C757D; color: #6C757D; font-size: 0.85rem; padding: 0.4rem 0.8rem;">
+            <div class="text-center">
+              <div style="font-weight: 600; line-height: 1.1;">{% trans "Раб.време" %}</div>
+              <div style="font-size: 0.75rem; line-height: 1.1;">{% trans "Пон-Саб (08:00-16:00)" %}</div>
+            </div>
+          </a>
+          <a href="tel:+38970123456" class="btn btn-outline-primary me-2" style="border-color: #ff8c00; color: #ff8c00;">
+            <i class="fas fa-phone me-1"></i><span class="d-none d-lg-inline">+389 70 123 456</span><span class="d-lg-none">{% trans "Повици" %}</span>
+          </a>
+          <a href="{% url 'frontend_vehicles' %}" class="btn btn-primary" style="background: #ff8c00; border-color: #ff8c00;">
+            <span class="d-none d-sm-inline">{% trans "Пребарај" %} </span>{% trans "ВОЗИЛА" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <style>
+    .navbar-nav .nav-link:hover {
+      color: #ff8c00 !important;
+      transform: translateY(-1px);
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+    
+    .btn-outline-primary:hover {
+      background: #ff8c00 !important;
+      border-color: #ff8c00 !important;
+      color: white !important;
+    }
+    
+    .btn-outline-secondary:hover {
+      background: #6C757D !important;
+      border-color: #6C757D !important;
+      color: white !important;
+    }
+    
+    .btn-primary:hover {
+      background: #e67a00 !important;
+      border-color: #e67a00 !important;
+    }
+    
+    /* Language Selection Styling */
+    .language-form {
+      display: inline-block;
+      margin: 0;
+    }
+    
+    .language-link {
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      padding: 4px;
+      border-radius: 4px;
+      opacity: 0.7;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .language-link:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(255, 140, 0, 0.2);
+    }
+    
+    .language-link.active {
+      opacity: 1;
+      box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.3);
+    }
+    
+    .flag-icon {
+      width: 20px;
+      height: 14px;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .language-link:hover .flag-icon {
+      transform: scale(1.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Mobile navigation grid */
+    .mobile-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Functional mobile navigation with 4 elements */
+    .mobile-nav-functional {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+    
+    .mobile-nav-btn {
+      background: white;
+      color: #ff8c00;
+      border: 2px solid #ff8c00;
+      padding: 0.5rem 0.25rem;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.7rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 65px;
+      position: relative;
+    }
+    
+    .mobile-nav-btn:hover {
+      background: #ff8c00 !important;
+      color: white !important;
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+    
+    .mobile-nav-btn i {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .mobile-btn-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .mobile-btn-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1px;
+    }
+    
+    .mobile-btn-subtitle {
+      font-size: 0.55rem;
+      font-weight: 500;
+      line-height: 1;
+      opacity: 0.8;
+    }
+    
+    /* Language switcher mobile */
+    .mobile-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .mobile-language-switcher {
+      display: flex;
+      gap: 2px;
+    }
+    
+    .language-form-mobile {
+      display: inline-block;
+      margin: 0;
+    }
+    
+    .mobile-language-btn {
+      background: white;
+      border: 2px solid #ff8c00;
+      padding: 8px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 32px;
+    }
+    
+    .mobile-language-btn:hover,
+    .mobile-language-btn.active {
+      background: #ff8c00;
+      transform: translateY(-1px);
+    }
+    
+    .mobile-flag-icon {
+      width: 36px;
+      height: 24px;
+      border-radius: 3px;
+      object-fit: contain;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .mobile-nav-functional {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.3rem;
+        padding: 0.75rem;
+      }
+      
+      .mobile-nav-btn {
+        padding: 0.4rem 0.2rem;
+        font-size: 0.65rem;
+        min-height: 55px;
+      }
+      
+      .mobile-nav-btn i {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+      }
+      
+      .mobile-btn-title {
+        font-size: 0.6rem;
+      }
+      
+      .mobile-btn-subtitle {
+        font-size: 0.5rem;
+      }
+      
+      .mobile-flag-icon {
+        width: 32px;
+        height: 20px;
+      }
+      
+      .mobile-language-btn {
+        padding: 6px;
+        min-width: 40px;
+        min-height: 28px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .mobile-nav-functional {
+        gap: 0.2rem;
+        padding: 0.5rem;
+      }
+      
+      .mobile-nav-btn {
+        padding: 0.3rem 0.15rem;
+        min-height: 50px;
+      }
+      
+      .mobile-btn-title {
+        font-size: 0.55rem;
+      }
+      
+      .mobile-btn-subtitle {
+        font-size: 0.45rem;
+      }
+      
+      .mobile-flag-icon {
+        width: 28px;
+        height: 18px;
+      }
+      
+      .mobile-language-btn {
+        padding: 5px;
+        min-width: 36px;
+        min-height: 26px;
+      }
+    }
+
+    /* Try to fit 4 buttons in one row on larger mobile screens */
+    @media (min-width: 480px) and (max-width: 767px) {
+      .mobile-nav-functional {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.6rem;
+        padding: 1rem;
+      }
+      
+      .mobile-nav-btn {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.75rem;
+        min-height: 70px;
+      }
+      
+      .mobile-nav-btn i {
+        font-size: 1.1rem;
+      }
+      
+      .mobile-btn-title {
+        font-size: 0.7rem;
+      }
+      
+      .mobile-btn-subtitle {
+        font-size: 0.6rem;
+      }
+      
+      .mobile-flag-icon {
+        width: 40px;
+        height: 26px;
+      }
+      
+      .mobile-language-btn {
+        padding: 10px;
+        min-width: 48px;
+        min-height: 34px;
+      }
+    }
+
+
+    /* Universal responsive navbar */
+    @media (max-width: 991px) {
+      /* Mobile: Hide desktop menu and buttons */
+      .d-none.d-lg-flex {
+        display: none !important;
+      }
+      
+      /* Mobile: Show navbar toggler */
+      .navbar-toggler {
+        display: block !important;
+      }
+      
+      /* Mobile: Collapsed state */
+      .navbar-collapse {
+        display: none;
+      }
+      
+      .navbar-collapse.show {
+        display: block !important;
+      }
+      
+      .navbar-brand {
+        font-size: 1.4rem;
+      }
+    }
+    
+    /* Desktop view */
+    @media (min-width: 992px) {
+      /* Desktop: Show desktop menu and buttons */
+      .d-none.d-lg-flex {
+        display: flex !important;
+      }
+      
+      /* Desktop: Hide mobile elements */
+      .d-lg-none {
+        display: none !important;
+      }
+      
+      .navbar-toggler {
+        display: none !important;
+      }
+      
+      /* Desktop: Always show navbar content */
+      .navbar-collapse {
+        display: block !important;
+      }
+    }
+    
+    /* Medium desktop - compact navbar items */
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .navbar-nav .nav-link {
+        padding: 0.5rem 0.8rem !important;
+        font-size: 0.9rem;
+      }
+      
+      .btn {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.6rem !important;
+      }
+      
+      .btn .d-none.d-lg-inline {
+        display: none !important;
+      }
+      
+      .btn .d-none.d-sm-inline {
+        display: none !important;
+      }
+      
+      
+      .container {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    
+    /* Wider navbar container */
+    .navbar .container {
+      max-width: 95%;
+      width: 100%;
+    }
+    
+    @media (min-width: 1400px) {
+      .navbar .container {
+        max-width: 1600px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+      
+      .btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+      }
+      
+      .container {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  </style>
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="modern-footer">
+    <div class="footer-content">
+      <!-- Brand Section -->
+      <div class="footer-section footer-brand">
+        <div class="brand-info">
+          <h5 class="brand-title">
+            <i class="fas fa-car"></i>AUTO DINERO
+          </h5>
+          <p class="brand-description">
+            {% trans "Водечка компанија за продажба на квалитетни автомобили во Македонија. Веќе 15+ години ви помагаме да го најдете совршениот автомобил." %}
+          </p>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Links Section -->
+      <div class="footer-section footer-links">
+        <h6 class="footer-title">{% trans "Линкови" %}</h6>
+        <ul class="footer-list">
+          <li><a href="{% url 'frontend_index' %}">{% trans "Дома" %}</a></li>
+          <li><a href="{% url 'frontend_vehicles' %}">{% trans "Возила" %}</a></li>
+          <li><a href="#">{% trans "За нас" %}</a></li>
+          <li><a href="#">{% trans "Контакт" %}</a></li>
+        </ul>
+      </div>
+      
+      <!-- Working Hours Section -->
+      <div class="footer-section footer-hours">
+        <h6 class="footer-title">{% trans "Работно време" %}</h6>
+        <div class="working-hours">
+          <div class="hours-item">
+            <span class="days">{% trans "Понеделник - Петок:" %}</span>
+            <span class="time">09:00 - 18:00</span>
+          </div>
+          <div class="hours-item">
+            <span class="days">{% trans "Сабота:" %}</span>
+            <span class="time">09:00 - 15:00</span>
+          </div>
+          <div class="hours-item">
+            <span class="days">{% trans "Недела:" %}</span>
+            <span class="time">{% trans "Затворено" %}</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Section -->
+      <div class="footer-section footer-contact">
+        <h6 class="footer-title">{% trans "Контакт" %}</h6>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+389 70 123 456</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>info@moeauto.mk</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{% trans "ул. Македонија 123" %}<br>{% trans "1000 Скопје, Македонија" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          &copy; {{ now.year }} AUTO DINERO. {% trans "Сите права задржани." %}
+        </p>
+        <div class="footer-bottom-links">
+          <a href="{% url 'frontend_privacy' %}">{% trans "Приватност" %}</a>
+          <a href="{% url 'frontend_terms' %}">{% trans "Услови" %}</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <style>
+    /* Modern Footer Styles */
+    .modern-footer {
+      background: #F8F9FA !important;
+      border-top: 1px solid #E9ECEF;
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+    }
+
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Brand Section */
+    .footer-brand .brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #ff8c00;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-brand .brand-description {
+      color: #6C757D;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      color: #6C757D;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      color: #ff8c00;
+      transform: translateY(-2px);
+    }
+
+    /* Footer Titles */
+    .footer-title {
+      font-weight: 700;
+      color: #212529;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Footer Lists */
+    .footer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-list a {
+      color: #6C757D;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-list a:hover {
+      color: #ff8c00;
+    }
+
+    /* Working Hours Section */
+    .working-hours {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #E9ECEF;
+    }
+
+    .hours-item:last-child {
+      border-bottom: none;
+    }
+
+    .hours-item .days {
+      color: #212529;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .hours-item .time {
+      color: #ff8c00;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Contact Section */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .contact-item i {
+      color: #ff8c00;
+      font-size: 1.1rem;
+      margin-top: 0.2rem;
+      min-width: 16px;
+    }
+
+    .contact-item span {
+      color: #6C757D;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+      border-top: 1px solid #DEE2E6;
+      margin-top: 2rem;
+    }
+
+    .footer-bottom-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright {
+      color: #6C757D;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-bottom-links a {
+      color: #6C757D;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #ff8c00;
+    }
+
+    /* Tablet Responsive */
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        padding: 3rem 1.5rem 1.5rem;
+      }
+
+      .footer-bottom-content {
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 3rem 1.5rem 1.5rem;
+        text-align: center;
+      }
+
+      .footer-brand .brand-title {
+        font-size: 1.8rem;
+        justify-content: center;
+      }
+
+      .footer-brand .brand-description {
+        font-size: 1.1rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .social-links {
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .social-link {
+        font-size: 1.4rem;
+      }
+
+      .footer-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .footer-list {
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .footer-list a {
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .footer-list a:hover {
+        background: #ff8c00;
+        color: white;
+      }
+
+      .working-hours {
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .hours-item {
+        background: rgba(255, 140, 0, 0.08);
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        border: none;
+        max-width: 280px;
+        width: 100%;
+      }
+
+      .hours-item .days,
+      .hours-item .time {
+        font-size: 1rem;
+      }
+
+      .contact-info {
+        align-items: center;
+        gap: 1.2rem;
+      }
+
+      .contact-item {
+        background: rgba(255, 140, 0, 0.08);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        max-width: 300px;
+        width: 100%;
+        flex-direction: row;
+        text-align: left;
+        gap: 1rem;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .contact-item i {
+        font-size: 1.2rem;
+        margin-top: 0;
+      }
+
+      .contact-item span {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #212529;
+      }
+
+      .footer-bottom-content {
+        padding: 1.5rem;
+      }
+
+      .copyright {
+        font-size: 1rem;
+      }
+
+      .footer-bottom-links {
+        gap: 1.5rem;
+      }
+
+      .footer-bottom-links a {
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .footer-bottom-links a:hover {
+        background: #ff8c00;
+        color: white;
+      }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 576px) {
+      .footer-content {
+        padding: 2.5rem 1rem 1rem;
+        gap: 2rem;
+      }
+
+      .footer-brand .brand-title {
+        font-size: 1.6rem;
+      }
+
+      .footer-brand .brand-description {
+        font-size: 1rem;
+      }
+
+      .footer-title {
+        font-size: 1.3rem;
+      }
+
+      .footer-list a {
+        font-size: 1rem;
+      }
+
+      .contact-item {
+        max-width: 280px;
+        padding: 0.8rem 1.2rem;
+      }
+
+      .contact-item span {
+        font-size: 1rem;
+      }
+
+      .footer-bottom-content {
+        padding: 1.2rem 1rem;
+      }
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: #ff8c00;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-to-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-to-top-btn:hover {
+      background: #e67a00;
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 6px 25px rgba(255, 140, 0, 0.4);
+    }
+
+    .scroll-to-top-btn:active {
+      transform: translateY(-1px) scale(0.95);
+    }
+
+    @media (max-width: 768px) {
+      .scroll-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Cookie Consent Modal */
+    .cookie-consent-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .cookie-consent-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cookie-consent-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    .cookie-consent-dialog {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+      transform: scale(0.8);
+      transition: transform 0.4s ease;
+    }
+
+    .cookie-consent-modal.show .cookie-consent-dialog {
+      transform: scale(1);
+    }
+
+    /* Header */
+    .cookie-consent-header {
+      background: linear-gradient(135deg, #ff8c00 0%, #F77F00 100%);
+      color: white;
+      padding: 20px 25px;
+      border-radius: 20px 20px 0 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .cookie-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+      opacity: 0.9;
+    }
+
+    .cookie-title {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Body */
+    .cookie-consent-body {
+      padding: 25px;
+      text-align: left;
+    }
+
+    .cookie-description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #212529;
+      margin-bottom: 15px;
+    }
+
+    .cookie-details {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #6C757D;
+      background: #F8F9FA;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid #ff8c00;
+    }
+
+    .cookie-privacy-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ff8c00;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .cookie-privacy-link:hover {
+      color: #e67a00;
+      text-decoration: underline;
+    }
+
+    .cookie-privacy-link i {
+      font-size: 0.8rem;
+    }
+
+    /* Footer */
+    .cookie-consent-footer {
+      padding: 20px 25px 25px;
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+    }
+
+    .btn-cookie {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 45px;
+      text-align: center;
+    }
+
+    .btn-cookie-accept {
+      background: #ff8c00;
+      color: white;
+      order: 1;
+    }
+
+    .btn-cookie-accept:hover {
+      background: #e67a00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 140, 0, 0.3);
+    }
+
+    .btn-cookie-essential {
+      background: #F8F9FA;
+      color: #6C757D;
+      border: 2px solid #DEE2E6;
+      order: 2;
+    }
+
+    .btn-cookie-essential:hover {
+      background: #E9ECEF;
+      color: #495057;
+      border-color: #CED4DA;
+    }
+
+    /* Tablet Styles */
+    @media (min-width: 576px) and (max-width: 991px) {
+      .cookie-consent-dialog {
+        max-width: 450px;
+      }
+      
+      .cookie-consent-footer {
+        flex-direction: row;
+      }
+      
+      .btn-cookie {
+        flex: 1;
+        min-height: 55px;
+      }
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 992px) {
+      .cookie-consent-dialog {
+        max-width: 480px;
+      }
+      
+      .cookie-consent-footer {
+        flex-direction: row;
+        padding: 25px;
+      }
+      
+      .btn-cookie {
+        flex: 1;
+        min-height: 50px;
+        font-size: 1rem;
+      }
+      
+      .cookie-consent-body {
+        padding: 30px;
+      }
+      
+      .cookie-description {
+        font-size: 1rem;
+      }
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 575px) {
+      .cookie-consent-modal {
+        padding: 15px;
+      }
+      
+      .cookie-consent-dialog {
+        border-radius: 15px;
+        max-height: 95vh;
+      }
+      
+      .cookie-consent-header {
+        padding: 18px 22px;
+        border-radius: 15px 15px 0 0;
+      }
+      
+      .cookie-icon {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+      }
+      
+      .cookie-title {
+        font-size: 1.1rem;
+      }
+      
+      .cookie-consent-body {
+        padding: 20px 18px;
+      }
+      
+      .cookie-description {
+        font-size: 0.9rem;
+      }
+      
+      .cookie-details {
+        font-size: 0.8rem;
+        padding: 10px;
+      }
+      
+      .cookie-consent-footer {
+        padding: 18px;
+      }
+      
+      .btn-cookie {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+        min-height: 42px;
+      }
+    }
+
+    /* Extra Small Mobile */
+    @media (max-width: 374px) {
+      .cookie-consent-modal {
+        padding: 10px;
+      }
+      
+      .cookie-consent-header {
+        padding: 15px 18px;
+      }
+      
+      .cookie-consent-body {
+        padding: 18px 15px;
+      }
+      
+      .cookie-consent-footer {
+        padding: 15px;
+      }
+      
+      .btn-cookie {
+        font-size: 0.85rem;
+        min-height: 40px;
+      }
+    }
+  </style>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop" class="scroll-to-top-btn">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Cookie Consent Modal -->
+  <div id="cookieConsent" class="cookie-consent-modal">
+    <div class="cookie-consent-overlay"></div>
+    <div class="cookie-consent-dialog">
+      <div class="cookie-consent-header">
+        <i class="fas fa-cookie-bite cookie-icon"></i>
+        <h3 class="cookie-title">{% trans "Колачиња и приватност" %}</h3>
+      </div>
+      
+      <div class="cookie-consent-body">
+        <p class="cookie-description">
+          {% trans "Користиме колачиња за да го подобриме вашето искуство на нашата веб-страница, да анализираме сообраќај и да персонализираме содржини." %}
+        </p>
+        <p class="cookie-details">
+          <strong>{% trans "Неопходни колачиња:" %}</strong> {% trans "Потребни за основно функционирање на страницата." %}<br>
+          <strong>{% trans "Аналитички колачиња:" %}</strong> {% trans "Помагаат да разбереме како ја користите страницата." %}
+        </p>
+        <a href="{% url 'frontend_privacy' %}" class="cookie-privacy-link">
+          <i class="fas fa-external-link-alt"></i>{% trans "Повеќе за приватноста" %}
+        </a>
+      </div>
+      
+      <div class="cookie-consent-footer">
+        <button id="acceptAllCookies" class="btn-cookie btn-cookie-accept">
+          <i class="fas fa-check"></i>
+          {% trans "Прифаќам" %}
+        </button>
+        <button id="acceptEssentialCookies" class="btn-cookie btn-cookie-essential">
+          <i class="fas fa-shield-alt"></i>
+          {% trans "Само неопходни" %}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  {% block extra_js %}{% endblock %}
+  
+  <!-- Scroll to Top Script -->
+  <script>
+    // Scroll to top button functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    // Show/hide button based on scroll position
+    function toggleScrollButton() {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    }
+    
+    // Fast scroll to top
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', toggleScrollButton);
+    scrollToTopBtn.addEventListener('click', scrollToTop);
+    
+    // Initial check
+    toggleScrollButton();
+
+    // Cookie Consent Modal functionality
+    const cookieModal = document.getElementById('cookieConsent');
+    const acceptAllBtn = document.getElementById('acceptAllCookies');
+    const acceptEssentialBtn = document.getElementById('acceptEssentialCookies');
+
+    // Check if user has already made a choice
+    function checkCookieConsent() {
+      const consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        // Show modal after a short delay
+        setTimeout(() => {
+          cookieModal.classList.add('show');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }, 1500);
+      }
+    }
+
+    // Accept all cookies
+    function acceptAllCookies() {
+      localStorage.setItem('cookieConsent', 'all');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+      localStorage.setItem('cookieTypes', JSON.stringify({
+        essential: true,
+        analytics: true,
+        marketing: true,
+        preferences: true
+      }));
+      hideCookieModal();
+      
+      // Initialize analytics and other non-essential cookies
+      console.log('All cookies accepted by user');
+      
+      // Here you can initialize Google Analytics, Facebook Pixel, etc.
+      initializeAnalytics();
+    }
+
+    // Accept only essential cookies
+    function acceptEssentialCookies() {
+      localStorage.setItem('cookieConsent', 'essential');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+      localStorage.setItem('cookieTypes', JSON.stringify({
+        essential: true,
+        analytics: false,
+        marketing: false,
+        preferences: false
+      }));
+      hideCookieModal();
+      
+      // Remove any non-essential cookies
+      removeNonEssentialCookies();
+      console.log('Only essential cookies accepted by user');
+    }
+
+    // Hide modal with animation
+    function hideCookieModal() {
+      cookieModal.classList.remove('show');
+      document.body.style.overflow = ''; // Restore background scrolling
+      setTimeout(() => {
+        cookieModal.style.display = 'none';
+      }, 400);
+    }
+
+    // Initialize analytics (only if user accepted all cookies)
+    function initializeAnalytics() {
+      const cookieTypes = JSON.parse(localStorage.getItem('cookieTypes') || '{}');
+      if (cookieTypes.analytics) {
+        // Initialize Google Analytics here
+        console.log('Analytics initialized');
+      }
+    }
+
+    // Remove non-essential cookies
+    function removeNonEssentialCookies() {
+      // List of cookies to remove (add your specific cookie names)
+      const nonEssentialCookies = ['_ga', '_gid', '_gat', 'fbp', '_fbp'];
+      
+      nonEssentialCookies.forEach(cookieName => {
+        // Remove cookie for current domain
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        // Remove cookie for domain with dot
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname};`;
+      });
+    }
+
+    // Prevent modal from closing when clicking inside the dialog
+    cookieModal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        // Clicking outside - do nothing (user must make a choice)
+        return false;
+      }
+    });
+
+    // Event listeners for cookie modal
+    acceptAllBtn.addEventListener('click', acceptAllCookies);
+    acceptEssentialBtn.addEventListener('click', acceptEssentialCookies);
+
+    // Initialize cookie consent check
+    checkCookieConsent();
+
+    // Navbar Scroll Functionality with Floating Back Button Control
+    let lastScrollTop = 0;
+    let navbar = document.querySelector('.navbar-scrollable');
+    let scrollThreshold = 10; // Minimum scroll distance to trigger
+    let isScrolling = false;
+    
+    // Function to get floating back button (refreshes reference)
+    function getFloatingBackBtn() {
+      return document.getElementById('floatingBackBtn');
+    }
+    
+    function handleNavbarScroll() {
+      if (isScrolling) return;
+      
+      isScrolling = true;
+      requestAnimationFrame(() => {
+        let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let floatingBackBtn = getFloatingBackBtn(); // Get fresh reference
+        
+        // If we're at the top of the page, always show navbar and hide floating back button
+        if (currentScrollTop <= 0) {
+          navbar.classList.remove('navbar-hidden');
+          navbar.classList.add('navbar-visible');
+          if (floatingBackBtn) {
+            floatingBackBtn.classList.remove('show');
+          }
+          isScrolling = false;
+          return;
+        }
+        
+        // Only trigger if scrolled more than threshold
+        if (Math.abs(currentScrollTop - lastScrollTop) > scrollThreshold) {
+          if (currentScrollTop > lastScrollTop) {
+            // Scrolling down - hide navbar, show floating back button if it exists
+            navbar.classList.add('navbar-hidden');
+            navbar.classList.remove('navbar-visible');
+            if (floatingBackBtn) {
+              floatingBackBtn.classList.add('show');
+            }
+          } else {
+            // Scrolling up - show navbar, hide floating back button
+            navbar.classList.remove('navbar-hidden');
+            navbar.classList.add('navbar-visible');
+            if (floatingBackBtn) {
+              floatingBackBtn.classList.remove('show');
+            }
+          }
+          lastScrollTop = currentScrollTop;
+        }
+        
+        isScrolling = false;
+      });
+    }
+    
+    // Throttled scroll event listener
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(handleNavbarScroll);
+        ticking = true;
+        setTimeout(() => { ticking = false; }, 10);
+      }
+    });
+    
+    // Initialize navbar visibility
+    navbar.classList.add('navbar-visible');
+    
+    // Initialize floating back button (hide initially)
+    let initialFloatingBackBtn = getFloatingBackBtn();
+    if (initialFloatingBackBtn) {
+      initialFloatingBackBtn.classList.remove('show');
+    }
+    
+  </script>
+</body>
+</html>

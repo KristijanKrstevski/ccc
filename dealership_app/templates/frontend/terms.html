@@ -1,0 +1,161 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Услови за користење" %} - AUTO DINERO{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h1 class="text-center mb-4 text-primary">
+                        <i class="fas fa-file-contract me-2"></i>
+                        {% trans "Услови за користење" %}
+                    </h1>
+                    
+                    <div class="text-muted text-center mb-5">
+                        {% trans "Последно ажурирано" %}: {{ now|date:"d.m.Y" }}
+                    </div>
+                    
+                    <div class="legal-content">
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "1. Општи одредби" %}</h3>
+                            <p>{% trans "Со користењето на веб-страницата AUTO DINERO (python.krstevski.me), Вие се согласувате со овие Услови за користење. Овие услови се однесуваат на сите корисници на нашата веб-страница." %}</p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "2. Користење на услугите" %}</h3>
+                            <p>{% trans "Нашите услуги се наменети за:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-check text-success me-2"></i>{% trans "Прегледување на достапни возила" %}</li>
+                                <li><i class="fas fa-check text-success me-2"></i>{% trans "Контактирање за повеќе информации" %}</li>
+                                <li><i class="fas fa-check text-success me-2"></i>{% trans "Користење на филтри за пребарување" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "3. Колачиња (Cookies)" %}</h3>
+                            <p>{% trans "Нашата веб-страница користи колачиња за подобрување на корисничкото искуство. Колачињата ни помагаат да:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-cookie-bite text-warning me-2"></i>{% trans "Запомниме ги вашите претпочитања" %}</li>
+                                <li><i class="fas fa-cookie-bite text-warning me-2"></i>{% trans "Анализираме го сообраќајот на веб-страницата" %}</li>
+                                <li><i class="fas fa-cookie-bite text-warning me-2"></i>{% trans "Обезбедиме подобра функционалност" %}</li>
+                            </ul>
+                            <p>{% trans "Со продолжување на користењето на нашата веб-страница, се согласувате со користењето на колачиња согласно со нашата" %} <a href="{% url 'frontend_privacy' %}" class="text-primary">{% trans "Политика за приватност" %}</a>.</p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "4. Забрани" %}</h3>
+                            <p>{% trans "При користењето на нашата веб-страница забрането е:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-times text-danger me-2"></i>{% trans "Користење на веб-страницата за незаконски цели" %}</li>
+                                <li><i class="fas fa-times text-danger me-2"></i>{% trans "Нарушување на функционалноста на системот" %}</li>
+                                <li><i class="fas fa-times text-danger me-2"></i>{% trans "Копирање на содржини без дозвола" %}</li>
+                                <li><i class="fas fa-times text-danger me-2"></i>{% trans "Објавување на навредливи содржини" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "5. Заштита на податоци (GDPR)" %}</h3>
+                            <p>{% trans "Во согласност со Општата регулатива за заштита на податоци (GDPR), ние:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-shield-alt text-info me-2"></i>{% trans "Ги заштитуваме вашите лични податоци" %}</li>
+                                <li><i class="fas fa-shield-alt text-info me-2"></i>{% trans "Барате согласност пред собирање на податоци" %}</li>
+                                <li><i class="fas fa-shield-alt text-info me-2"></i>{% trans "Ви даваме право на бришење на податоци" %}</li>
+                                <li><i class="fas fa-shield-alt text-info me-2"></i>{% trans "Обезбедуваме транспарентност во обработката" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "6. Одговорност" %}</h3>
+                            <p>{% trans "AUTO DINERO не презема одговорност за:" %}</p>
+                            <ul class="list-unstyled ms-4">
+                                <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>{% trans "Точноста на сите информации за возилата" %}</li>
+                                <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>{% trans "Технички проблеми или недостапност на услугата" %}</li>
+                                <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>{% trans "Штета настаната од користењето на веб-страницата" %}</li>
+                            </ul>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "7. Промени на условите" %}</h3>
+                            <p>{% trans "Ние си задржуваме право да ги менуваме овие услови во секое време. Промените ќе бидат објавени на оваа страница со ажурирана дата." %}</p>
+                        </section>
+
+                        <section class="mb-5">
+                            <h3 class="h4 fw-bold mb-3 text-dark">{% trans "8. Контакт" %}</h3>
+                            <p>{% trans "За прашања во врска со овие услови, контактирајте не на:" %}</p>
+                            <div class="contact-info mt-3">
+                                <p><i class="fas fa-envelope text-primary me-2"></i><strong>{% trans "Email" %}:</strong> info@moeauto.mk</p>
+                                <p><i class="fas fa-phone text-primary me-2"></i><strong>{% trans "Телефон" %}:</strong> +389 70 123 456</p>
+                                <p><i class="fas fa-map-marker-alt text-primary me-2"></i><strong>{% trans "Адреса" %}:</strong> ул. Македонија 123, 1000 Скопје, Македонија</p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <a href="{% url 'frontend_index' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-home me-2"></i>{% trans "Назад кон почетната" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .legal-content {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #495057;
+    }
+    
+    .legal-content h3 {
+        color: #ff8c00 !important;
+        border-bottom: 2px solid #ff8c00;
+        padding-bottom: 0.5rem;
+    }
+    
+    .legal-content p {
+        margin-bottom: 1.2rem;
+        text-align: justify;
+    }
+    
+    .legal-content ul {
+        margin-bottom: 1.5rem;
+    }
+    
+    .legal-content li {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .contact-info {
+        background: #F8F9FA;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid #ff8c00;
+    }
+    
+    .contact-info p {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+        .legal-content {
+            font-size: 1rem;
+        }
+        
+        .card-body {
+            padding: 2rem !important;
+        }
+    }
+</style>
+{% endblock %}

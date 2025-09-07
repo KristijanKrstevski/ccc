@@ -1,0 +1,598 @@
+{% extends "admin_custom/base_admin.html" %}
+{% load number_filters %}
+{% block title %}Dashboard - AUTO DINERO Admin{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1><i class="fas fa-tachometer-alt me-3"></i>Dashboard Overview</h1>
+    <p>Complete overview of your car dealership performance</p>
+</div>
+
+<!-- Key Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3">
+        <div class="stats-card primary">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6><i class="fas fa-car me-1 d-none d-sm-inline"></i><span class="d-none d-sm-inline">Total </span>Vehicles</h6>
+                    <h2>{{ total_cars }}</h2>
+                </div>
+                <div class="text-primary d-none d-md-block" style="font-size: 2rem; opacity: 0.3;">
+                    <i class="fas fa-car"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3">
+        <div class="stats-card success">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6><i class="fas fa-check-circle me-1 d-none d-sm-inline"></i>Sold</h6>
+                    <h2>{{ total_sold }}</h2>
+                </div>
+                <div class="text-success d-none d-md-block" style="font-size: 2rem; opacity: 0.3;">
+                    <i class="fas fa-handshake"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3">
+        <div class="stats-card warning">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6><i class="fas fa-euro-sign me-1 d-none d-sm-inline"></i><span class="d-none d-sm-inline">Avg. </span>Price</h6>
+                    <h2 class="d-none d-sm-block">{{ avg_price|format_number }}€</h2>
+                    <h2 class="d-sm-none">{{ avg_price|format_number|truncatechars:6 }}€</h2>
+                </div>
+                <div class="text-warning d-none d-md-block" style="font-size: 2rem; opacity: 0.3;">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3">
+        <div class="stats-card success">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6><i class="fas fa-money-bill-wave me-1 d-none d-sm-inline"></i>Sold Avg</h6>
+                    <h2 class="d-none d-sm-block">{{ avg_price_sold|format_number }}€</h2>
+                    <h2 class="d-sm-none">{{ avg_price_sold|format_number|truncatechars:6 }}€</h2>
+                </div>
+                <div class="text-success d-none d-md-block" style="font-size: 2rem; opacity: 0.3;">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3">
+        <div class="stats-card danger">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6><i class="fas fa-warehouse me-1 d-none d-sm-inline"></i>Inventory</h6>
+                    <h2 class="d-none d-sm-block">{{ inventory_value|format_number }}€</h2>
+                    <h2 class="d-sm-none">{{ inventory_value|format_number|truncatechars:6 }}€</h2>
+                </div>
+                <div class="text-danger d-none d-md-block" style="font-size: 2rem; opacity: 0.3;">
+                    <i class="fas fa-boxes"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-3">
+        <div class="stats-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h6><i class="fas fa-calculator me-1 d-none d-sm-inline"></i><span class="d-none d-sm-inline">Price/</span>Year</h6>
+                    <h2 class="d-none d-sm-block">{{ avg_price_per_year|format_number }}€</h2>
+                    <h2 class="d-sm-none">{{ avg_price_per_year|format_number|truncatechars:6 }}€</h2>
+                </div>
+                <div class="text-muted d-none d-md-block" style="font-size: 2rem; opacity: 0.3;">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts and Analytics -->
+<div class="row mb-4">
+    <div class="col-lg-6 mb-4">
+        <div class="chart-container">
+            <h6><i class="fas fa-gas-pump me-2"></i>Fuel Type Distribution</h6>
+            <div class="chart-wrapper">
+                <canvas id="fuelPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+        <div class="chart-container">
+            <h6><i class="fas fa-chart-bar me-2"></i>Sales Performance</h6>
+            <div class="chart-wrapper">
+                <canvas id="salesChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="chart-container">
+            <h6><i class="fas fa-bolt me-2"></i>Quick Actions</h6>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                    <a href="{% url 'admin_car_add' %}" class="btn btn-primary w-100 py-2 py-md-3">
+                        <i class="fas fa-plus-circle me-1 me-md-2"></i><span class="d-none d-sm-inline">Add New </span>Car
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                    <a href="{% url 'admin_car_list' %}" class="btn btn-warning w-100 py-2 py-md-3">
+                        <i class="fas fa-list me-1 me-md-2"></i><span class="d-none d-sm-inline">Manage </span>Cars
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                    <a href="{% url 'admin_car_reorder' %}" class="btn btn-info w-100 py-2 py-md-3">
+                        <i class="fas fa-sort me-1 me-md-2"></i><span class="d-none d-sm-inline">Reorder </span>Cars
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                    <a href="{% url 'frontend_index' %}" target="_blank" class="btn btn-success w-100 py-2 py-md-3">
+                        <i class="fas fa-eye me-1 me-md-2"></i><span class="d-none d-sm-inline">View </span>Website
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-3">
+                    <a href="{% url 'logout' %}" class="btn btn-danger w-100 py-2 py-md-3" onclick="return confirmLogout()">
+                        <i class="fas fa-sign-out-alt me-1 me-md-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activity / Latest Cars -->
+<div class="row">
+    <div class="col-12">
+        <div class="chart-container">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6><i class="fas fa-clock me-2"></i>Latest Added Vehicles</h6>
+                <a href="{% url 'admin_car_list' %}" class="btn btn-sm btn-outline-primary">
+                    View All <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+            <!-- Table View for larger screens (>1100px) -->
+            <div id="dashboardTableView" class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="d-none d-md-table-cell">Image</th>
+                            <th>Vehicle</th>
+                            <th class="d-none d-sm-table-cell">Price</th>
+                            <th class="d-none d-lg-table-cell">Status</th>
+                            <th class="d-none d-lg-table-cell">Added</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for car in latest_cars %}
+                        <tr>
+                            <td class="d-none d-md-table-cell">
+                                {% if car.main_image %}
+                                    <img src="{{ car.main_image.url }}" alt="{{ car.title }}" class="rounded shadow-sm" style="width: 80px; height: 60px; object-fit: contain; border: 2px solid #e9ecef;">
+                                {% else %}
+                                    <div class="bg-light d-flex align-items-center justify-content-center rounded shadow-sm" style="width: 80px; height: 60px; border: 2px solid #e9ecef;">
+                                        <i class="fas fa-car text-muted" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="fw-bold">{{ car.title|truncatechars:20 }}</div>
+                                <small class="text-muted">{{ car.brand.name }} {{ car.model_name.name }}</small>
+                                <div class="d-sm-none">
+                                    <small class="text-primary fw-bold">{{ car.display_price }}</small>
+                                    {% if car.sold %}
+                                        <span class="badge bg-success ms-1"><i class="fas fa-check"></i></span>
+                                    {% else %}
+                                        <span class="badge bg-warning ms-1"><i class="fas fa-clock"></i></span>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="fw-bold text-primary d-none d-sm-table-cell">{{ car.display_price }}</td>
+                            <td class="d-none d-lg-table-cell">
+                                {% if car.sold %}
+                                    <span class="badge bg-success"><i class="fas fa-check me-1"></i>Sold</span>
+                                {% else %}
+                                    <span class="badge bg-warning"><i class="fas fa-clock me-1"></i>Available</span>
+                                {% endif %}
+                            </td>
+                            <td class="d-none d-lg-table-cell">
+                                <small class="text-muted">{{ car.created_at|date:"M d, Y" }}</small>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <a href="{% url 'admin_car_edit' car.pk %}" class="btn btn-sm btn-outline-warning" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{% url 'frontend_vehicle_detail' car.pk %}" target="_blank" class="btn btn-sm btn-outline-primary d-none d-sm-inline-block" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center py-4">
+                                <i class="fas fa-car text-muted" style="font-size: 2rem; opacity: 0.3;"></i>
+                                <div class="mt-2 text-muted">No vehicles added yet.</div>
+                                <a href="{% url 'admin_car_add' %}" class="btn btn-primary btn-sm mt-2">
+                                    <i class="fas fa-plus me-2"></i>Add First Car
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Grid View for smaller screens (≤1100px) -->
+            <div id="dashboardGridView" class="d-none">
+                <div class="row">
+                    {% for car in latest_cars %}
+                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                        <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px; overflow: hidden; transition: all 0.3s ease;">
+                            <div class="position-relative">
+                                {% if car.main_image %}
+                                    <img src="{{ car.main_image.url }}" class="card-img-top" 
+                                         style="height: 150px; object-fit: contain;" alt="{{ car.title }}">
+                                {% else %}
+                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 150px;">
+                                        <i class="fas fa-car text-muted" style="font-size: 2rem;"></i>
+                                    </div>
+                                {% endif %}
+                                {% if car.sold %}
+                                    <span class="badge bg-success position-absolute top-0 end-0 m-2">
+                                        <i class="fas fa-check me-1"></i>Sold
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-warning position-absolute top-0 end-0 m-2">
+                                        <i class="fas fa-clock me-1"></i>Available
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="card-title fw-bold mb-1">{{ car.title|truncatechars:22 }}</h6>
+                                <p class="card-text text-muted small mb-2">{{ car.brand.name }} {{ car.model_name.name }}</p>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="fw-bold text-primary">{{ car.display_price }}</div>
+                                    <small class="text-muted">{{ car.created_at|date:"M d" }}</small>
+                                </div>
+                                <div class="d-flex gap-1">
+                                    <a href="{% url 'admin_car_edit' car.pk %}" class="btn btn-sm btn-outline-warning flex-fill">
+                                        <i class="fas fa-edit"></i><span class="d-none d-sm-inline ms-1">Edit</span>
+                                    </a>
+                                    <a href="{% url 'frontend_vehicle_detail' car.pk %}" target="_blank" class="btn btn-sm btn-outline-primary flex-fill">
+                                        <i class="fas fa-eye"></i><span class="d-none d-sm-inline ms-1">View</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12 text-center py-4">
+                        <i class="fas fa-car text-muted" style="font-size: 2rem; opacity: 0.3;"></i>
+                        <div class="mt-2 text-muted">No vehicles added yet.</div>
+                        <a href="{% url 'admin_car_add' %}" class="btn btn-primary btn-sm mt-2">
+                            <i class="fas fa-plus me-2"></i>Add First Car
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Color palette for charts
+const colors = {
+    primary: '#ff8c00',
+    secondary: '#1D3557',
+    success: '#20C997',
+    warning: '#FD7E14',
+    danger: '#DC3545',
+    info: '#17A2B8',
+    light: '#F8F9FA',
+    dark: '#212529'
+};
+
+const chartColors = [
+    colors.primary,
+    colors.secondary,
+    colors.success,
+    colors.warning,
+    colors.danger,
+    colors.info,
+    '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57', '#FF9FF3'
+];
+
+// Fuel Type Pie Chart
+new Chart(document.getElementById('fuelPieChart'), {
+    type: 'doughnut',
+    data: {
+        labels: {{ fuel_labels|safe }},
+        datasets: [{
+            data: {{ fuel_counts|safe }},
+            backgroundColor: chartColors,
+            borderWidth: 3,
+            borderColor: '#fff',
+            hoverBorderWidth: 4,
+            hoverBorderColor: '#fff'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20,
+                    usePointStyle: true,
+                    font: {
+                        size: 12,
+                        weight: '500'
+                    }
+                }
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: colors.primary,
+                borderWidth: 1,
+                cornerRadius: 8,
+                displayColors: true,
+                callbacks: {
+                    label: function(context) {
+                        const total = context.dataset.data.reduce((sum, value) => sum + value, 0);
+                        const percentage = ((context.raw / total) * 100).toFixed(1);
+                        return `${context.label}: ${context.raw} vehicles (${percentage}%)`;
+                    }
+                }
+            }
+        },
+        cutout: '60%',
+        animation: {
+            animateRotate: true,
+            animateScale: true,
+            duration: 1500,
+            easing: 'easeOutQuart'
+        }
+    }
+});
+
+// Sales Performance Chart
+new Chart(document.getElementById('salesChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Available', 'Sold'],
+        datasets: [{
+            label: 'Vehicles',
+            data: [{{ available_cars }}, {{ total_sold }}],
+            backgroundColor: [colors.warning, colors.success],
+            borderColor: [colors.warning, colors.success],
+            borderWidth: 2,
+            borderRadius: 8,
+            borderSkipped: false
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: colors.primary,
+                borderWidth: 1,
+                cornerRadius: 8,
+                callbacks: {
+                    label: function(context) {
+                        const total = {{ total_cars }};
+                        const percentage = ((context.raw / total) * 100).toFixed(1);
+                        return `${context.label}: ${context.raw} vehicles (${percentage}%)`;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: 'rgba(0,0,0,0.1)',
+                    borderDash: [5, 5]
+                },
+                ticks: {
+                    font: {
+                        size: 12,
+                        weight: '500'
+                    },
+                    color: colors.dark
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 12,
+                        weight: '600'
+                    },
+                    color: colors.dark
+                }
+            }
+        },
+        animation: {
+            duration: 1500,
+            easing: 'easeOutQuart'
+        }
+    }
+});
+
+// Auto refresh data removed - was causing annoying popups
+// setTimeout(function() {
+//     if (confirm('Refresh dashboard data?')) {
+//         location.reload();
+//     }
+// }, 30000);
+
+// Dashboard responsive view switching
+function checkDashboardView() {
+    const tableView = document.getElementById('dashboardTableView');
+    const gridView = document.getElementById('dashboardGridView');
+    
+    if (window.innerWidth <= 1100) {
+        // Show grid view on smaller screens
+        if (tableView) tableView.classList.add('d-none');
+        if (gridView) {
+            gridView.classList.remove('d-none');
+            gridView.classList.add('d-block');
+        }
+    } else {
+        // Show table view on larger screens
+        if (gridView) gridView.classList.add('d-none');
+        if (tableView) {
+            tableView.classList.remove('d-none');
+            tableView.classList.add('d-block');
+        }
+    }
+}
+
+// Add some interactive effects
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize dashboard view
+    checkDashboardView();
+    
+    // Listen for window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            checkDashboardView();
+        }, 100);
+    });
+    
+    // Add hover effects to dashboard grid cards
+    const dashboardCards = document.querySelectorAll('#dashboardGridView .card');
+    dashboardCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 6px 20px rgba(0,0,0,0.15)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        });
+    });
+    // Animate stats cards on page load
+    const statsCards = document.querySelectorAll('.stats-card');
+    statsCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    
+    // Add click effects to action buttons
+    const actionButtons = document.querySelectorAll('.btn');
+    actionButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+</script>
+
+<style>
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Dashboard grid view responsive styling */
+@media (max-width: 1100px) {
+    #dashboardGridView .card {
+        transition: all 0.3s ease;
+    }
+    
+    #dashboardGridView .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+}
+
+@media (max-width: 768px) {
+    #dashboardGridView .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+    #dashboardGridView .card-body {
+        padding: 12px !important;
+    }
+    
+    #dashboardGridView .card-title {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #dashboardGridView .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    #dashboardGridView .card {
+        margin-bottom: 15px;
+    }
+}
+</style>
+{% endblock %}

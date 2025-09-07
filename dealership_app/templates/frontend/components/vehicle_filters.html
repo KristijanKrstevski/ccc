@@ -1,0 +1,223 @@
+{% load i18n %}
+<!-- Vehicle Filters Component -->
+<div class="filters-section bg-light p-4 rounded shadow-sm mb-4">
+  <h5 class="mb-4"><i class="fas fa-filter me-2"></i>{% trans "Филтери" %}</h5>
+  
+  <form method="get" novalidate id="filterForm">
+    <div class="row g-3">
+      <!-- Brand -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="brand" class="form-label">{% trans "Марка" %}</label>
+        <select name="brand" id="brand" class="form-select">
+          <option value="">{% trans "Сите марки" %}</option>
+          {% for b in brands %}
+          <option value="{{ b.id }}"
+                  {% if request.GET.brand == b.id|stringformat:"s" %}selected{% endif %}>
+            {{ b.name }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Model (AJAX) -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="model_name" class="form-label">{% trans "Модел" %}</label>
+        <select name="model_name" id="model_name" class="form-select"
+                {% if not request.GET.brand %}disabled{% endif %}>
+          <option value="">{% trans "Сите модели" %}</option>
+          {% for m in models %}
+          <option value="{{ m.id }}"
+                  {% if request.GET.model_name == m.id|stringformat:"s" %}selected{% endif %}>
+            {{ m.name }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Price Range -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="price_range" class="form-label">{% trans "Ценовен опсег" %}</label>
+        <select name="price_range" id="price_range" class="form-select">
+          <option value="">{% trans "Сите цени" %}</option>
+          {% for key,label in price_ranges %}
+          <option value="{{ key }}"
+                  {% if request.GET.price_range == key %}selected{% endif %}>
+            {{ label }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Year Range -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="year_range" class="form-label">{% trans "Возраст" %}</label>
+        <select name="year_range" id="year_range" class="form-select">
+          <option value="">{% trans "Сите години" %}</option>
+          {% for key,label in year_ranges %}
+          <option value="{{ key }}"
+                  {% if request.GET.year_range == key %}selected{% endif %}>
+            {{ label }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Transmission -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="transmission" class="form-label">{% trans "Менувач" %}</label>
+        <select name="transmission" class="form-select">
+          <option value="">{% trans "Сите менувачи" %}</option>
+          {% for key,label in transmission_choices %}
+          <option value="{{ key }}"
+                  {% if request.GET.transmission == key %}selected{% endif %}>
+            {{ label }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Body -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="vehicle_body" class="form-label">{% trans "Каросерија" %}</label>
+        <select name="vehicle_body" class="form-select">
+          <option value="">{% trans "Сите каросерии" %}</option>
+          {% for key,label in vehicle_bodies %}
+          <option value="{{ key }}"
+                  {% if request.GET.vehicle_body == key %}selected{% endif %}>
+            {{ label }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Fuel -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="fuel" class="form-label">{% trans "Гориво" %}</label>
+        <select name="fuel" class="form-select">
+          <option value="">{% trans "Сите горива" %}</option>
+          {% for key,label in fuel_choices %}
+          <option value="{{ key }}"
+                  {% if request.GET.fuel == key %}selected{% endif %}>
+            {{ label }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Color -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <label for="color" class="form-label">{% trans "Боја" %}</label>
+        <select name="color" class="form-select">
+          <option value="">{% trans "Сите бои" %}</option>
+          {% for key,label in colors %}
+          <option value="{{ key }}"
+                  {% if request.GET.color == key %}selected{% endif %}>
+            {{ label }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <!-- Advanced Options -->
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="forBeginners"
+                 name="for_beginners"
+                 {% if request.GET.for_beginners %}checked{% endif %}>
+          <label class="form-check-label" for="forBeginners">
+            <i class="fas fa-graduation-cap me-1"></i>
+            {% trans "Автомобили за почетници (≤ 77 kW)" %}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sort Options -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <h6><i class="fas fa-sort me-2"></i>{% trans "Сортирање" %}</h6>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3">
+        <label for="sort_price" class="form-label">{% trans "По цена" %}</label>
+        <select name="sort_price" class="form-select form-select-sm">
+          <option value="">-</option>
+          <option value="asc"  {% if request.GET.sort_price == 'asc'  %}selected{% endif %}>{% trans "Евтино → Скапо" %}</option>
+          <option value="desc" {% if request.GET.sort_price == 'desc' %}selected{% endif %}>{% trans "Скапо → Евтино" %}</option>
+        </select>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <label for="sort_mileage" class="form-label">{% trans "По километража" %}</label>
+        <select name="sort_mileage" class="form-select form-select-sm">
+          <option value="">-</option>
+          <option value="asc"  {% if request.GET.sort_mileage == 'asc'  %}selected{% endif %}>{% trans "Малку → Многу" %}</option>
+          <option value="desc" {% if request.GET.sort_mileage == 'desc' %}selected{% endif %}>{% trans "Многу → Малку" %}</option>
+        </select>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3">
+        <label for="sort_year" class="form-label">{% trans "По година" %}</label>
+        <select name="sort_year" class="form-select form-select-sm">
+          <option value="">-</option>
+          <option value="asc"  {% if request.GET.sort_year == 'asc'  %}selected{% endif %}>{% trans "Стари → Нови" %}</option>
+          <option value="desc" {% if request.GET.sort_year == 'desc' %}selected{% endif %}>{% trans "Нови → Стари" %}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="row mt-4">
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary px-4">
+          <i class="fas fa-search me-2"></i>{% trans "Примени" %}
+        </button>
+        <a href="{% url 'frontend_vehicles' %}"
+           class="btn btn-outline-secondary px-4 ms-2">
+          <i class="fas fa-undo me-2"></i>{% trans "Ресетирај" %}
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+// AJAX for model loading when brand changes
+document.getElementById('brand').addEventListener('change', function() {
+    const brandId = this.value;
+    const modelSelect = document.getElementById('model_name');
+    
+    // Clear current options
+    modelSelect.innerHTML = '<option value="">{% trans "Сите модели" %}</option>';
+    
+    if (brandId) {
+        modelSelect.disabled = false;
+        
+        // Fetch models for the selected brand
+        fetch(`/ajax/models/?brand=${brandId}`)
+            .then(response => response.json())
+            .then(models => {
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model.id;
+                    option.textContent = model.name;
+                    modelSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching models:', error);
+            });
+    } else {
+        modelSelect.disabled = true;
+    }
+});
+
+// Auto-submit on filter change (optional)
+document.querySelectorAll('#filterForm select, #filterForm input[type="checkbox"]').forEach(element => {
+    element.addEventListener('change', function() {
+        // Optional: Auto-submit form on change
+        // document.getElementById('filterForm').submit();
+    });
+});
+</script>

@@ -1,0 +1,848 @@
+ERROR 2025-08-28 19:12:11,005 exception 3488 140088718161728 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-08-28 19:12:11,005 exception 3488 140088718161728 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/krstevski/.pyenv/versions/3.11.5/lib/python3.11/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:03,974 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:03,974 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:04,150 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:04,150 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:05,701 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:05,701 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:06,007 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:06,007 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:11,845 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:11,845 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:11,980 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:11,980 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:14,404 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:14,404 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:14,536 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:14,536 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:17,172 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:17,172 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:17,271 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:17,271 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:17,418 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:17,418 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:25,927 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:25,927 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:26,071 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:26,071 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:30,025 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:30,025 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:30,438 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:30,438 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:30,573 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-08-31 21:18:30,573 log 3265072 139687940684096 Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodinero.krstevski.me'. You may need to add 'autodinero.krstevski.me' to ALLOWED_HOSTS.
+ERROR 2025-09-01 19:32:48,465 log 348883 139687940684096 Internal Server Error: /en/vehicles/3/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'custom_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 148, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'custom_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-09-01 19:59:27,360 log 373764 139687940684096 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'number_filters'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 51, in admin_dashboard
+    return render(request, "admin_custom/dashboard.html", {
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'number_filters' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+custom_tags
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-09-01 19:59:53,151 log 373812 139687940684096 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'number_filters'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 51, in admin_dashboard
+    return render(request, "admin_custom/dashboard.html", {
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'number_filters' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+custom_tags
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-09-01 19:59:59,386 log 373812 139687940684096 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'number_filters'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 51, in admin_dashboard
+    return render(request, "admin_custom/dashboard.html", {
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'number_filters' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+custom_tags
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-09-01 20:00:22,098 log 374652 139687940684096 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'number_filters'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 51, in admin_dashboard
+    return render(request, "admin_custom/dashboard.html", {
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'number_filters' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+custom_tags
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-09-01 20:00:30,114 log 374652 139687940684096 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    return parser.libraries[name]
+KeyError: 'number_filters'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 51, in admin_dashboard
+    return render(request, "admin_custom/dashboard.html", {
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1088, in load
+    lib = find_library(parser, name)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 1028, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'number_filters' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+custom_tags
+i18n
+l10n
+log
+static
+tz
+ERROR 2025-09-02 06:56:03,331 log 1009459 139687940684096 Internal Server Error: /dashboard/cars/add/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 140, in admin_car_add
+    is_valid = car_form.is_valid()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 196, in errors
+    self.full_clean()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 435, in full_clean
+    self._post_clean()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/models.py", line 486, in _post_clean
+    self.instance.full_clean(exclude=exclude, validate_unique=False)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/base.py", line 1477, in full_clean
+    self.clean()
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/models.py", line 249, in clean
+    total_size = self.get_total_size()
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/models.py", line 238, in get_total_size
+    for img in self.images.all():
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/manager.py", line 164, in all
+    return self.get_queryset()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/fields/related_descriptors.py", line 718, in get_queryset
+    raise ValueError(
+ValueError: 'Car' instance needs to have a primary key value before this relationship can be used.
+ERROR 2025-09-02 06:56:38,522 log 1009606 139687940684096 Internal Server Error: /dashboard/cars/add/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 140, in admin_car_add
+    is_valid = car_form.is_valid()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 196, in errors
+    self.full_clean()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 435, in full_clean
+    self._post_clean()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/models.py", line 486, in _post_clean
+    self.instance.full_clean(exclude=exclude, validate_unique=False)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/base.py", line 1477, in full_clean
+    self.clean()
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/models.py", line 249, in clean
+    total_size = self.get_total_size()
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/models.py", line 238, in get_total_size
+    for img in self.images.all():
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/manager.py", line 164, in all
+    return self.get_queryset()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/fields/related_descriptors.py", line 718, in get_queryset
+    raise ValueError(
+ValueError: 'Car' instance needs to have a primary key value before this relationship can be used.
+ERROR 2025-09-02 07:04:10,192 log 1017889 139687940684096 Internal Server Error: /dashboard/cars/add/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/views.py", line 140, in admin_car_add
+    is_valid = car_form.is_valid()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 196, in errors
+    self.full_clean()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/forms.py", line 435, in full_clean
+    self._post_clean()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/forms/models.py", line 486, in _post_clean
+    self.instance.full_clean(exclude=exclude, validate_unique=False)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/base.py", line 1477, in full_clean
+    self.clean()
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/models.py", line 249, in clean
+    total_size = self.get_total_size()
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/models.py", line 238, in get_total_size
+    for img in self.images.all():
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/manager.py", line 164, in all
+    return self.get_queryset()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/db/models/fields/related_descriptors.py", line 718, in get_queryset
+    raise ValueError(
+ValueError: 'Car' instance needs to have a primary key value before this relationship can be used.
+ERROR 2025-09-04 18:30:59,173 log 6239 139767939155776 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-09-04 18:30:59,173 log 6239 139767939155776 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.

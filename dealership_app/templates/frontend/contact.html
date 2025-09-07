@@ -1,0 +1,648 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Контакт" %} - AUTO DINERO{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --primary-red: #ff8c00;
+    --primary-blue: #1D3557;
+    --accent-orange: #F77F00;
+    --light-gray: #F8F9FA;
+    --dark-gray: #212529;
+    --medium-gray: #6C757D;
+    --white: #FFFFFF;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light-gray);
+  }
+
+  /* Hero Section with dotted background */
+  .hero-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    color: var(--white);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 0;
+    opacity: 0.9;
+  }
+
+  .contact-section {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+  }
+
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .contact-form {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-map {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+
+  .contact-item {
+    transition: transform 0.3s ease;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .btn-primary {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+  }
+
+  .btn-primary:hover {
+    background: #d62828;
+    border-color: #d62828;
+  }
+
+  /* Hide contact info section on screens 1200px and below */
+  @media (max-width: 1200px) {
+    .contact-info-section {
+      display: none !important;
+    }
+  }
+
+  /* Mobile Responsive Improvements */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .hero-section {
+      padding: 60px 0 40px;
+    }
+    
+    .contact-section {
+      padding: 30px 15px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+    
+    .contact-form {
+      padding: 25px 15px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    
+    /* Contact methods section improvements */
+    .contact-methods-section {
+      padding: 30px 0 !important;
+    }
+    
+    .contact-methods-section .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    
+    /* Contact info cards - center align on mobile */
+    .contact-info .row {
+      text-align: center;
+    }
+    
+    .contact-info .contact-item {
+      margin-bottom: 20px;
+      padding: 30px 20px !important;
+    }
+    
+    .contact-info h5 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .contact-info p {
+      font-size: 1rem;
+    }
+    
+    /* Form improvements */
+    .contact-form h3 {
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    
+    .form-label {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .form-control,
+    .form-select {
+      font-size: 1rem;
+      padding: 12px 15px;
+      border-radius: 8px;
+    }
+    
+    .btn-primary {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+    
+    /* Map responsive */
+    .contact-map iframe {
+      height: 250px !important;
+    }
+    
+    /* Working hours mobile */
+    .working-hours {
+      padding: 25px 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .working-hours h4 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .working-hours .row {
+      text-align: center;
+    }
+    
+    .working-hours .col-6 {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    
+    /* Contact methods section - mobile */
+    .contact-methods-section .row {
+      justify-content: center;
+    }
+    
+    .contact-method-card {
+      padding: 25px 15px !important;
+      margin-bottom: 20px;
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .contact-method-card i {
+      margin-bottom: 15px !important;
+    }
+    
+    .contact-method-card h5 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    
+    .contact-method-card p {
+      font-size: 0.9rem;
+      margin-bottom: 15px !important;
+    }
+    
+    .contact-method-card .btn {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-width: 2px;
+    }
+    
+    /* Improve section spacing */
+    .contact-methods-section .display-6 {
+      font-size: 1.7rem !important;
+      margin-bottom: 15px;
+    }
+    
+    .contact-methods-section .lead {
+      font-size: 1rem !important;
+      margin-bottom: 0;
+    }
+    
+    /* FAQ section mobile */
+    .display-6 {
+      font-size: 1.8rem !important;
+    }
+    
+    .lead {
+      font-size: 1rem !important;
+    }
+    
+    .accordion-button {
+      font-size: 1rem;
+      padding: 15px;
+    }
+    
+    .accordion-body {
+      font-size: 1rem;
+      padding: 20px 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .contact-header {
+      padding: 30px 0;
+    }
+    
+    .header-title {
+      font-size: 1.8rem;
+    }
+    
+    .header-subtitle {
+      font-size: 0.95rem;
+      padding: 0 1.5rem;
+    }
+    
+    .contact-section {
+      padding: 25px 10px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+    
+    .contact-form {
+      padding: 20px 10px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+    
+    .section-title {
+      font-size: 1.4rem;
+    }
+    
+    /* Contact methods section - small mobile */
+    .contact-methods-section {
+      padding: 25px 0 !important;
+    }
+    
+    .contact-methods-section .display-6 {
+      font-size: 1.5rem !important;
+    }
+    
+    .contact-methods-section .lead {
+      font-size: 0.95rem !important;
+      padding: 0 10px;
+    }
+    
+    .contact-info .contact-item {
+      padding: 25px 15px !important;
+    }
+    
+    .contact-info i {
+      font-size: 1.8rem !important;
+    }
+    
+    .contact-form h3 {
+      font-size: 1.2rem;
+    }
+    
+    .working-hours {
+      padding: 20px 15px;
+    }
+    
+    .working-hours h4 {
+      font-size: 1.1rem;
+    }
+    
+    .working-hours .col-6 {
+      font-size: 0.9rem;
+    }
+    
+    .display-6 {
+      font-size: 1.6rem !important;
+    }
+    
+    .contact-method-card {
+      padding: 20px 12px !important;
+      max-width: 250px;
+    }
+    
+    .contact-method-card i {
+      font-size: 2.2rem !important;
+    }
+    
+    .contact-method-card h5 {
+      font-size: 1rem;
+    }
+    
+    .contact-method-card p {
+      font-size: 0.85rem;
+    }
+    
+    .contact-method-card .btn {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">{% trans "Контактирајте не" %}</h1>
+      <p class="hero-subtitle">{% trans "Тука сме за да ви помогнеме. Контактирајте не за било какви прашања или закажете средба" %}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Info Section -->
+<section class="contact-section contact-info-section">
+  <div class="container">
+    {% include 'frontend/components/contact_info.html' %}
+  </div>
+</section>
+
+<!-- Contact Form & Map Section -->
+<section class="contact-section">
+  <div class="container">
+    <div class="row g-3 g-md-4 g-lg-5">
+      <!-- Contact Form -->
+      <div class="col-lg-6">
+        <div class="contact-form">
+          <h3 class="mb-4">{% trans "Испратете порака" %}</h3>
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="firstName" class="form-label">{% trans "Име" %} *</label>
+                <input type="text" class="form-control" id="firstName" required>
+              </div>
+              <div class="col-md-6">
+                <label for="lastName" class="form-label">{% trans "Презиме" %} *</label>
+                <input type="text" class="form-control" id="lastName" required>
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label">{% trans "Е-пошта" %} *</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="col-12">
+                <label for="phone" class="form-label">{% trans "Телефон" %}</label>
+                <input type="tel" class="form-control" id="phone">
+              </div>
+              <div class="col-12">
+                <label for="subject" class="form-label">{% trans "Предмет" %} *</label>
+                <select class="form-select" id="subject" required>
+                  <option value="">{% trans "Изберете предмет" %}</option>
+                  <option value="general">{% trans "Општо прашање" %}</option>
+                  <option value="buy">{% trans "Купување автомобил" %}</option>
+                  <option value="sell">{% trans "Продажба автомобил" %}</option>
+                  <option value="service">{% trans "Сервис" %}</option>
+                  <option value="other">{% trans "Друго" %}</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">{% trans "Порака" %} *</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg px-4">
+                  <i class="fas fa-paper-plane me-2"></i>{% trans "Испрати порака" %}
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Map -->
+      <div class="col-lg-6">
+        <div class="contact-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.4689076249804!2d21.43141431571654!3d41.99646667922108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13541408dc39b32d%3A0x66bbc5dd94f8d0a9!2sMacedonia%20Square!5e0!3m2!1sen!2smk!4v1646123456789!5m2!1sen!2smk"
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        
+        <!-- Working Hours -->
+        <div class="working-hours mt-4">
+          <h4 class="mb-3">
+            <i class="fas fa-clock me-2"></i>{% trans "Работно време" %}
+          </h4>
+          <div class="row">
+            <div class="col-6">
+              <strong>{% trans "Понedelник - Петок" %}:</strong><br>
+              09:00 - 18:00
+            </div>
+            <div class="col-6">
+              <strong>{% trans "Сабота" %}:</strong><br>
+              09:00 - 15:00
+            </div>
+          </div>
+          <div class="mt-3">
+            <strong>{% trans "Недела" %}:</strong><br>
+            {% trans "Затворено" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Additional Contact Methods -->
+<section class="contact-methods-section py-4 py-lg-5">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-12 mb-4 mb-lg-5">
+        <h2 class="display-6 fw-bold">{% trans "Други начини за контакт" %}</h2>
+        <p class="lead text-muted">{% trans "Изберете го најпогодниот начин за вас" %}</p>
+      </div>
+    </div>
+    <div class="row g-3 g-md-4 justify-content-center">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="contact-method-card bg-white p-4 rounded shadow-sm text-center h-100">
+          <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
+          <h5>{% trans "WhatsApp" %}</h5>
+          <p class="text-muted mb-3">{% trans "Брза комуникација" %}</p>
+          <a href="https://wa.me/38970123456" class="btn btn-outline-success">{% trans "Контакт" %}</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="contact-method-card bg-white p-4 rounded shadow-sm text-center h-100">
+          <i class="fab fa-facebook fa-3x mb-3" style="color: #ff8c00;"></i>
+          <h5>{% trans "Facebook" %}</h5>
+          <p class="text-muted mb-3">{% trans "Проследете не на социјални мрежи" %}</p>
+          <a href="https://facebook.com" class="btn btn-outline-primary" target="_blank">{% trans "Посетете" %}</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="contact-method-card bg-white p-4 rounded shadow-sm text-center h-100">
+          <i class="fab fa-instagram fa-3x text-danger mb-3"></i>
+          <h5>{% trans "Instagram" %}</h5>
+          <p class="text-muted mb-3">{% trans "Видете ги најновите автомобили" %}</p>
+          <a href="https://instagram.com" class="btn btn-outline-danger" target="_blank">{% trans "Проследете" %}</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="contact-method-card bg-white p-4 rounded shadow-sm text-center h-100">
+          <i class="fas fa-calendar-alt fa-3x text-warning mb-3"></i>
+          <h5>{% trans "Закажи средба" %}</h5>
+          <p class="text-muted mb-3">{% trans "Дојдете во нашиот салон" %}</p>
+          <a href="tel:+38970123456" class="btn btn-outline-warning">{% trans "Повикајте" %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-4 mb-lg-5">
+        <h2 class="display-6 fw-bold">{% trans "Често поставувани прашања" %}</h2>
+        <p class="lead text-muted">{% trans "Одговори на најчесто поставувани прашања" %}</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-7">
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                {% trans "Дали нудите гаранција на автомобилите?" %}
+              </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                {% trans "Да, сите наши автомобили доаѓаат со гаранција која варира во зависност од возрастта и моделот на автомобилот. Детални информации за гаранцијата можете да добиете при посета." %}
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                {% trans "Дали можам да го тестирам автомобилот пред купување?" %}
+              </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                {% trans "Апсолутно! Секој клиент има право на тест-возење пред донесување на одлука за купување. Само закажете термин и дојдете со важечка возачка дозвола." %}
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                {% trans "Дали примате автомобил во замена?" %}
+              </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                {% trans "Да, примаме автомобили во замена. Нашите стручњаци ќе направат проценка на вашиот автомобил и ќе ви понудат фер цена која може да се искористи за купување на нов автомобил." %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+    
+    // Simple validation
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.subject || !formData.message) {
+        alert('{% trans "Ве молиме пополнете ги сите задолжителни полиња." %}');
+        return;
+    }
+    
+    // Simulate form submission
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>{% trans "Се испраќа..." %}';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+        alert('{% trans "Вашата порака е успешно испратена! Ќе ви одговориме во најкратко време." %}');
+        this.reset();
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }, 2000);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,739 @@
+{% extends "admin_custom/base_admin.html" %}
+{% block title %}Car Position Manager - AUTO DINERO Admin{% endblock %}
+
+{% block extra_css %}
+<!-- Include Sortable.js for drag and drop -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<style>
+    /* Mobile-first, clean design */
+    .page-header {
+        margin-bottom: 20px;
+    }
+    
+    .page-header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    
+    .page-header p {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+    
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    /* Tools section - compact */
+    .tools-section {
+        background: var(--white);
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 140, 0, 0.1);
+    }
+    
+    .tools-section h6 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        color: var(--dark-gray);
+    }
+    
+    /* Reorder container - minimal */
+    .reorder-container {
+        background: var(--white);
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255, 140, 0, 0.1);
+    }
+    
+    .reorder-container h6 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        color: var(--dark-gray);
+    }
+    
+    /* Sortable list - prevent text selection during drag */
+    .sortable-list {
+        min-height: 100px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    /* When dragging is active, prevent all text selection */
+    .sortable-list.dragging {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+    }
+    
+    /* Car item - ultra compact mobile-first */
+    .car-item {
+        background: var(--white);
+        border: 1px solid rgba(255, 140, 0, 0.15);
+        border-radius: 8px;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: grab;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        /* Prevent text selection during drag */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /* Prevent touch callout on mobile */
+        -webkit-touch-callout: none;
+        /* Prevent highlighting */
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .car-item:hover {
+        border-color: var(--primary-red);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        transform: translateY(-1px);
+    }
+    
+    .car-item:active {
+        cursor: grabbing;
+    }
+    
+    /* Drag states - smooth and stable */
+    .car-item.sortable-chosen {
+        border-color: var(--primary-red) !important;
+        background: rgba(255, 140, 0, 0.08) !important;
+        box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3) !important;
+        transform: scale(1.05) !important;
+        transition: none !important;
+        z-index: 1000 !important;
+    }
+    
+    .car-item.sortable-drag {
+        opacity: 0.8 !important;
+        transform: rotate(2deg) !important;
+        transition: none !important;
+    }
+    
+    .car-item.sortable-ghost {
+        background: rgba(255, 140, 0, 0.1) !important;
+        border: 2px dashed var(--primary-red) !important;
+        opacity: 0.5 !important;
+    }
+    
+    /* Position badge - compact */
+    .position-badge {
+        background: var(--gradient);
+        color: white;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+        box-shadow: 0 1px 3px rgba(255, 140, 0, 0.3);
+    }
+    
+    /* Car image - small and compact */
+    .car-image {
+        width: 40px;
+        height: 28px;
+        object-fit: contain;
+        border-radius: 4px;
+        flex-shrink: 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    .car-image-placeholder {
+        width: 40px;
+        height: 28px;
+        background: var(--light-gray);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--medium-gray);
+        font-size: 1rem;
+    }
+    
+    /* Car details - minimal */
+    .car-details {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        /* Prevent text selection */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    .car-brand-model {
+        font-weight: 600;
+        color: var(--dark-gray);
+        font-size: 0.85rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Extra prevention for text selection */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    .car-year {
+        color: var(--medium-gray);
+        font-size: 0.7rem;
+        font-weight: 500;
+        /* Extra prevention for text selection */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    
+    
+    /* Drag handle - visual indicator only */
+    .drag-handle {
+        color: var(--medium-gray);
+        font-size: 1rem;
+        padding: 4px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+    
+    .drag-handle:hover {
+        color: var(--primary-red);
+        background: rgba(255, 140, 0, 0.1);
+    }
+    
+    /* Buttons - mobile-first */
+    .btn-compact {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+    
+    .btn-save {
+        background: var(--gradient);
+        color: white;
+        box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3);
+    }
+    
+    .btn-save:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(255, 140, 0, 0.4);
+    }
+    
+    .btn-save:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    .btn-reset {
+        background: #ffc107;
+        color: #212529;
+    }
+    
+    .btn-randomize {
+        background: #17a2b8;
+        color: white;
+    }
+    
+    .btn-refresh {
+        background: #6c757d;
+        color: white;
+    }
+    
+    .btn-back {
+        background: var(--medium-gray);
+        color: white;
+        text-decoration: none;
+    }
+    
+    .btn-reset:hover, .btn-randomize:hover, .btn-refresh:hover, .btn-back:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        color: white;
+        text-decoration: none;
+    }
+    
+    /* Status messages - compact */
+    .status-message {
+        padding: 8px 12px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        animation: slideIn 0.3s ease;
+    }
+    
+    .status-success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+    
+    .status-error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+    
+    .status-info {
+        background: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+    }
+    
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Empty state */
+    .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--medium-gray);
+    }
+    
+    .empty-state i {
+        font-size: 3rem;
+        opacity: 0.3;
+        margin-bottom: 15px;
+        color: var(--primary-red);
+    }
+    
+    /* Tablet adjustments */
+    @media (min-width: 768px) {
+        .container-fluid {
+            padding: 20px;
+        }
+        
+        .tools-section, .reorder-container {
+            padding: 20px;
+        }
+        
+        .car-item {
+            padding: 12px 15px;
+            gap: 15px;
+        }
+        
+        .position-badge {
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+        }
+        
+        .car-image, .car-image-placeholder {
+            width: 50px;
+            height: 35px;
+            border-radius: 6px;
+        }
+        
+        .car-brand-model {
+            font-size: 0.95rem;
+        }
+        
+        .car-year {
+            font-size: 0.75rem;
+        }
+        
+        .drag-handle {
+            font-size: 1.2rem;
+            padding: 6px;
+        }
+        
+        .btn-compact {
+            padding: 10px 16px;
+            font-size: 0.85rem;
+        }
+    }
+    
+    /* Desktop adjustments */
+    @media (min-width: 1200px) {
+        .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .tools-section, .reorder-container {
+            padding: 25px;
+        }
+        
+        .car-item {
+            padding: 15px 20px;
+            gap: 20px;
+        }
+        
+        .position-badge {
+            width: 32px;
+            height: 32px;
+            font-size: 0.9rem;
+        }
+        
+        .car-image, .car-image-placeholder {
+            width: 60px;
+            height: 40px;
+            border-radius: 8px;
+        }
+        
+        .car-brand-model {
+            font-size: 1rem;
+        }
+        
+        .car-year {
+            font-size: 0.8rem;
+        }
+        
+        .drag-handle {
+            font-size: 1.4rem;
+            padding: 8px;
+        }
+        
+        .btn-compact {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+        }
+    }
+    
+    /* Button grid responsive */
+    .btn-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    @media (min-width: 480px) {
+        .btn-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .btn-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    
+    /* Header responsive */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    @media (max-width: 767px) {
+        .page-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .page-header .btn-back {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h1><i class="fas fa-sort me-2"></i>Car Position Manager</h1>
+            <p>Drag cars to reorder. Lower positions appear first.</p>
+        </div>
+        <a href="{% url 'admin_car_list' %}" class="btn-compact btn-back">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <!-- Status Messages -->
+    <div id="status-container"></div>
+
+    <!-- Tools Section -->
+    <div class="tools-section">
+        <h6><i class="fas fa-tools me-2"></i>Tools ({{ total_cars }} cars)</h6>
+        <div class="btn-grid">
+            <button id="save-positions" class="btn-compact btn-save" disabled>
+                <i class="fas fa-save"></i>
+                <span>Save Order</span>
+            </button>
+            <button id="reset-positions" class="btn-compact btn-reset">
+                <i class="fas fa-undo"></i>
+                <span>Reset by Date</span>
+            </button>
+            <button id="randomize-positions" class="btn-compact btn-randomize">
+                <i class="fas fa-random"></i>
+                <span>Randomize</span>
+            </button>
+            <button id="refresh-page" class="btn-compact btn-refresh">
+                <i class="fas fa-sync-alt"></i>
+                <span>Refresh</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sortable Car List -->
+    <div class="reorder-container">
+        <h6><i class="fas fa-list me-2"></i>Drag to Reorder</h6>
+        
+        <div id="sortable-list" class="sortable-list">
+            {% for car in cars %}
+            <div class="car-item" data-id="{{ car.id }}" data-position="{{ car.position }}">
+                <div class="position-badge">{{ forloop.counter }}</div>
+                
+                {% if car.main_image %}
+                    <img src="{{ car.main_image.url }}" alt="Car" class="car-image">
+                {% else %}
+                    <div class="car-image-placeholder">
+                        <i class="fas fa-car"></i>
+                    </div>
+                {% endif %}
+                
+                <div class="car-details">
+                    <div class="car-brand-model">{{ car.brand.name }} {{ car.model_name.name }}</div>
+                    <div class="car-year">{{ car.year }}</div>
+                </div>
+                
+                <div class="drag-handle">
+                    <i class="fas fa-grip-vertical"></i>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-state">
+                <i class="fas fa-car"></i>
+                <h5>No cars to reorder</h5>
+                <p>Add some cars first to use the position manager.</p>
+                <a href="{% url 'admin_car_add' %}" class="btn-compact btn-save mt-2">
+                    <i class="fas fa-plus"></i>Add Your First Car
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let hasChanges = false;
+    const saveButton = document.getElementById('save-positions');
+    const sortableList = document.getElementById('sortable-list');
+    
+    // Initialize Sortable with better mobile support and smooth drag
+    const sortable = new Sortable(sortableList, {
+        animation: 200,
+        ghostClass: 'sortable-ghost',
+        chosenClass: 'sortable-chosen', 
+        dragClass: 'sortable-drag',
+        // Remove handle restriction - entire item is draggable
+        // handle: '.drag-handle',
+        touchStartThreshold: 5,
+        delay: 50,
+        delayOnTouchOnly: true,
+        forceFallback: false,
+        fallbackTolerance: 5,
+        onStart: function(evt) {
+            // Add dragging class to prevent text selection
+            sortableList.classList.add('dragging');
+            // Prevent any text selection during drag
+            document.body.style.userSelect = 'none';
+            document.body.style.webkitUserSelect = 'none';
+            showStatus('Moving car...', 'info');
+        },
+        onEnd: function(evt) {
+            // Remove dragging class
+            sortableList.classList.remove('dragging');
+            // Restore text selection
+            document.body.style.userSelect = '';
+            document.body.style.webkitUserSelect = '';
+            
+            if (evt.oldIndex !== evt.newIndex) {
+                hasChanges = true;
+                saveButton.disabled = false;
+                updatePositionBadges();
+                showStatus('Position changed! Save to apply.', 'info');
+            }
+        }
+    });
+    
+    // Update position badges
+    function updatePositionBadges() {
+        const items = sortableList.querySelectorAll('.car-item');
+        items.forEach((item, index) => {
+            const badge = item.querySelector('.position-badge');
+            badge.textContent = index + 1;
+        });
+    }
+    
+    // Save positions
+    saveButton.addEventListener('click', function() {
+        if (!hasChanges) return;
+        
+        const items = sortableList.querySelectorAll('.car-item');
+        const positions = [];
+        
+        items.forEach((item, index) => {
+            positions.push({
+                id: parseInt(item.dataset.id),
+                position: index
+            });
+        });
+        
+        saveButton.disabled = true;
+        saveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        
+        fetch('/ajax/update-car-position/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCsrfToken()
+            },
+            body: JSON.stringify({ positions: positions })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                hasChanges = false;
+                showStatus('Positions saved successfully!', 'success');
+                saveButton.innerHTML = '<i class="fas fa-check"></i> Saved!';
+                setTimeout(() => {
+                    saveButton.innerHTML = '<i class="fas fa-save"></i> Save Order';
+                }, 2000);
+            } else {
+                throw new Error(data.error || 'Unknown error');
+            }
+        })
+        .catch(error => {
+            saveButton.disabled = false;
+            saveButton.innerHTML = '<i class="fas fa-save"></i> Save Order';
+            showStatus('Error saving: ' + error.message, 'error');
+        });
+    });
+    
+    // Tool buttons
+    document.getElementById('reset-positions').addEventListener('click', function() {
+        if (confirm('Reset all positions by creation date?')) {
+            bulkAction('reset_positions', 'Resetting positions...');
+        }
+    });
+    
+    document.getElementById('randomize-positions').addEventListener('click', function() {
+        if (confirm('Randomize all car positions?')) {
+            bulkAction('randomize_positions', 'Randomizing...');
+        }
+    });
+    
+    document.getElementById('refresh-page').addEventListener('click', function() {
+        if (hasChanges && !confirm('You have unsaved changes. Refresh anyway?')) {
+            return;
+        }
+        location.reload();
+    });
+    
+    // Bulk actions
+    function bulkAction(action, loadingText) {
+        showStatus(loadingText, 'info');
+        
+        fetch('/ajax/bulk-position-tools/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCsrfToken()
+            },
+            body: JSON.stringify({ action: action })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showStatus(data.message, 'success');
+                setTimeout(() => location.reload(), 1500);
+            } else {
+                throw new Error(data.error || 'Unknown error');
+            }
+        })
+        .catch(error => {
+            showStatus('Error: ' + error.message, 'error');
+        });
+    }
+    
+    // Status messages
+    function showStatus(message, type) {
+        const container = document.getElementById('status-container');
+        const statusDiv = document.createElement('div');
+        statusDiv.className = `status-message status-${type}`;
+        
+        const icon = type === 'success' ? 'check-circle' : 
+                    type === 'error' ? 'exclamation-triangle' : 'info-circle';
+        
+        statusDiv.innerHTML = `<i class="fas fa-${icon}"></i>${message}`;
+        container.appendChild(statusDiv);
+        
+        setTimeout(() => {
+            if (statusDiv.parentNode) {
+                statusDiv.remove();
+            }
+        }, 4000);
+    }
+    
+    // CSRF token
+    function getCsrfToken() {
+        return document.querySelector('[name=csrfmiddlewaretoken]')?.value || '{{ csrf_token }}';
+    }
+    
+    // Add CSRF token if needed
+    if (!document.querySelector('[name=csrfmiddlewaretoken]')) {
+        const csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = 'csrfmiddlewaretoken';
+        csrfInput.value = '{{ csrf_token }}';
+        document.body.appendChild(csrfInput);
+    }
+    
+    // Warn before leaving
+    window.addEventListener('beforeunload', function(e) {
+        if (hasChanges) {
+            e.preventDefault();
+            e.returnValue = 'You have unsaved changes.';
+        }
+    });
+    
+    // Welcome message
+    showStatus('Drag cars to reorder, then save!', 'success');
+});
+</script>
+{% endblock %}

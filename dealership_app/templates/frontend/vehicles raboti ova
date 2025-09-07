@@ -1,0 +1,302 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ car.title }} – Детали
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Основни стилови */
+.car-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.car-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0d6efd;
+  text-align: center;
+  margin-top: 0.5rem;
+  border-top: 2px solid #0d6efd;
+  padding-top: 0.5rem;
+}
+
+/* Контрола на каруселот и сликите */
+#carCarousel {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Thumbnails под каруселот */
+.thumbs {
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-top: 0.75rem;
+  padding-bottom: 0.25rem;
+}
+
+.thumbs img {
+  width: 80px;
+  height: 60px;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  transition: transform 0.2s;
+  border: 2px solid transparent;
+}
+
+.thumbs img.active,
+.thumbs img:hover {
+  transform: scale(1.1);
+  border-color: #0d6efd;
+}
+
+/* Спецификации */
+
+.specifications-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-bottom: 3px solid #0d6efd;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  padding-bottom: 0.3rem;
+  color: #0d6efd;
+}
+
+/* Спецификации grid */
+.specifications-row {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem 1.5rem 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.spec {
+  flex: 1 1 20%;
+  min-width: 130px;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-right: 1px solid #ddd;
+  position: relative;
+}
+
+.spec:last-child {
+  border-right: none;
+}
+
+.spec img {
+  height: 35px;
+  margin-bottom: 0.5rem;
+  filter: grayscale(20%);
+}
+
+.spec div {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.15rem;
+  color: #333;
+}
+
+.spec small {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Опрема */
+
+.equipment-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-bottom: 3px solid #0d6efd;
+  margin-bottom: 1rem;
+  color: #0d6efd;
+  text-align: left;
+  padding-bottom: 0.3rem;
+}
+
+/* Опрема колони и линии помеѓу */
+.equipment-row {
+  border-left: 1px solid transparent;
+  margin-bottom: 2rem;
+}
+
+.equipment-col:not(:last-child) {
+  border-right: 1px solid transparent;
+  position: relative;
+}
+
+.equipment-col:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 15%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0.15) 85%,
+    transparent 100%
+  );
+}
+
+.equipment-col > div {
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  color: #444;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Responsive - да се избегне празен простор десно на desktop */
+
+/* На мали уреди колоните се 100% */
+@media (max-width: 991.98px) {
+  .equipment-row {
+    border-left: none;
+  }
+  .equipment-col:not(:last-child)::after {
+    display: none;
+  }
+  .equipment-col {
+    border-right: none !important;
+  }
+}
+
+/* На desktop да бидат во ред и без празен простор десно */
+@media (min-width: 992px) {
+  .col-lg-6.right-section {
+    padding-left: 2rem;
+  }
+}
+
+/* Редослед на содржината - на desktop лево и десно,
+   а на мали уреди во еден столбец со редослед топ-доле */
+
+.row.detail-main {
+  gap: 1.5rem;
+}
+
+@media (max-width: 991.98px) {
+  .detail-main > div {
+    width: 100% !important;
+  }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column align-items-center gap-4 detail-main" style="max-width: 700px; margin: 0 auto;">
+
+
+  <!-- Лево: Име, Слики, Цена -->
+  <div class="col-lg-6 d-flex flex-column align-items-center">
+    <div class="car-title w-100">{{ car.title }}</div>
+
+    <div id="carCarousel" class="carousel slide w-100 mb-3" data-bs-ride="carousel">
+      <div class="carousel-inner rounded">
+        {% for img in car.images.all %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}" style="height: 400px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+            <img src="{{ img.image.url }}" class="d-block" alt="{{ car.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          </div>
+        {% empty %}
+          <div class="carousel-item active" style="height: 400px; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'img/placeholder-car.png' %}" class="d-block" alt="No image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    <div class="thumbs w-100 d-flex justify-content-center">
+      {% for img in car.images.all %}
+        <img src="{{ img.image.url }}" data-bs-target="#carCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %} rounded">
+      {% endfor %}
+    </div>
+
+    <div class="car-price w-100 mt-3">{{ car.display_price }}</div>
+  </div>
+
+  <!-- Десно: Спецификации и Опрема -->
+  <div class="col-lg-6 right-section">
+
+    <h3 class="specifications-title">Спецификации</h3>
+    <div class="specifications-row">
+      <div class="spec">
+        <img src="{% static 'calendar.png' %}" alt="Година">
+        <div>{{ car.year }}</div>
+        <small>Година</small>
+      </div>
+      <div class="spec">
+        <img src="{% static 'mileage.png' %}" alt="Километража">
+        <div>{{ car.get_mileage_display }}</div>
+        <small>Километража</small>
+      </div>
+      <div class="spec">
+        <img src="{% static 'gas-station.png' %}" alt="Гориво">
+        <div>{{ car.get_fuel_type_display }}</div>
+        <small>Гориво</small>
+      </div>
+      <div class="spec">
+        <img src="{% static 'manual-transmission.png' %}" alt="Менувач">
+        <div>{{ car.get_transmission_display }}</div>
+        <small>Менувач</small>
+      </div>
+      <div class="spec">
+        <img src="{% static 'car-engine.png' %}" alt="Мотор">
+        <div>{{ car.engine_capacity }} cm³</div>
+        <small>Мотор</small>
+      </div>
+      <div class="spec">
+        <img src="{% static 'setting.png' %}" alt="Марка и Модел">
+        <div>{{ car.brand.name }} {{ car.model_name.name }}</div>
+        <small>Марка / Модел</small>
+      </div>
+      <div class="spec">
+        <img src="{% static 'palette.png' %}" alt="Боја">
+        <div>{{ car.get_color_display }}</div>
+        <small>Боја</small>
+      </div>
+      <div class="spec">
+        <img src="{% static 'sedan.png' %}" alt="Каросерија">
+        <div>{{ car.get_body_type_display }}</div>
+        <small>Каросерија</small>
+      </div>
+    </div>
+
+    {% if car.equipment.exists %}
+      <h4 class="equipment-title">Опрема</h4>
+      <div class="row my-4 pb-4 equipment-row">
+        {% for eq in car.equipment.all %}
+          <div class="col-12 col-md-6 col-lg-4 equipment-col">
+            <div class="d-flex align-items-center px-3 py-2">
+              <span class="text-nowrap">{{ eq.name }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

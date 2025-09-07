@@ -1,0 +1,393 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "За нас" %} - AUTO DINERO{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --primary-red: #ff8c00;
+    --primary-blue: #1D3557;
+    --accent-orange: #F77F00;
+    --light-gray: #F8F9FA;
+    --dark-gray: #212529;
+    --medium-gray: #6C757D;
+    --white: #FFFFFF;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+  }
+
+  /* Hero Section with dotted background */
+  .hero-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    color: var(--white);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 0;
+    opacity: 0.9;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light-gray);
+  }
+
+  /* Header */
+  .about-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    color: var(--white);
+    padding: 40px 0;
+    margin-bottom: 30px;
+  }
+
+  .header-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .header-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+
+  .about-section {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+  }
+
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .team-member {
+    transition: transform 0.3s ease;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+
+  .team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--accent-orange) 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .stat-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .mission-vision {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 0 auto 30px;
+    max-width: 1200px;
+    box-shadow: var(--shadow);
+  }
+
+  .mission-card {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .vision-card {
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--accent-orange) 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .mission-card:hover,
+  .vision-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .about-hero-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+  }
+
+  .about-hero-image:hover {
+    transform: scale(1.05);
+  }
+
+  /* Large desktop */
+  @media (min-width: 1200px) {
+    .mission-vision {
+      max-width: 1100px;
+      padding: 50px 60px;
+    }
+    
+    .mission-card,
+    .vision-card {
+      padding: 40px;
+    }
+    
+    .about-hero-image {
+      max-width: 550px;
+    }
+  }
+  
+  /* Medium desktop */
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .mission-vision {
+      max-width: 950px;
+      padding: 40px 30px;
+    }
+    
+    .mission-card,
+    .vision-card {
+      padding: 35px;
+    }
+    
+    .about-hero-image {
+      max-width: 450px;
+    }
+  }
+  
+  /* Tablet */
+  @media (min-width: 769px) and (max-width: 991px) {
+    .mission-vision {
+      max-width: 750px;
+      padding: 35px 25px;
+    }
+    
+    .mission-card,
+    .vision-card {
+      padding: 30px 25px;
+    }
+    
+    .about-hero-image {
+      max-width: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .hero-section {
+      padding: 60px 0 40px;
+    }
+    
+    .about-section,
+    .mission-vision {
+      padding: 20px;
+      max-width: 100%;
+      margin: 0 15px 30px;
+    }
+    
+    .mission-card,
+    .vision-card {
+      padding: 25px 20px;
+    }
+    
+    .about-hero-image {
+      max-width: 350px;
+      margin: 20px 0;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Header -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">{% trans "За AUTO DINERO" %}</h1>
+      <p class="hero-subtitle">{% trans "Повеќе од 15 години искуство во продажба на квалитетни автомобили и професионална услуга" %}</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- About Story Section -->
+<section class="about-section">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6">
+        <h2 class="display-5 fw-bold mb-4">{% trans "Нашата Приказна" %}</h2>
+        <p class="lead mb-4">{% trans "AUTO DINERO е основана во 2008 година со цел да обезбеди најквалитетни автомобили на македонскиот пазар. Се специјализираме за увоз и продажба на автомобили од премиум класа." %}</p>
+        <p class="mb-4">{% trans "Нашиот тим од стручни лица има богато искуство во автомобилската индустрија и се посветени на обезбедување на најдобрата можна услуга за нашите клиенти." %}</p>
+        <div class="row">
+          <div class="col-6">
+            <div class="stat-card">
+              <div class="stat-number">500+</div>
+              <p class="mb-0">{% trans "Продадени возила" %}</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stat-card">
+              <div class="stat-number">15</div>
+              <p class="mb-0">{% trans "Години искуство" %}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="text-center">
+          <img src="{% static 'about-us-hero.jpg' %}" alt="AUTO DINERO - About Us" class="about-hero-image">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+{% include 'frontend/components/features_section.html' %}
+
+<!-- Team Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-12">
+        <h2 class="display-5 fw-bold mb-3">{% trans "Наш Тим" %}</h2>
+        <p class="lead text-muted">{% trans "Запознајте се со луѓето кои стојат зад AUTO DINERO" %}</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="team-member bg-white p-4 rounded shadow-sm text-center">
+          <div class="mb-3">
+            <i class="fas fa-user-circle fa-5x" style="color: #F77F00;"></i>
+          </div>
+          <h5>{% trans "Марко Петковски" %}</h5>
+          <p class="text-muted">{% trans "Генерален Директор" %}</p>
+          <p class="small">{% trans "Со повеќе од 20 години искуство во автомобилската индустрија, Марко го води тимот кон совршенство." %}</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="team-member bg-white p-4 rounded shadow-sm text-center">
+          <div class="mb-3">
+            <i class="fas fa-user-circle fa-5x" style="color: #F77F00;"></i>
+          </div>
+          <h5>{% trans "Ана Стојановска" %}</h5>
+          <p class="text-muted">{% trans "Раководител Продажба" %}</p>
+          <p class="small">{% trans "Ана е експерт за односи со клиенти и ќе ви помогне да го најдете совршениот автомобил." %}</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="team-member bg-white p-4 rounded shadow-sm text-center">
+          <div class="mb-3">
+            <i class="fas fa-user-circle fa-5x" style="color: #F77F00;"></i>
+          </div>
+          <h5>{% trans "Димитар Николовски" %}</h5>
+          <p class="text-muted">{% trans "Технички Раководител" %}</p>
+          <p class="small">{% trans "Димитар се грижи за техничката проверка и квалитет на секој автомобил што го нудиме." %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="mission-vision">
+  <h2 class="section-title">{% trans "Мисија и Визија" %}</h2>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="mission-card">
+        <div class="text-center mb-4">
+          <i class="fas fa-bullseye fa-3x"></i>
+        </div>
+        <h3 class="text-center mb-4">{% trans "Наша Мисија" %}</h3>
+        <p class="text-center">{% trans "Да обезбедиме најквалитетни автомобили со професионална услуга, градејќи долгорочни односи засновани на доверба и транспарентност." %}</p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="vision-card">
+        <div class="text-center mb-4">
+          <i class="fas fa-eye fa-3x"></i>
+        </div>
+        <h3 class="text-center mb-4">{% trans "Наша Визија" %}</h3>
+        <p class="text-center">{% trans "Да бидеме водечка автокуќа во Македонија, препознатлива по квалитет, иновации и исклучителна грижа за клиентите." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="about-section text-center">
+  <h2 class="section-title">{% trans "Имате прашања?" %}</h2>
+  <p class="lead mb-4">{% trans "Нашиот тим е тука да ви помогне. Контактирајте не за било какви прашања или информации." %}</p>
+  <a href="{% url 'frontend_contact' %}" class="btn btn-primary btn-lg px-5" style="background: var(--primary-red); border-color: var(--primary-red);">{% trans "Контактирајте не" %}</a>
+</section>
+
+</div>
+{% endblock %}

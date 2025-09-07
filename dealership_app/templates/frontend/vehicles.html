@@ -1,0 +1,996 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Возила" %} - AUTO DINERO Macedonia{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-red: #ff8c00;
+    --primary-blue: #1D3557;
+    --accent-orange: #F77F00;
+    --light-gray: #F8F9FA;
+    --dark-gray: #212529;
+    --medium-gray: #6C757D;
+    --white: #FFFFFF;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light-gray);
+  }
+
+  /* Hero Section with dotted background */
+  .hero-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    color: var(--white);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 0;
+    opacity: 0.9;
+  }
+
+  /* Filters Section */
+  .filters-section {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+  }
+
+  .filters-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 20px;
+  }
+
+  .results-count {
+    background: var(--primary-red);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .no-results-message {
+    background: #FFB84D;
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .filter-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: end;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+  }
+
+  .form-control {
+    padding: 12px 16px;
+    border: 2px solid #E9ECEF;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--white);
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+  }
+
+  .filter-btn {
+    background: var(--primary-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    background: #e67a00;
+    transform: translateY(-2px);
+  }
+
+  .reset-btn {
+    background: transparent;
+    color: var(--medium-gray);
+    border: 2px solid var(--medium-gray);
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+  }
+
+  .reset-btn:hover {
+    background: var(--medium-gray);
+    color: var(--white);
+  }
+
+  /* Cars Grid */
+  .cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+  }
+
+  /* Desktop - 4 columns */
+  @media (min-width: 1200px) {
+    .cars-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto 40px;
+    }
+  }
+
+  /* Large desktop */
+  @media (min-width: 1400px) {
+    .cars-grid {
+      max-width: 1600px;
+    }
+  }
+
+  .car-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+    border: 1px solid #F1F3F4;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .car-card:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .car-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f8f9fa;
+    transition: transform 0.3s ease;
+  }
+
+  .car-card:hover .car-image img {
+    transform: scale(1.05);
+  }
+
+  .car-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary-red);
+    color: var(--white);
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .car-details {
+    padding: 25px;
+  }
+
+  .car-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 15px;
+  }
+
+  .car-specs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    border-top: 1px solid #F1F3F4;
+    border-bottom: 1px solid #F1F3F4;
+  }
+
+  .spec-item {
+    text-align: center;
+    flex: 1;
+  }
+
+  .spec-icon {
+    font-size: 1.2rem;
+    color: var(--primary-red);
+    margin-bottom: 5px;
+  }
+
+  .spec-value {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+  }
+
+  .spec-label {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .car-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .car-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  .view-btn {
+    background: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .view-btn:hover {
+    background: #14213D;
+    color: var(--white);
+    transform: translateY(-1px);
+  }
+
+  /* Pagination */
+  .pagination {
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .page-link {
+    color: var(--primary-blue);
+    border: 1px solid #DEE2E6;
+    padding: 10px 15px;
+    margin: 0 2px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .page-link:hover {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: var(--white);
+  }
+
+  .page-item.active .page-link {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: var(--white);
+  }
+
+  .filter-header-wrapper {
+    margin-bottom: 20px;
+  }
+  
+  .no-results-message-row {
+    margin-top: -15px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* Responsive filter header */
+  @media (max-width: 690px) {
+    .no-results-message-row {
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+    
+    .no-results-message {
+      font-size: 0.9rem;
+      display: block;
+      width: 100%;
+    }
+    
+    .results-count {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .header-title {
+      font-size: 2rem;
+    }
+    
+    .vehicles-header {
+      padding: 30px 0;
+    }
+    
+    .filter-form {
+      grid-template-columns: 1fr;
+    }
+    
+    .cars-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin: 0 15px 40px 15px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .container {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    
+    .car-image {
+      height: 250px;
+      background: #f8f9fa;
+    }
+    
+    .car-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f8f9fa;
+      object-position: center;
+    }
+    
+    .car-specs {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 5px;
+    }
+    
+    .spec-item {
+      text-align: center;
+    }
+    
+    .car-details {
+      padding: 20px;
+    }
+    
+    .car-title {
+      font-size: 1.2rem;
+    }
+    
+    .car-price {
+      font-size: 1.3rem;
+    }
+    
+    .car-footer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .view-btn {
+      align-self: center;
+    }
+    
+    .filters-section {
+      padding: 20px;
+    }
+  }
+
+  /* No Results */
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  .no-results-icon {
+    font-size: 4rem;
+    color: var(--medium-gray);
+    opacity: 0.5;
+    margin-bottom: 20px;
+  }
+
+  .mobile-filter-toggle {
+    background: var(--primary-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 20px;
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-filter-toggle {
+      display: block;
+    }
+    
+    .filters-section {
+      margin-bottom: 20px;
+    }
+  }
+
+  /* Ensure filters are always visible on desktop */
+  @media (min-width: 769px) {
+    #filterPanel {
+      display: block !important;
+      visibility: visible !important;
+      height: auto !important;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .header-title {
+      font-size: 1.8rem;
+    }
+    
+    .header-subtitle {
+      font-size: 1rem;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .hero-section {
+      padding: 60px 0 40px;
+    }
+    
+    .cars-grid {
+      gap: 15px;
+    }
+    
+    .car-image {
+      height: 230px;
+      background: #f8f9fa;
+    }
+    
+    
+    .car-specs {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+    
+    .spec-item {
+      text-align: center;
+      flex: 1;
+    }
+    
+    .spec-value {
+      font-size: 0.8rem;
+    }
+    
+    .spec-label {
+      font-size: 0.7rem;
+    }
+    
+    .car-details {
+      padding: 15px;
+    }
+    
+    .car-title {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    
+    .car-price {
+      font-size: 1.2rem;
+    }
+    
+    .car-footer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .view-btn {
+      padding: 8px 15px;
+      font-size: 0.85rem;
+    }
+    
+    .filters-section {
+      padding: 15px;
+    }
+    
+    .form-control {
+      padding: 10px 14px;
+      font-size: 0.95rem;
+    }
+    
+    .filter-btn {
+      padding: 10px 20px;
+      font-size: 0.95rem;
+    }
+    
+    .results-count {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+    
+    .car-badge {
+      padding: 3px 6px;
+      border-radius: 12px;
+      font-size: 0.6rem;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">{% trans "Нашата колекција" %}</h1>
+      <p class="hero-subtitle">{% trans "Пронајдете го совршениот автомобил од нашиот широк избор" %}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<div class="container-fluid" style="max-width: 1600px; margin: 0 auto; padding: 0 15px;">
+  <!-- Filters -->
+  <div class="filters-section">
+    <button class="mobile-filter-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filterPanel" aria-expanded="true">
+      <i class="fas fa-filter me-2"></i><span class="toggle-text">{% trans "Затвори филтер" %}</span>
+    </button>
+    
+    <div class="collapse show" id="filterPanel">
+      <div class="filter-header-wrapper">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="filters-title">{% trans "Филтрирај возила" %}</h3>
+          <div class="results-count">
+            <i class="fas fa-car me-2"></i>{{ cars.paginator.count }} {% trans "возила" %}
+          </div>
+        </div>
+        {% if no_results_fallback %}
+        <div class="no-results-message-row">
+          <div class="no-results-message">
+            <i class="fas fa-exclamation-triangle me-2"></i>{% trans "Не е пронајдено такво возило" %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <form method="get" class="filter-form">
+        <div class="row g-3">
+          <!-- First Row -->
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <label for="brand">{% trans "Марка" %}</label>
+              <select name="brand" id="brand" class="form-control">
+                <option value="">{% trans "Сите марки" %}</option>
+                {% for b in brands %}
+                <option value="{{ b.id }}" {% if request.GET.brand == b.id|stringformat:"s" %}selected{% endif %}>
+                  {{ b.name }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <label for="model_name">{% trans "Модел" %}</label>
+              <select name="model_name" id="model_name" class="form-control" {% if not request.GET.brand %}disabled{% endif %}>
+                <option value="">{% if not request.GET.brand %}{% trans "Избери прво марка" %}{% else %}{% trans "Сите модели" %}{% endif %}</option>
+                {% for m in models %}
+                <option value="{{ m.id }}" {% if request.GET.model_name == m.id|stringformat:"s" %}selected{% endif %}>
+                  {{ m.name }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <label for="fuel">{% trans "Гориво" %}</label>
+              <select name="fuel" class="form-control">
+                <option value="">{% trans "Сите типови" %}</option>
+                {% for key,label in fuel_choices %}
+                <option value="{{ key }}" {% if request.GET.fuel == key %}selected{% endif %}>
+                  {{ label }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <label for="transmission">{% trans "Менувач" %}</label>
+              <select name="transmission" class="form-control">
+                <option value="">{% trans "Сите типови" %}</option>
+                {% for key,label in transmission_choices %}
+                <option value="{{ key }}" {% if request.GET.transmission == key %}selected{% endif %}>
+                  {{ label }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <label for="body_type">{% trans "Каросерија" %}</label>
+              <select name="body_type" class="form-control">
+                <option value="">{% trans "Сите типови" %}</option>
+                {% for key,label in vehicle_bodies %}
+                <option value="{{ key }}" {% if request.GET.body_type == key %}selected{% endif %}>
+                  {{ label }}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <label for="sort_price">{% trans "Цена" %}</label>
+              <select name="sort_price" class="form-control">
+                <option value="">{% trans "Сите цени" %}</option>
+                <option value="asc" {% if request.GET.sort_price == 'asc' %}selected{% endif %}>{% trans "Ниска → Висока" %}</option>
+                <option value="desc" {% if request.GET.sort_price == 'desc' %}selected{% endif %}>{% trans "Висока → Ниска" %}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <label for="sort_mileage">{% trans "Километража" %}</label>
+              <select name="sort_mileage" class="form-control">
+                <option value="">{% trans "Сите километражи" %}</option>
+                <option value="asc" {% if request.GET.sort_mileage == 'asc' %}selected{% endif %}>{% trans "Малку → Многу" %}</option>
+                <option value="desc" {% if request.GET.sort_mileage == 'desc' %}selected{% endif %}>{% trans "Многу → Малку" %}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="form-group">
+              <div class="form-check mt-4">
+                <input class="form-check-input" type="checkbox" id="for_beginners" name="for_beginners" {% if request.GET.for_beginners %}checked{% endif %}>
+                <label class="form-check-label" for="for_beginners">
+                  {% trans "Автомобил за почетници" %}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="col-12">
+            <div class="d-flex gap-3 mt-3">
+              <button type="submit" class="filter-btn flex-fill">
+                <i class="fas fa-search me-2"></i>{% trans "Примени" %}
+              </button>
+              <a href="{% url 'frontend_vehicles' %}" class="reset-btn">
+                <i class="fas fa-undo me-2"></i>{% trans "Ресетирај" %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Cars Grid -->
+  {% if cars %}
+  <div class="cars-grid">
+    {% for car in cars %}
+    <a href="{% url 'frontend_vehicle_detail' car.pk %}?back=vehicles&page={{ cars.number }}&brand={{ brand }}&model_name={{ model_name }}&transmission={{ transmission }}&vehicle_body={{ vehicle_body }}&fuel={{ fuel }}&color={{ color }}&for_beginners={{ for_beginners }}&price_from={{ price_from }}&price_to={{ price_to }}&year_from={{ year_from }}&sort_price={{ sort_price }}&sort_mileage={{ sort_mileage }}&sort_year={{ sort_year }}" class="car-card" id="car-{{ car.pk }}">
+      <div class="car-image">
+        <img src="{{ car.main_image.url }}" alt="{{ car.title }}">
+        {% if forloop.counter <= 8 %}
+        <div class="car-badge">{% trans "ПРЕПОРАЧАНО" %}</div>
+        {% endif %}
+      </div>
+      <div class="car-details">
+        <h3 class="car-title">{{ car.brand.name }} {{ car.model_name.name }}</h3>
+        
+        <div class="car-specs">
+          <div class="spec-item">
+            <div class="spec-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="spec-value">{{ car.year }}</div>
+            <div class="spec-label">{% trans "Година" %}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div class="spec-value">{{ car.get_fuel_type_display }}</div>
+            <div class="spec-label">{% trans "Гориво" %}</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div class="spec-value">{{ car.get_transmission_display }}</div>
+            <div class="spec-label">{% trans "Менувач" %}</div>
+          </div>
+        </div>
+        
+        <div class="car-footer">
+          <div class="car-price">{{ car.display_price }}</div>
+          <span class="view-btn">
+            <i class="fas fa-eye me-1"></i>{% trans "Детали" %}
+          </span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="no-results">
+    <i class="fas fa-car no-results-icon"></i>
+    <h3 style="color: var(--medium-gray); margin-bottom: 10px;">{% trans "Нема пронајдени возила" %}</h3>
+    <p style="color: var(--medium-gray);">{% trans "Пробајте со различни критериуми за пребарување" %}</p>
+    <a href="{% url 'frontend_vehicles' %}" class="btn btn-primary mt-3">
+      <i class="fas fa-refresh me-2"></i>{% trans "Ресетирај пребарување" %}
+    </a>
+  </div>
+  {% endif %}
+
+  <!-- Pagination -->
+  {% if cars.has_other_pages %}
+  <nav aria-label="Pagination">
+    <ul class="pagination">
+      {% if cars.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ cars.previous_page_number }}">
+          <i class="fas fa-chevron-left me-1"></i>{% trans "Претходна" %}
+        </a>
+      </li>
+      {% endif %}
+
+      {% for num in cars.paginator.page_range %}
+      {% if num == cars.number %}
+      <li class="page-item active">
+        <span class="page-link">{{ num }}</span>
+      </li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ num }}">{{ num }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+
+      {% if cars.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ cars.next_page_number }}">
+          {% trans "Следна" %}<i class="fas fa-chevron-right ms-1"></i>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// AJAX to reload model dropdown when brand changes
+document.getElementById('brand').addEventListener('change', function(){
+  const brandId = this.value;
+  const modelSelect = document.getElementById('model_name');
+  
+  modelSelect.disabled = !brandId;
+  
+  if(!brandId) {
+    modelSelect.innerHTML = '<option value="">{% trans "Избери бренд" %}</option>';
+    return;
+  }
+  
+  modelSelect.innerHTML = '<option value="">{% trans "Се вчитува..." %}</option>';
+  
+  fetch(`{% url 'ajax_models' %}?brand=${brandId}`)
+    .then(response => response.json())
+    .then(data => {
+      modelSelect.innerHTML = '<option value="">{% trans "Сите модели" %}</option>';
+      data.forEach(model => {
+        const option = document.createElement('option');
+        option.value = model.id;
+        option.textContent = model.name;
+        if(String(model.id) === "{{ request.GET.model_name }}") {
+          option.selected = true;
+        }
+        modelSelect.appendChild(option);
+      });
+      modelSelect.disabled = false;
+    })
+    .catch(error => {
+      console.error('Error loading models:', error);
+      modelSelect.innerHTML = '<option value="">{% trans "Грешка при вчитување" %}</option>';
+      modelSelect.disabled = true;
+    });
+});
+
+// Filter toggle functionality
+const toggleButton = document.querySelector('.mobile-filter-toggle');
+const toggleText = document.querySelector('.toggle-text');
+const filterPanel = document.getElementById('filterPanel');
+
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+// Set initial state correctly based on whether panel is shown
+document.addEventListener('DOMContentLoaded', function() {
+  if (isMobile()) {
+    if (filterPanel.classList.contains('show')) {
+      toggleText.textContent = '{% trans "Затвори филтер" %}';
+      toggleButton.setAttribute('aria-expanded', 'true');
+    } else {
+      toggleText.textContent = '{% trans "Филтри" %}';
+      toggleButton.setAttribute('aria-expanded', 'false');
+    }
+  } else {
+    // On desktop, ensure filters are always shown
+    filterPanel.classList.add('show');
+  }
+});
+
+// Handle toggle text change - only on mobile
+filterPanel.addEventListener('shown.bs.collapse', function () {
+  if (isMobile()) {
+    toggleText.textContent = '{% trans "Затвори филтер" %}';
+  }
+});
+
+filterPanel.addEventListener('hidden.bs.collapse', function () {
+  if (isMobile()) {
+    toggleText.textContent = '{% trans "Филтри" %}';
+  }
+});
+
+// Handle window resize to ensure proper behavior
+window.addEventListener('resize', function() {
+  if (!isMobile()) {
+    // On desktop, ensure filters are always shown
+    filterPanel.classList.add('show');
+  }
+});
+
+// Auto-close filter panel after form submission - only on mobile
+document.querySelector('.filter-form').addEventListener('submit', function() {
+  if (isMobile()) {
+    // Close the filter panel with animation
+    const bsCollapse = new bootstrap.Collapse(filterPanel, {
+      toggle: false
+    });
+    bsCollapse.hide();
+  }
+});
+
+// Scroll to specific car if hash is present in URL (when returning from detail page)
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.hash) {
+    const targetElement = document.querySelector(window.location.hash);
+    if (targetElement) {
+      // Wait a moment for the page to fully load, then scroll
+      setTimeout(function() {
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center'
+        });
+        
+        // Add a highlight effect to show which car was selected
+        targetElement.style.transform = 'scale(1.05)';
+        targetElement.style.boxShadow = '0 8px 30px rgba(255, 140, 0, 0.3)';
+        targetElement.style.transition = 'all 0.5s ease';
+        
+        // Remove highlight after 2 seconds
+        setTimeout(function() {
+          targetElement.style.transform = '';
+          targetElement.style.boxShadow = '';
+        }, 2000);
+      }, 500);
+    }
+  }
+});
+</script>
+{% endblock %}
