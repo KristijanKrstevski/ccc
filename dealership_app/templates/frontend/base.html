@@ -124,113 +124,189 @@
         <!-- Desktop menu -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-none d-lg-flex">
           <li class="nav-item">
-            <a class="nav-link px-3 py-2" href="{% url 'frontend_index' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "Дома" %}</a>
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_index' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "НАСЛОВНА" %}</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-3 py-2" href="#" id="vehiclesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">
+              {% trans "ВОЗИЛА" %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="vehiclesDropdown">
+              <li><a class="dropdown-item" href="{% url 'frontend_vehicles' %}">{% trans "Cars" %}</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-3 py-2" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">
+              {% trans "УСЛУГИ" %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+              <li><a class="dropdown-item" href="{% url 'frontend_services' %}?service=order">{% trans "НАРАЧАЈ" %}</a></li>
+              <li><a class="dropdown-item" href="{% url 'frontend_services' %}?service=sell">{% trans "ПРОДАЈ" %}</a></li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-3 py-2" href="{% url 'frontend_vehicles' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "Возила" %}</a>
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_collaboration' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "СОРАБОТКА" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-3 py-2" href="{% url 'frontend_about' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "За нас" %}</a>
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_about' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "ЗА НАС" %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-3 py-2" href="{% url 'frontend_contact' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "Контакт" %}</a>
+            <a class="nav-link px-3 py-2" href="{% url 'frontend_contact' %}" style="color: #212529; font-weight: 500; transition: all 0.3s ease;">{% trans "КОНТАКТ" %}</a>
           </li>
         </ul>
         
-        <!-- Mobile menu - 4 buttons horizontally -->
+        <!-- Mobile menu - Dropdown list style -->
         <div class="d-lg-none w-100">
-          <div class="mobile-nav-grid mobile-nav-functional">
-            <!-- Language Switcher -->
-            <div class="mobile-nav-item">
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages %}
-              <div class="mobile-language-switcher">
-                {% for language in languages %}
-                  <form action="{% url 'set_language' %}" method="post" class="language-form-mobile">
-                    {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
-                    <input name="language" type="hidden" value="{{ language.code }}" />
-                    <button type="submit" class="mobile-language-btn {% if language.code == LANGUAGE_CODE %}active{% endif %}" data-lang="{{ language.code }}">
-                      {% if language.code == 'en' %}
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322" 
-                             srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1600px-English_language.svg.png?20250726011322 1.5x" 
-                             alt="English language" class="mobile-flag-icon">
-                      {% else %}
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215" 
-                             srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1600px-Flag_of_North_Macedonia.svg.png?20231224094215 1.5x" 
-                             alt="North Macedonian flag" class="mobile-flag-icon">
-                      {% endif %}
-                    </button>
-                  </form>
-                {% endfor %}
+          <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="{% url 'frontend_index' %}">
+                <i class="fas fa-home"></i>
+                <span>{% trans "НАСЛОВНА" %}</span>
+              </a>
+            </li>
+            <li class="mobile-menu-item mobile-dropdown">
+              <a class="mobile-menu-link mobile-dropdown-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#mobileVehiclesDropdown" aria-expanded="false">
+                <i class="fas fa-car"></i>
+                <span>{% trans "ВОЗИЛА" %}</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </a>
+              <div class="collapse mobile-submenu" id="mobileVehiclesDropdown">
+                <a class="mobile-submenu-link" href="{% url 'frontend_vehicles' %}">
+                  <i class="fas fa-car"></i>
+                  <span>{% trans "Cars" %}</span>
+                </a>
               </div>
-            </div>
-            
-            <!-- Working Hours -->
-            <a href="{% url 'frontend_contact' %}" class="mobile-nav-btn mobile-hours-btn">
-              <i class="fas fa-clock"></i>
-              <div class="mobile-btn-text">
-                <div class="mobile-btn-title">{% trans "Раб.време" %}</div>
-                <div class="mobile-btn-subtitle">{% trans "Пон-Саб" %}</div>
+            </li>
+            <li class="mobile-menu-item mobile-dropdown">
+              <a class="mobile-menu-link mobile-dropdown-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#mobileServicesDropdown" aria-expanded="false">
+                <i class="fas fa-cogs"></i>
+                <span>{% trans "УСЛУГИ" %}</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+              </a>
+              <div class="collapse mobile-submenu" id="mobileServicesDropdown">
+                <a class="mobile-submenu-link" href="{% url 'frontend_services' %}?service=order">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span>{% trans "НАРАЧАЈ" %}</span>
+                </a>
+                <a class="mobile-submenu-link" href="{% url 'frontend_services' %}?service=sell">
+                  <i class="fas fa-handshake"></i>
+                  <span>{% trans "ПРОДАЈ" %}</span>
+                </a>
               </div>
-            </a>
-            
-            <!-- Phone -->
-            <a href="tel:+38970123456" class="mobile-nav-btn mobile-phone-btn">
-              <i class="fas fa-phone"></i>
-              <div class="mobile-btn-text">
-                <div class="mobile-btn-title">{% trans "Повици" %}</div>
-                <div class="mobile-btn-subtitle">123 456</div>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="{% url 'frontend_collaboration' %}">
+                <i class="fas fa-users"></i>
+                <span>{% trans "СОРАБОТКА" %}</span>
+              </a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="{% url 'frontend_about' %}">
+                <i class="fas fa-info-circle"></i>
+                <span>{% trans "ЗА НАС" %}</span>
+              </a>
+            </li>
+            <li class="mobile-menu-item">
+              <a class="mobile-menu-link" href="{% url 'frontend_contact' %}">
+                <i class="fas fa-envelope"></i>
+                <span>{% trans "КОНТАКТ" %}</span>
+              </a>
+            </li>
+            <li class="mobile-menu-divider"></li>
+            <li class="mobile-menu-item mobile-info">
+              <div class="mobile-info-section">
+                <div class="mobile-info-item">
+                  <i class="fas fa-clock"></i>
+                  <div class="mobile-info-text">
+                    <div class="mobile-info-title">{% trans "Работно време" %}</div>
+                    <div class="mobile-info-subtitle">{% trans "Пон-Саб" %}: 09:00-17:00</div>
+                  </div>
+                </div>
+                <div class="mobile-info-item">
+                  <i class="fas fa-phone"></i>
+                  <div class="mobile-info-text">
+                    <div class="mobile-info-title">{% trans "Телефон" %}</div>
+                    <div class="mobile-info-subtitle">
+                      <a href="tel:+38902205765">+389 02 20 57 652</a><br>
+                      <a href="tel:+38978806807">+389 78 806 807</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mobile-info-item">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  <i class="fas fa-globe"></i>
+                  <div class="mobile-info-text">
+                    <div class="mobile-info-title">{% trans "Јазик" %}</div>
+                    <div class="mobile-language-switcher">
+                      {% for language in languages %}
+                        {% if language.code != LANGUAGE_CODE %}
+                          <form action="{% url 'set_language' %}" method="post" class="language-form-mobile">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                            <input name="language" type="hidden" value="{{ language.code }}" />
+                            <button type="submit" class="mobile-language-btn" data-lang="{{ language.code }}">
+                              {% if language.code == 'en' %}
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322" 
+                                     alt="Switch to English" class="mobile-flag-icon">
+                                EN
+                              {% else %}
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215" 
+                                     alt="Switch to Macedonian" class="mobile-flag-icon">
+                                МК
+                              {% endif %}
+                            </button>
+                          </form>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </a>
-            
-            <!-- Search Vehicles -->
-            <a href="{% url 'frontend_vehicles' %}" class="mobile-nav-btn mobile-search-btn">
-              <i class="fas fa-car"></i>
-              <div class="mobile-btn-text">
-                <div class="mobile-btn-title">{% trans "ВОЗИЛА" %}</div>
-                <div class="mobile-btn-subtitle">{% trans "Пребарај" %}</div>
-              </div>
-            </a>
-          </div>
+            </li>
+          </ul>
         </div>
         <div class="d-none d-lg-flex align-items-center">
-          <div class="d-flex align-items-center me-2">
+          <a href="{% url 'frontend_contact' %}" class="btn btn-outline-secondary me-2" style="border-color: #6C757D; color: #6C757D; font-size: 0.85rem; padding: 0.4rem 0.8rem;">
+            <i class="fas fa-clock d-inline d-xl-none"></i>
+            <div class="text-center d-none d-xl-block">
+              <div style="font-weight: 600; line-height: 1.1;">{% trans "Раб.време" %}</div>
+              <div style="font-size: 0.75rem; line-height: 1.1;">{% trans "Пон-Саб (09:00-17:00)" %}</div>
+            </div>
+          </a>
+          <div class="btn-group me-2">
+            <a href="tel:+38902205765" class="btn btn-outline-primary" style="border-color: #ff8c00; color: #ff8c00; font-size: 0.8rem;">
+              <i class="fas fa-phone me-1"></i><span class="d-none d-lg-inline">+389 02 20 57 652</span><span class="d-lg-none">{% trans "Повици" %}</span>
+            </a>
+            <a href="tel:+38978806807" class="btn btn-outline-primary" style="border-color: #ff8c00; color: #ff8c00; font-size: 0.8rem;">
+              <i class="fas fa-mobile-alt me-1"></i><span class="d-none d-lg-inline">+389 78 806 807</span><span class="d-lg-none">{% trans "Мобилен" %}</span>
+            </a>
+          </div>
+          <div class="d-flex align-items-center">
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
-              <form action="{% url 'set_language' %}" method="post" class="language-form">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
-                <input name="language" type="hidden" value="{{ language.code }}" />
-                <button type="submit" class="language-link {% if language.code == LANGUAGE_CODE %}active{% endif %} {% if forloop.last %}{% else %}me-1{% endif %}" data-lang="{{ language.code }}">
-                  {% if language.code == 'en' %}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322" 
-                         srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1600px-English_language.svg.png?20250726011322 1.5x" 
-                         alt="English language" class="flag-icon">
-                  {% else %}
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215" 
-                         srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1600px-Flag_of_North_Macedonia.svg.png?20231224094215 1.5x" 
-                         alt="North Macedonian flag" class="flag-icon">
-                  {% endif %}
-                </button>
-              </form>
+              {% if language.code != LANGUAGE_CODE %}
+                <form action="{% url 'set_language' %}" method="post" class="language-form">
+                  {% csrf_token %}
+                  <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                  <input name="language" type="hidden" value="{{ language.code }}" />
+                  <button type="submit" class="language-link" data-lang="{{ language.code }}">
+                    {% if language.code == 'en' %}
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322" 
+                           srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/English_language.svg/1200px-English_language.svg.png?20250726011322 1x, https://upload.wikimedia.org/Wikipedia/commons/thumb/0/0b/English_language.svg/1600px-English_language.svg.png?20250726011322 1.5x" 
+                           alt="Switch to English" class="flag-icon">
+                    {% else %}
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215" 
+                           srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1200px-Flag_of_North_Macedonia.svg.png?20231224094215 1x, https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1600px-Flag_of_North_Macedonia.svg.png?20231224094215 1.5x" 
+                           alt="Switch to Macedonian" class="flag-icon">
+                    {% endif %}
+                  </button>
+                </form>
+              {% endif %}
             {% endfor %}
           </div>
-          <a href="{% url 'frontend_contact' %}" class="btn btn-outline-secondary me-2" style="border-color: #6C757D; color: #6C757D; font-size: 0.85rem; padding: 0.4rem 0.8rem;">
-            <div class="text-center">
-              <div style="font-weight: 600; line-height: 1.1;">{% trans "Раб.време" %}</div>
-              <div style="font-size: 0.75rem; line-height: 1.1;">{% trans "Пон-Саб (08:00-16:00)" %}</div>
-            </div>
-          </a>
-          <a href="tel:+38970123456" class="btn btn-outline-primary me-2" style="border-color: #ff8c00; color: #ff8c00;">
-            <i class="fas fa-phone me-1"></i><span class="d-none d-lg-inline">+389 70 123 456</span><span class="d-lg-none">{% trans "Повици" %}</span>
-          </a>
-          <a href="{% url 'frontend_vehicles' %}" class="btn btn-primary" style="background: #ff8c00; border-color: #ff8c00;">
-            <span class="d-none d-sm-inline">{% trans "Пребарај" %} </span>{% trans "ВОЗИЛА" %}
-          </a>
         </div>
       </div>
     </div>
@@ -305,83 +381,153 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
     
-    /* Mobile navigation grid */
-    .mobile-nav-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    /* Functional mobile navigation with 4 elements */
-    .mobile-nav-functional {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-      align-items: stretch;
-    }
-    
-    .mobile-nav-btn {
+    /* Mobile navigation list style */
+    .mobile-menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       background: white;
-      color: #ff8c00;
-      border: 2px solid #ff8c00;
-      padding: 0.5rem 0.25rem;
-      text-align: center;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.7rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    .mobile-menu-item {
+      border-bottom: 1px solid #f1f3f4;
+    }
+    
+    .mobile-menu-link {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 65px;
+      padding: 1rem 1.5rem;
+      color: #212529;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
       position: relative;
     }
     
-    .mobile-nav-btn:hover {
-      background: #ff8c00 !important;
-      color: white !important;
+    .mobile-menu-link:hover {
+      color: #ff8c00;
+      background: #f8f9fa;
       text-decoration: none;
-      transform: translateY(-2px);
     }
     
-    .mobile-nav-btn i {
+    .mobile-menu-link i {
+      width: 20px;
+      margin-right: 1rem;
       font-size: 1rem;
-      margin-bottom: 0.25rem;
+      text-align: center;
     }
     
-    .mobile-btn-text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .mobile-menu-link span {
+      flex: 1;
     }
     
-    .mobile-btn-title {
-      font-size: 0.65rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 1px;
+    /* Mobile dropdown */
+    .mobile-dropdown-toggle .dropdown-arrow {
+      margin-left: auto;
+      transition: transform 0.3s ease;
     }
     
-    .mobile-btn-subtitle {
-      font-size: 0.55rem;
-      font-weight: 500;
-      line-height: 1;
-      opacity: 0.8;
+    .mobile-dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
+      transform: rotate(180deg);
     }
     
-    /* Language switcher mobile */
-    .mobile-nav-item {
+    .mobile-submenu {
+      background: #f8f9fa;
+    }
+    
+    .mobile-submenu-link {
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding: 0.8rem 1.5rem 0.8rem 3.5rem;
+      color: #6c757d;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #e9ecef;
     }
     
+    .mobile-submenu-link:hover {
+      color: #ff8c00;
+      background: #e9ecef;
+      text-decoration: none;
+    }
+    
+    .mobile-submenu-link i {
+      width: 16px;
+      margin-right: 0.8rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    /* Mobile menu divider */
+    .mobile-menu-divider {
+      height: 8px;
+      background: #e9ecef;
+      border: none;
+    }
+    
+    /* Mobile info section */
+    .mobile-info-section {
+      padding: 1rem 1.5rem;
+      background: #f8f9fa;
+    }
+    
+    .mobile-info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e9ecef;
+    }
+    
+    .mobile-info-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .mobile-info-item i {
+      width: 20px;
+      margin-right: 1rem;
+      font-size: 1rem;
+      color: #ff8c00;
+      margin-top: 0.2rem;
+    }
+    
+    .mobile-info-text {
+      flex: 1;
+    }
+    
+    .mobile-info-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #212529;
+      margin-bottom: 0.2rem;
+    }
+    
+    .mobile-info-subtitle {
+      font-size: 0.8rem;
+      color: #6c757d;
+      line-height: 1.4;
+    }
+    
+    .mobile-info-subtitle a {
+      color: #ff8c00;
+      text-decoration: none;
+    }
+    
+    .mobile-info-subtitle a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Mobile language switcher */
     .mobile-language-switcher {
       display: flex;
-      gap: 2px;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
     }
     
     .language-form-mobile {
@@ -390,13 +536,37 @@
     }
     
     .mobile-language-btn {
-      background: white;
-      border: 2px solid #ff8c00;
-      padding: 8px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
       display: flex;
       align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.8rem;
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      color: #6c757d;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .mobile-language-btn:hover {
+      border-color: #ff8c00;
+      color: #ff8c00;
+    }
+    
+    .mobile-language-btn.active {
+      background: #ff8c00;
+      border-color: #ff8c00;
+      color: white;
+    }
+    
+    .mobile-flag-icon {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
       justify-content: center;
       cursor: pointer;
       min-width: 44px;
@@ -574,7 +744,7 @@
     }
     
     /* Medium desktop - compact navbar items */
-    @media (min-width: 992px) and (max-width: 1199px) {
+    @media (min-width: 992px) and (max-width: 1499px) {
       .navbar-nav .nav-link {
         padding: 0.5rem 0.8rem !important;
         font-size: 0.9rem;
@@ -592,18 +762,14 @@
       .btn .d-none.d-sm-inline {
         display: none !important;
       }
-      
-      
-      .container {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
     }
     
     /* Wider navbar container */
     .navbar .container {
-      max-width: 95%;
+      max-width: 100%;
       width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
     }
     
     @media (min-width: 1400px) {
@@ -644,7 +810,7 @@
             <i class="fas fa-car"></i>AUTO DINERO
           </h5>
           <p class="brand-description">
-            {% trans "Водечка компанија за продажба на квалитетни автомобили во Македонија. Веќе 15+ години ви помагаме да го најдете совршениот автомобил." %}
+            {% trans "Просперитетна и најбрзорастечка компанија за увоз и продажба на квалитетни автомобили на македонскиот пазар." %}
           </p>
         </div>
         <div class="social-links">
@@ -669,8 +835,10 @@
         <ul class="footer-list">
           <li><a href="{% url 'frontend_index' %}">{% trans "Дома" %}</a></li>
           <li><a href="{% url 'frontend_vehicles' %}">{% trans "Возила" %}</a></li>
-          <li><a href="#">{% trans "За нас" %}</a></li>
-          <li><a href="#">{% trans "Контакт" %}</a></li>
+          <li><a href="{% url 'frontend_services' %}">{% trans "Услуги" %}</a></li>
+          <li><a href="{% url 'frontend_collaboration' %}">{% trans "Соработка" %}</a></li>
+          <li><a href="{% url 'frontend_about' %}">{% trans "За нас" %}</a></li>
+          <li><a href="{% url 'frontend_contact' %}">{% trans "Контакт" %}</a></li>
         </ul>
       </div>
       
@@ -680,11 +848,11 @@
         <div class="working-hours">
           <div class="hours-item">
             <span class="days">{% trans "Понеделник - Петок:" %}</span>
-            <span class="time">09:00 - 18:00</span>
+            <span class="time">09:00 - 17:00</span>
           </div>
           <div class="hours-item">
             <span class="days">{% trans "Сабота:" %}</span>
-            <span class="time">09:00 - 15:00</span>
+            <span class="time">09:00 - 17:00</span>
           </div>
           <div class="hours-item">
             <span class="days">{% trans "Недела:" %}</span>
@@ -699,7 +867,11 @@
         <div class="contact-info">
           <div class="contact-item">
             <i class="fas fa-phone"></i>
-            <span>+389 70 123 456</span>
+            <span>+389 02 20 57 652</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-mobile-alt"></i>
+            <span>+389 78 806 807</span>
           </div>
           <div class="contact-item">
             <i class="fas fa-envelope"></i>

@@ -1,0 +1,636 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}AUTO DINERO Macedonia - {% trans "СОРАБОТКА" %}{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-red: #ff8c00;
+    --primary-blue: #1D3557;
+    --accent-orange: #F77F00;
+    --light-gray: #F8F9FA;
+    --dark-gray: #212529;
+    --medium-gray: #6C757D;
+    --white: #FFFFFF;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    background: var(--white);
+  }
+
+  /* Hero Section */
+  .collaboration-hero {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    color: var(--white);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .collaboration-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  }
+
+  .collaboration-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .collaboration-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .collaboration-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Main Content */
+  .collaboration-content {
+    padding: 80px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--medium-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Collaboration Types */
+  .collaboration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .collaboration-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid #f1f3f4;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .collaboration-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-red), var(--accent-orange));
+  }
+
+  .collaboration-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .collaboration-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--primary-red), var(--accent-orange));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 3rem;
+    color: var(--white);
+  }
+
+  .collaboration-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+  }
+
+  .collaboration-card-description {
+    color: var(--medium-gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .collaboration-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .collaboration-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+  }
+
+  .collaboration-features li i {
+    color: var(--primary-red);
+    margin-right: 0.8rem;
+    width: 16px;
+  }
+
+  .collaboration-btn {
+    background: var(--primary-red);
+    color: var(--white);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .collaboration-btn:hover {
+    background: #e67a00;
+    color: var(--white);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  /* Benefits Section */
+  .benefits-section {
+    background: var(--light-gray);
+    padding: 4rem 0;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .benefit-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+  }
+
+  .benefit-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-red), var(--accent-orange));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: var(--white);
+  }
+
+  .benefit-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-gray);
+  }
+
+  .benefit-description {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Process Section */
+  .process-section {
+    padding: 4rem 0;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-red);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+  }
+
+  .process-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+  }
+
+  .process-description {
+    color: var(--medium-gray);
+    line-height: 1.6;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    padding: 60px 0;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .cta-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cta-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-btn {
+    background: var(--white);
+    color: var(--primary-blue);
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .cta-btn:hover {
+    background: var(--light-gray);
+    color: var(--primary-blue);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  .cta-btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+  }
+
+  .cta-btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .collaboration-title {
+      font-size: 2.2rem;
+    }
+
+    .collaboration-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .collaboration-card {
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-btn {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Collaboration Hero -->
+<section class="collaboration-hero">
+  <div class="container">
+    <div class="collaboration-hero-content">
+      <h1 class="collaboration-title">{% trans "СОРАБОТКА" %}</h1>
+      <p class="collaboration-subtitle">{% trans "Придружете се на нашата мрежа на партнери и заедно да градиме успешна автомобилска заедница" %}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Collaboration Content -->
+<section class="collaboration-content">
+  <div class="container">
+    
+    <!-- Collaboration Types -->
+    <div class="section-header">
+      <h2 class="section-title">{% trans "Начини на соработка" %}</h2>
+      <p class="section-subtitle">{% trans "Изберете го начинот на соработка што најдобро ви одговара" %}</p>
+    </div>
+    
+    <div class="collaboration-grid">
+      
+      <!-- Dealership Partnership -->
+      <div class="collaboration-card">
+        <div class="collaboration-icon">
+          <i class="fas fa-store"></i>
+        </div>
+        <h3 class="collaboration-card-title">{% trans "Партнерство со салони" %}</h3>
+        <p class="collaboration-card-description">{% trans "Станете дел од нашата мрежа на партнерски салони и проширете го вашиот бизнис" %}</p>
+        
+        <ul class="collaboration-features">
+          <li><i class="fas fa-check"></i>{% trans "Заедничка промоција на возила" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Споделување на инвентар" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Заеднички маркетинг" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Техничка поддршка" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Обука на персонал" %}</li>
+        </ul>
+        
+        <a href="{% url 'frontend_contact' %}" class="collaboration-btn">{% trans "Контактирај" %}</a>
+      </div>
+      
+      <!-- Individual Sellers -->
+      <div class="collaboration-card">
+        <div class="collaboration-icon">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <h3 class="collaboration-card-title">{% trans "Индивидуални продавачи" %}</h3>
+        <p class="collaboration-card-description">{% trans "Зарабувајте како индивидуален агент за продажба на автомобили" %}</p>
+        
+        <ul class="collaboration-features">
+          <li><i class="fas fa-check"></i>{% trans "Комисиона од продажба" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Флексибилно работно време" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Маркетинг поддршка" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Обука и сертификација" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "CRM системи" %}</li>
+        </ul>
+        
+        <a href="{% url 'frontend_contact' %}" class="collaboration-btn">{% trans "Започни" %}</a>
+      </div>
+      
+      <!-- Service Providers -->
+      <div class="collaboration-card">
+        <div class="collaboration-icon">
+          <i class="fas fa-tools"></i>
+        </div>
+        <h3 class="collaboration-card-title">{% trans "Сервисни партнери" %}</h3>
+        <p class="collaboration-card-description">{% trans "Станете дел од нашата мрежа на сервиси и услуги за автомобили" %}</p>
+        
+        <ul class="collaboration-features">
+          <li><i class="fas fa-check"></i>{% trans "Препорачување до клиенти" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Заедничка промоција" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Приоритетни услуги" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Специјални попусти" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Квалитетна контрола" %}</li>
+        </ul>
+        
+        <a href="{% url 'frontend_contact' %}" class="collaboration-btn">{% trans "Придружи се" %}</a>
+      </div>
+      
+      <!-- Financial Partners -->
+      <div class="collaboration-card">
+        <div class="collaboration-icon">
+          <i class="fas fa-university"></i>
+        </div>
+        <h3 class="collaboration-card-title">{% trans "Финансиски партнери" %}</h3>
+        <p class="collaboration-card-description">{% trans "Соработка со банки и лизинг компании за подобри услови" %}</p>
+        
+        <ul class="collaboration-features">
+          <li><i class="fas fa-check"></i>{% trans "Кредитни решенија" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Лизинг опции" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Брза одобрување" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Конкурентни камати" %}</li>
+          <li><i class="fas fa-check"></i>{% trans "Специјални промоции" %}</li>
+        </ul>
+        
+        <a href="{% url 'frontend_contact' %}" class="collaboration-btn">{% trans "Договори" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{% trans "Бенефити од соработката" %}</h2>
+      <p class="section-subtitle">{% trans "Зошто да изберете соработка со AUTO DINERO?" %}</p>
+    </div>
+    
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h4 class="benefit-title">{% trans "Зголемена продажба" %}</h4>
+        <p class="benefit-description">{% trans "Пристап до поголема база на клиенти и зголемени можности за продажба" %}</p>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h4 class="benefit-title">{% trans "Мрежа на партнери" %}</h4>
+        <p class="benefit-description">{% trans "Дел од силна мрежа на партнери низ целата земја" %}</p>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h4 class="benefit-title">{% trans "Обука и развој" %}</h4>
+        <p class="benefit-description">{% trans "Континуирана обука и развој на вашите вештини" %}</p>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-bullhorn"></i>
+        </div>
+        <h4 class="benefit-title">{% trans "Маркетинг поддршка" %}</h4>
+        <p class="benefit-description">{% trans "Професионален маркетинг и промоција на вашите услуги" %}</p>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h4 class="benefit-title">{% trans "Квалитетна гаранција" %}</h4>
+        <p class="benefit-description">{% trans "Заштита на репутацијата преку високи стандарди за квалитет" %}</p>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h4 class="benefit-title">{% trans "24/7 поддршка" %}</h4>
+        <p class="benefit-description">{% trans "Континуирана поддршка и помош од наш тим на експерти" %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="process-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{% trans "Како да започнете?" %}</h2>
+      <p class="section-subtitle">{% trans "Едноставен процес во 4 чекори" %}</p>
+    </div>
+    
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-number">1</div>
+        <h4 class="process-title">{% trans "Контакт" %}</h4>
+        <p class="process-description">{% trans "Контактирајте не и кажете ни за вашиот интерес за соработка" %}</p>
+      </div>
+      
+      <div class="process-step">
+        <div class="process-number">2</div>
+        <h4 class="process-title">{% trans "Средба" %}</h4>
+        <p class="process-description">{% trans "Закажуваме средба за дискусија за условите и можностите" %}</p>
+      </div>
+      
+      <div class="process-step">
+        <div class="process-number">3</div>
+        <h4 class="process-title">{% trans "Договор" %}</h4>
+        <p class="process-description">{% trans "Потпишување на договор за соработка и дефинирање на услови" %}</p>
+      </div>
+      
+      <div class="process-step">
+        <div class="process-number">4</div>
+        <h4 class="process-title">{% trans "Старт" %}</h4>
+        <p class="process-description">{% trans "Започнување со работа и градење на успешна соработка" %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-title">{% trans "Започнете денес!" %}</h2>
+    <p class="cta-subtitle">{% trans "Придружете се на нашата растечка мрежа на успешни партнери" %}</p>
+    <div class="cta-buttons">
+      <a href="{% url 'frontend_contact' %}" class="cta-btn">
+        <i class="fas fa-handshake me-2"></i>{% trans "Започни соработка" %}
+      </a>
+      <a href="{% url 'frontend_about' %}" class="cta-btn cta-btn-secondary">
+        <i class="fas fa-info-circle me-2"></i>{% trans "Дознај повеќе" %}
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Simple animations on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observe cards for entrance animation
+  document.querySelectorAll('.collaboration-card, .benefit-item, .process-step').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s ease';
+    observer.observe(card);
+  });
+});
+</script>
+{% endblock %}

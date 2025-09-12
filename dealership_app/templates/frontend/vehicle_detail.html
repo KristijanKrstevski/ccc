@@ -1439,7 +1439,6 @@
     <div class="image-gallery">
       <div class="main-image">
         <img src="{{ car.main_image.url }}" alt="{{ car.title }}" id="mainImage">
-        <div class="image-badge">AUTO DINERO</div>
         <button class="open-popup-btn" onclick="openImagePopup('{{ car.main_image.url }}', 0)">
           <i class="fas fa-expand-alt"></i>
           {% trans "Отвори" %}
@@ -1476,8 +1475,6 @@
         {% trans "луѓето го гледаат ова во моментов" %}
       </div>
       
-      <div class="price-label">{% trans "Цена" %}</div>
-      <div class="car-price">{{ car.display_price }}</div>
       
       <div class="quick-specs">
         <div class="spec-item">
@@ -1628,7 +1625,6 @@
           <a href="{% url 'frontend_vehicle_detail' rec_car.pk %}?back=vehicles{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.brand %}&brand={{ request.GET.brand }}{% endif %}{% if request.GET.model_name %}&model_name={{ request.GET.model_name }}{% endif %}{% if request.GET.transmission %}&transmission={{ request.GET.transmission }}{% endif %}{% if request.GET.vehicle_body %}&vehicle_body={{ request.GET.vehicle_body }}{% endif %}{% if request.GET.fuel %}&fuel={{ request.GET.fuel }}{% endif %}{% if request.GET.color %}&color={{ request.GET.color }}{% endif %}{% if request.GET.for_beginners %}&for_beginners={{ request.GET.for_beginners }}{% endif %}{% if request.GET.price_from %}&price_from={{ request.GET.price_from }}{% endif %}{% if request.GET.price_to %}&price_to={{ request.GET.price_to }}{% endif %}{% if request.GET.year_from %}&year_from={{ request.GET.year_from }}{% endif %}{% if request.GET.sort_price %}&sort_price={{ request.GET.sort_price }}{% endif %}{% if request.GET.sort_mileage %}&sort_mileage={{ request.GET.sort_mileage }}{% endif %}{% if request.GET.sort_year %}&sort_year={{ request.GET.sort_year }}{% endif %}" class="recommended-link">
             <div class="recommended-image">
               <img src="{{ rec_car.main_image.url }}" alt="{{ rec_car.title }}" loading="lazy">
-              <div class="recommended-badge">AUTO DINERO</div>
             </div>
             <div class="recommended-content">
               <h4 class="recommended-title">{{ rec_car.brand.name }} {{ rec_car.model_name.name }}</h4>
@@ -1643,7 +1639,6 @@
                   {{ rec_car.get_transmission_display }}
                 </span>
               </div>
-              <div class="recommended-price">{{ rec_car.display_price }}</div>
             </div>
           </a>
         </div>

@@ -846,3 +846,18 @@ Traceback (most recent call last):
   File "/home/krstevski/.local/lib/python3.9/site-packages/django/http/request.py", line 150, in get_host
     raise DisallowedHost(msg)
 django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-09-07 13:45:18,286 log 223152 139687940684096 Internal Server Error: /en/collaboration/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 250, in collaboration
+    return render(request, 'frontend/collaboration.html')
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: frontend/collaboration.html

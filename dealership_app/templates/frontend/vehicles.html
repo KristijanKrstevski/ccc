@@ -782,9 +782,6 @@
     <a href="{% url 'frontend_vehicle_detail' car.pk %}?back=vehicles&page={{ cars.number }}&brand={{ brand }}&model_name={{ model_name }}&transmission={{ transmission }}&vehicle_body={{ vehicle_body }}&fuel={{ fuel }}&color={{ color }}&for_beginners={{ for_beginners }}&price_from={{ price_from }}&price_to={{ price_to }}&year_from={{ year_from }}&sort_price={{ sort_price }}&sort_mileage={{ sort_mileage }}&sort_year={{ sort_year }}" class="car-card" id="car-{{ car.pk }}">
       <div class="car-image">
         <img src="{{ car.main_image.url }}" alt="{{ car.title }}">
-        {% if forloop.counter <= 8 %}
-        <div class="car-badge">{% trans "ПРЕПОРАЧАНО" %}</div>
-        {% endif %}
       </div>
       <div class="car-details">
         <h3 class="car-title">{{ car.brand.name }} {{ car.model_name.name }}</h3>
@@ -814,10 +811,6 @@
         </div>
         
         <div class="car-footer">
-          <div class="car-price">{{ car.display_price }}</div>
-          <span class="view-btn">
-            <i class="fas fa-eye me-1"></i>{% trans "Детали" %}
-          </span>
         </div>
       </div>
     </a>

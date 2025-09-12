@@ -240,6 +240,15 @@ def about(request):
 def contact(request):
     return render(request, 'frontend/contact.html')
 
+def services(request):
+    service_type = request.GET.get('service', 'order')  # Default to 'order'
+    return render(request, 'frontend/services.html', {
+        'service_type': service_type
+    })
+
+def collaboration(request):
+    return render(request, 'frontend/collaboration.html')
+
 def terms(request):
     return render(request, 'frontend/terms.html')
 

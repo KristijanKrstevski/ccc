@@ -1,0 +1,564 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}AUTO DINERO Macedonia - {% trans "УСЛУГИ" %}{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-red: #ff8c00;
+    --primary-blue: #1D3557;
+    --accent-orange: #F77F00;
+    --light-gray: #F8F9FA;
+    --dark-gray: #212529;
+    --medium-gray: #6C757D;
+    --white: #FFFFFF;
+    --shadow: 0 4px 20px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    background: var(--white);
+  }
+
+  /* Hero Section */
+  .services-hero {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    color: var(--white);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  }
+
+  .services-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .services-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .services-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  /* Service Selection Tabs */
+  .service-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .service-tab {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .service-tab:hover,
+  .service-tab.active {
+    background: var(--white);
+    color: var(--primary-blue);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  /* Main Content Section */
+  .services-content {
+    padding: 80px 0;
+    background: var(--white);
+  }
+
+  .service-section {
+    display: none;
+  }
+
+  .service-section.active {
+    display: block;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--medium-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Service Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid #f1f3f4;
+    text-align: center;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-red), var(--accent-orange));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2.5rem;
+    color: var(--white);
+  }
+
+  .service-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+  }
+
+  .service-card-description {
+    color: var(--medium-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-btn {
+    background: var(--primary-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .service-btn:hover {
+    background: #e67a00;
+    color: var(--white);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  /* Process Steps */
+  .process-section {
+    background: var(--light-gray);
+    padding: 4rem 0;
+    margin: 4rem 0;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-red);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+  }
+
+  .process-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+  }
+
+  .process-description {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-red) 100%);
+    padding: 60px 0;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .cta-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cta-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-btn {
+    background: var(--white);
+    color: var(--primary-blue);
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .cta-btn:hover {
+    background: var(--light-gray);
+    color: var(--primary-blue);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+
+  .cta-btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+  }
+
+  .cta-btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .services-title {
+      font-size: 2.2rem;
+    }
+
+    .service-tabs {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .service-tab {
+      width: 100%;
+      max-width: 250px;
+      text-align: center;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-btn {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Services Hero -->
+<section class="services-hero">
+  <div class="container">
+    <div class="services-hero-content">
+      <h1 class="services-title">{% trans "УСЛУГИ" %}</h1>
+      <p class="services-subtitle">{% trans "Професионални услуги за сите ваши автомобилски потреби" %}</p>
+      
+      <div class="service-tabs">
+        <a href="?service=order" class="service-tab {% if service_type == 'order' %}active{% endif %}">
+          <i class="fas fa-shopping-cart me-2"></i>{% trans "НАРАЧАЈ" %}
+        </a>
+        <a href="?service=sell" class="service-tab {% if service_type == 'sell' %}active{% endif %}">
+          <i class="fas fa-handshake me-2"></i>{% trans "ПРОДАЈ" %}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Content -->
+<section class="services-content">
+  <div class="container">
+    
+    <!-- ORDER Service Section -->
+    <div class="service-section {% if service_type == 'order' %}active{% endif %}" id="order-section">
+      <div class="section-header">
+        <h2 class="section-title">{% trans "Нарачка на автомобил" %}</h2>
+        <p class="section-subtitle">{% trans "Ние ќе го најдеме совршениот автомобил за вас според вашите потреби и буџет" %}</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Персонализирана претрага" %}</h3>
+          <p class="service-card-description">{% trans "Кажете ни што барате и ние ќе го најдеме најдобриот автомобил за вас од нашата мрежа на партнери" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Започни" %}</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Проверка на историја" %}</h3>
+          <p class="service-card-description">{% trans "Детална проверка на историјата на возилото, технички преглед и гаранција за квалитет" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Дознај повеќе" %}</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-file-contract"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Комплетна документација" %}</h3>
+          <p class="service-card-description">{% trans "Ние се грижиме за сите документи - регистрација, осигурување, трансфер на сопственост" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Контакт" %}</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Достава" %}</h3>
+          <p class="service-card-description">{% trans "Бесплатна достава во цела Македонија за возила над 15.000 евра" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Нарачај" %}</a>
+        </div>
+      </div>
+      
+      <!-- Process Section for Order -->
+      <div class="process-section">
+        <div class="container">
+          <div class="section-header">
+            <h3 class="section-title">{% trans "Како функционира?" %}</h3>
+          </div>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="process-number">1</div>
+              <h4 class="process-title">{% trans "Контактирајте не" %}</h4>
+              <p class="process-description">{% trans "Кажете ни што барате - марка, модел, буџет, специјални барања" %}</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">2</div>
+              <h4 class="process-title">{% trans "Претрага" %}</h4>
+              <p class="process-description">{% trans "Ние ја бараме најдобрата опција од нашата мрежа на партнери" %}</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">3</div>
+              <h4 class="process-title">{% trans "Проверка" %}</h4>
+              <p class="process-description">{% trans "Детална проверка на возилото и неговата историја" %}</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">4</div>
+              <h4 class="process-title">{% trans "Достава" %}</h4>
+              <p class="process-description">{% trans "Вашиот автомобил е спремен за преземање или достава" %}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SELL Service Section -->
+    <div class="service-section {% if service_type == 'sell' %}active{% endif %}" id="sell-section">
+      <div class="section-header">
+        <h2 class="section-title">{% trans "Продажба на автомобил" %}</h2>
+        <p class="section-subtitle">{% trans "Продајте го вашиот автомобил брзо и по најдобра цена со наша помош" %}</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Бесплатна проценка" %}</h3>
+          <p class="service-card-description">{% trans "Професионална проценка на вредноста на вашиот автомобил според пазарните услови" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Процени" %}</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Фотографирање" %}</h3>
+          <p class="service-card-description">{% trans "Професионално фотографирање на вашиот автомобил за најдобра презентација" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Резервирај" %}</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Маркетинг" %}</h3>
+          <p class="service-card-description">{% trans "Вашиот автомобил ќе биде промовиран на сите наши канали и партнерски платформи" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Промовирај" %}</a>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3 class="service-card-title">{% trans "Договор" %}</h3>
+          <p class="service-card-description">{% trans "Ние се грижиме за сите детали околу продажбата и правните аспекти" %}</p>
+          <a href="{% url 'frontend_contact' %}" class="service-btn">{% trans "Започни" %}</a>
+        </div>
+      </div>
+      
+      <!-- Process Section for Sell -->
+      <div class="process-section">
+        <div class="container">
+          <div class="section-header">
+            <h3 class="section-title">{% trans "Како функционира?" %}</h3>
+          </div>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="process-number">1</div>
+              <h4 class="process-title">{% trans "Контакт" %}</h4>
+              <p class="process-description">{% trans "Контактирајте не со детали за вашиот автомобил" %}</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">2</div>
+              <h4 class="process-title">{% trans "Проценка" %}</h4>
+              <p class="process-description">{% trans "Бесплатна професионална проценка на вредноста" %}</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">3</div>
+              <h4 class="process-title">{% trans "Промоција" %}</h4>
+              <p class="process-description">{% trans "Фотографирање и промовирање на сите канали" %}</p>
+            </div>
+            <div class="process-step">
+              <div class="process-number">4</div>
+              <h4 class="process-title">{% trans "Продажба" %}</h4>
+              <p class="process-description">{% trans "Брза и безбедна продажба со сите документи" %}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-title">{% trans "Готови за соработка?" %}</h2>
+    <p class="cta-subtitle">{% trans "Контактирајте не денес и започнете со вашата автомобилска приказна" %}</p>
+    <div class="cta-buttons">
+      <a href="{% url 'frontend_contact' %}" class="cta-btn">
+        <i class="fas fa-phone me-2"></i>{% trans "Контактирај не" %}
+      </a>
+      <a href="{% url 'frontend_vehicles' %}" class="cta-btn cta-btn-secondary">
+        <i class="fas fa-car me-2"></i>{% trans "Види возила" %}
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Service tab functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Get current service type from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const serviceType = urlParams.get('service') || 'order';
+  
+  // Show appropriate section
+  document.querySelectorAll('.service-section').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  const activeSection = document.getElementById(serviceType + '-section');
+  if (activeSection) {
+    activeSection.classList.add('active');
+  }
+  
+  // Update active tab
+  document.querySelectorAll('.service-tab').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  
+  const activeTab = document.querySelector(`.service-tab[href="?service=${serviceType}"]`);
+  if (activeTab) {
+    activeTab.classList.add('active');
+  }
+});
+</script>
+{% endblock %}

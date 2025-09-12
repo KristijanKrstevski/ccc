@@ -1,7 +1,7 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
 {% load i18n %}
-{% block title %}AUTO DINERO Macedonia - {% trans "Најди го твојот автомобил" %}{% endblock %}
+{% block title %}AUTO DINERO Macedonia - {% trans "Добредојдовте во модерното време на квалитетните автомобили" %}{% endblock %}
 
 {% block extra_css %}
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -367,6 +367,16 @@
     box-shadow: var(--shadow);
     transition: all 0.4s ease;
     border: 1px solid #F1F3F4;
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  
+  .car-card:hover,
+  .car-card:focus,
+  .car-card:active,
+  .car-card:visited {
+    text-decoration: none !important;
+    color: inherit !important;
   }
 
   .car-card:hover {
@@ -493,62 +503,106 @@
     padding: 80px 0;
   }
 
-  .services-grid {
+  /* Payment Options Grid */
+  .payment-options {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-  }
-  
-  /* Responsive services grid - avoid 3 columns */
-  @media (max-width: 1200px) {
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
-  .service-card {
-    background: var(--white);
+  .payment-option {
+    background: #28a745; /* Beautiful green color */
     padding: 40px 30px;
     border-radius: 16px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
 
-  .service-card:hover {
-    transform: translateY(-5px);
+  .payment-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
   }
 
-  .service-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, var(--primary-red), var(--accent-orange));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 2rem;
-    color: var(--white);
+  .payment-option:hover::before {
+    left: 100%;
   }
 
-  .service-title {
+  .payment-option:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(40, 167, 69, 0.3);
+    background: #218838; /* Darker green on hover */
+  }
+
+  .payment-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--dark-gray);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    display: block;
+    line-height: 1.3;
+    position: relative;
+    z-index: 2;
   }
 
-  .service-description {
-    color: var(--medium-gray);
-    line-height: 1.6;
+  /* Tablet Responsive */
+  @media (max-width: 992px) {
+    .payment-options {
+      gap: 25px;
+      max-width: 800px;
+    }
+    
+    .payment-option {
+      padding: 35px 25px;
+    }
+    
+    .payment-text {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .services-section {
+      padding: 60px 0;
+    }
+    
+    .payment-options {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 400px;
+    }
+    
+    .payment-option {
+      padding: 30px 25px;
+    }
+    
+    .payment-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+
+  /* Small Mobile */
+  @media (max-width: 480px) {
+    .payment-option {
+      padding: 25px 20px;
+      border-radius: 12px;
+    }
+    
+    .payment-text {
+      font-size: 1.1rem;
+    }
   }
 
   /* CTA Section */
@@ -765,8 +819,8 @@
 <section class="hero-section">
   <div class="container">
     <div class="hero-content">
-      <h1 class="hero-title">{% trans "Најди го твојот автомобил" %}</h1>
-      <p class="hero-subtitle">{% trans "Широк избор на квалитетни возила • Проверена историја • Најдобри цени" %}</p>
+      <h1 class="hero-title">{% trans "Добредојдовте во модерното време на квалитетните автомобили" %}</h1>
+      <p class="hero-subtitle">{% trans "Внимателно одбрани возила • Проверена историја • Најдобри цени" %}</p>
     </div>
   </div>
 </section>
@@ -774,14 +828,6 @@
 <!-- Advanced Search -->
 <section class="container">
   <div class="search-container">
-    <h2 class="search-title">{% trans "Пронајди го совршениот автомобил за тебе" %}</h2>
-    
-    <!-- View All Button -->
-    <div style="text-align: center; margin: 20px 0;">
-      <a href="{% url 'frontend_vehicles' %}" class="btn btn-outline-primary" style="border-color: #ff8c00; color: #ff8c00; font-weight: 600;">
-        <i class="fas fa-th-large me-1"></i>{% trans "Види ги сите возила" %}
-      </a>
-    </div>
     
     <form class="search-form" method="get" action="{% url 'frontend_vehicles' %}">
       <div class="form-group">
@@ -829,29 +875,6 @@
   </div>
 </section>
 
-<!-- Quick Stats -->
-<section class="stats-section">
-  <div class="container">
-    <div class="stats-container">
-      <div class="stat-item">
-        <div class="stat-number">2,500+</div>
-        <div class="stat-label">{% trans "Продадени возила" %}</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">98%</div>
-        <div class="stat-label">{% trans "Задоволни клиенти" %}</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">15+</div>
-        <div class="stat-label">{% trans "Години искуство" %}</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">50+</div>
-        <div class="stat-label">{% trans "Марки возила" %}</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Featured Cars Carousel -->
 <section class="featured-section">
@@ -874,10 +897,9 @@
         
         <div class="carousel-track" id="carouselTrack">
           {% for car in featured_cars %}
-          <div class="car-card carousel-slide">
+          <a href="{% url 'frontend_vehicle_detail' car.pk %}" class="car-card carousel-slide">
             <div class="car-image">
               <img src="{{ car.main_image.url }}" alt="{{ car.title }}">
-              <div class="car-badge">{% trans "Препорачано" %}</div>
             </div>
             <div class="car-details">
               <h3 class="car-title">{{ car.brand.name }} {{ car.model_name.name }}</h3>
@@ -907,13 +929,9 @@
               </div>
               
               <div class="car-footer">
-                <div class="car-price">{{ car.display_price }}</div>
-                <a href="{% url 'frontend_vehicle_detail' car.pk %}?back=vehicles&page=1&brand=&model_name=&transmission=&vehicle_body=&fuel=&color=&for_beginners=&price_from=&price_to=&year_from=&sort_price=&sort_mileage=&sort_year=" class="view-btn">
-                  <i class="fas fa-eye me-1"></i>{% trans "Детали" %}
-                </a>
               </div>
             </div>
-          </div>
+          </a>
           {% empty %}
           <div class="empty-carousel">
             <i class="fas fa-car"></i>
@@ -934,16 +952,6 @@
       </div>
     </div>
   
-  <!-- View All Button -->
-  {% if featured_cars %}
-  <div class="container">
-    <div style="text-align: center; margin-top: 50px;">
-      <a href="{% url 'frontend_vehicles' %}" class="cta-btn">
-        <i class="fas fa-th-large me-2"></i>{% trans "Види ги сите возила" %}
-      </a>
-    </div>
-  </div>
-  {% endif %}
 </section>
 
 <!-- Services Section -->
@@ -951,55 +959,22 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">{% trans "Зошто да не изберете?" %}</h2>
-      <p class="section-subtitle">{% trans "Професионална услуга и квалитет на кој можете да се потпрете" %}</p>
     </div>
     
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-award"></i>
-        </div>
-        <h3 class="service-title">{% trans "Гаранција" %}</h3>
-        <p class="service-description">{% trans "Сите наши автомобили доаѓаат со гаранција за квалитет и безбедност." %}</p>
+    <div class="payment-options">
+      <div class="payment-option">
+        <span class="payment-text">{% trans "Можност за рати" %}</span>
       </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-handshake"></i>
-        </div>
-        <h3 class="service-title">{% trans "Доверба" %}</h3>
-        <p class="service-description">{% trans "Градиме долгорочни односи засновани на доверба и квалитет." %}</p>
+      <div class="payment-option">
+        <span class="payment-text">{% trans "Можност за лизинг" %}</span>
       </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-euro-sign"></i>
-        </div>
-        <h3 class="service-title">{% trans "Квалитет" %}</h3>
-        <p class="service-description">{% trans "Само најквалитетни автомобили кои ги препорачуваме лично." %}</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-tools"></i>
-        </div>
-        <h3 class="service-title">{% trans "Сервис" %}</h3>
-        <p class="service-description">{% trans "Професионален сервис и одржување за вашиот автомобил." %}</p>
+      <div class="payment-option">
+        <span class="payment-text">{% trans "Можност за замена" %}</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta-section">
-  <div class="container">
-    <h2 class="cta-title">{% trans "Готови сте да го најдете вашиот автомобил?" %}</h2>
-    <p class="cta-subtitle">{% trans "Прегледајте ја нашата колекција и откријте го совршениот автомобил за вас денес" %}</p>
-    <a href="{% url 'frontend_vehicles' %}" class="cta-btn">
-      <i class="fas fa-car me-2"></i>{% trans "Започнете сега" %}
-    </a>
-  </div>
-</section>
 {% endblock %}
 
 {% block extra_js %}
