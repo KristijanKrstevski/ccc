@@ -226,9 +226,9 @@
                     <div class="position-relative">
                         {% if car.main_image %}
                             <img src="{{ car.main_image.url }}" class="card-img-top" 
-                                 style="height: 200px; object-fit: contain;" alt="{{ car.title }}">
+                                 style="height: 220px; width: 100%; object-fit: cover; aspect-ratio: 1/1;" alt="{{ car.title }}">
                         {% else %}
-                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 220px; aspect-ratio: 1/1;">
                                 <i class="fas fa-car text-muted" style="font-size: 3rem;"></i>
                             </div>
                         {% endif %}
