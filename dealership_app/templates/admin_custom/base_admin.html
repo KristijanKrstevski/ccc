@@ -538,6 +538,9 @@
             <a href="{% url 'admin_car_add' %}">
                 <i class="fas fa-plus-circle"></i> Add New Car
             </a>
+            <a href="{% url 'exclusive_car_management' %}" class="{% if 'exclusive' in request.path %}active{% endif %}">
+                <i class="fas fa-star"></i> Exclusive
+            </a>
             <a href="{% url 'frontend_index' %}" target="_blank">
                 <i class="fas fa-eye"></i> View Website
             </a>
