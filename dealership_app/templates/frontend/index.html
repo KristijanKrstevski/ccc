@@ -94,21 +94,31 @@
 
   .search-form {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    align-items: end;
+    align-items: center;
+  }
+
+  /* Desktop grid order: Brand, Year From, Fuel, Model, Year To, Transmission */
+  .form-brand { order: 1; }
+  .form-year-from { order: 2; }
+  .form-fuel { order: 3; }
+  .form-model { order: 4; }
+  .form-year-to { order: 5; }
+  .form-transmission { order: 6; }
+
+  .search-button-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    order: 7;
+    width: 100%;
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
-  }
-
-  .form-group label {
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: var(--dark-gray);
-    font-size: 0.95rem;
   }
 
   .form-control {
@@ -130,14 +140,18 @@
     background: var(--primary-red);
     color: var(--white);
     border: none;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: normal;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-transform: none;
+    letter-spacing: normal;
+    width: 100px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
   }
 
   .search-btn:hover {
@@ -806,6 +820,27 @@
     
     .search-form {
       grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    
+    /* Mobile order: Brand, Model, Year From, Year To, Fuel, Transmission */
+    .form-brand { order: 1; }
+    .form-model { order: 2; }
+    .form-year-from { order: 3; }
+    .form-year-to { order: 4; }
+    .form-fuel { order: 5; }
+    .form-transmission { order: 6; }
+    
+    .search-button-container {
+      margin-top: 15px;
+      order: 7;
+    }
+    
+    .search-btn {
+      width: 100px;
+      height: 40px;
+      font-size: 0.85rem;
+      font-weight: 400;
     }
     
     .section-title {
@@ -867,6 +902,159 @@
       padding: 30px 20px;
     }
   }
+
+  /* Exclusive Car Section */
+  .exclusive-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+  }
+
+  .exclusive-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .exclusive-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .exclusive-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0;
+    letter-spacing: 1px;
+  }
+
+  .exclusive-car-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .exclusive-car-link {
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease;
+    width: 100%;
+  }
+
+  .exclusive-car-link:hover {
+    transform: scale(1.01);
+  }
+
+  .exclusive-car-image {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .exclusive-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+  }
+
+  .exclusive-img:hover {
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+  }
+
+  .exclusive-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--danger-red);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(220,53,69,0.3);
+  }
+
+  /* Responsive Design for Exclusive Section */
+  @media (max-width: 768px) {
+    .exclusive-section {
+      padding: 60px 0;
+    }
+
+    .exclusive-title {
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+    }
+
+    .exclusive-subtitle {
+      font-size: 1.2rem;
+    }
+
+    .exclusive-car-container {
+      padding: 0 15px;
+      max-width: 600px;
+    }
+
+    .exclusive-car-image {
+      max-width: 100%;
+    }
+
+    .exclusive-img {
+      border-radius: 25px;
+    }
+
+    .exclusive-badge {
+      top: 15px;
+      right: 15px;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .exclusive-section {
+      padding: 40px 0;
+    }
+
+    .exclusive-header {
+      margin-bottom: 40px;
+    }
+
+    .exclusive-title {
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    .exclusive-subtitle {
+      font-size: 1rem;
+    }
+
+    .exclusive-car-container {
+      padding: 0 10px;
+      max-width: 400px;
+    }
+
+    .exclusive-car-image {
+      max-width: 100%;
+    }
+
+    .exclusive-img {
+      border-radius: 20px;
+    }
+  }
 </style>
 {% endblock %}
 
@@ -884,10 +1072,11 @@
 <!-- Advanced Search -->
 <section class="container">
   <div class="search-container">
+    <h3 class="search-title">{% trans "МЕНИ ЗА ПРЕБАРУВАЊЕ" %}</h3>
     
     <form class="search-form" method="get" action="{% url 'frontend_vehicles' %}">
-      <div class="form-group">
-        <label for="brand">{% trans "Марка" %}</label>
+      <!-- Brand - Order 1 on all devices -->
+      <div class="form-group form-brand">
         <select class="form-control" name="brand" id="brand">
           <option value="">{% trans "Избери марка" %}</option>
           {% for brand in brands %}
@@ -895,26 +1084,26 @@
           {% endfor %}
         </select>
       </div>
-      <div class="form-group">
-        <label for="model">{% trans "Модел" %}</label>
+      
+      <!-- Model - Order 2 on mobile, Order 4 on desktop -->
+      <div class="form-group form-model">
         <select class="form-control" name="model" id="model">
-          <option value="">{% trans "Избери прво марка" %}</option>
+          <option value="">{% trans "Избери модел" %}</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="price_from">{% trans "Цена од (€)" %}</label>
-        <input type="number" class="form-control" name="price_from" id="price_from" placeholder="5,000">
+      
+      <!-- Year From - Order 3 on mobile, Order 2 on desktop -->
+      <div class="form-group form-year-from">
+        <input type="number" class="form-control" name="year_from" id="year_from" placeholder="{% trans 'Година од' %}">
       </div>
-      <div class="form-group">
-        <label for="price_to">{% trans "Цена до (€)" %}</label>
-        <input type="number" class="form-control" name="price_to" id="price_to" placeholder="50,000">
+      
+      <!-- Year To - Order 4 on mobile, Order 5 on desktop -->
+      <div class="form-group form-year-to">
+        <input type="number" class="form-control" name="year_to" id="year_to" placeholder="{% trans 'Година до' %}">
       </div>
-      <div class="form-group">
-        <label for="year_from">{% trans "Година од" %}</label>
-        <input type="number" class="form-control" name="year_from" id="year_from" placeholder="2010">
-      </div>
-      <div class="form-group">
-        <label for="fuel">{% trans "Гориво" %}</label>
+      
+      <!-- Fuel - Order 5 on mobile, Order 3 on desktop -->
+      <div class="form-group form-fuel">
         <select class="form-control" name="fuel" id="fuel">
           <option value="">{% trans "Избери гориво" %}</option>
           {% for key, label in fuel_choices %}
@@ -922,9 +1111,20 @@
           {% endfor %}
         </select>
       </div>
-      <div class="form-group">
+      
+      <!-- Transmission - Order 6 on all devices -->
+      <div class="form-group form-transmission">
+        <select class="form-control" name="transmission" id="transmission">
+          <option value="">{% trans "Избери менувач" %}</option>
+          <option value="manual">{% trans "Рачен" %}</option>
+          <option value="automatic">{% trans "Автоматски" %}</option>
+        </select>
+      </div>
+      
+      <!-- Search Button Row -->
+      <div class="form-group search-button-container">
         <button type="submit" class="search-btn">
-          <i class="fas fa-search me-2"></i>{% trans "Пребарај" %}
+          {% trans "ПРЕБАРУВАЈ" %}
         </button>
       </div>
     </form>
@@ -1014,22 +1214,49 @@
 <section class="services-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">{% trans "Зошто да не изберете?" %}</h2>
+      <h2 class="section-title">{% trans "Why choose us?" %}</h2>
     </div>
     
     <div class="payment-options">
       <div class="payment-option">
-        <span class="payment-text">{% trans "Можност за рати" %}</span>
+        <span class="payment-text">{% trans "Installment option" %}</span>
       </div>
       <div class="payment-option">
-        <span class="payment-text">{% trans "Можност за лизинг" %}</span>
+        <span class="payment-text">{% trans "Leasing option" %}</span>
       </div>
       <div class="payment-option">
-        <span class="payment-text">{% trans "Можност за замена" %}</span>
+        <span class="payment-text">{% trans "Trade-in option" %}</span>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Exclusive Car Section -->
+{% if exclusive_car %}
+<section class="exclusive-section">
+  <div class="container">
+    <div class="exclusive-header">
+      <h2 class="exclusive-title">
+        {% trans "Е К С К Л У З И В Н О" %}
+      </h2>
+      <p class="exclusive-subtitle">
+        {% trans "Нашиот неделен адут!" %}
+      </p>
+    </div>
+  </div>
+
+  <!-- Image Container Outside Bootstrap Container for Full Width -->
+  <div class="exclusive-car-container">
+    <a href="{% url 'frontend_vehicle_detail' exclusive_car.id %}" class="exclusive-car-link">
+      <div class="exclusive-car-image">
+        <img src="{{ exclusive_car.main_image_web.url }}"
+             alt="{{ exclusive_car.title }}"
+             class="exclusive-img">
+      </div>
+    </a>
+  </div>
+</section>
+{% endif %}
 
 {% endblock %}
 
