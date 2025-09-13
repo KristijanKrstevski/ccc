@@ -2094,7 +2094,7 @@
 
     <div class="similar-cars-grid">
       {% for similar_car in recommended_cars|slice:":3" %}
-        <a href="{% url 'frontend_vehicle_detail' similar_car.id %}" class="similar-car-card">
+        <a href="{% url 'frontend_vehicle_detail' similar_car.id %}?back=vehicles" class="similar-car-card">
           <div class="car-image">
             <img src="{{ similar_car.main_image_web.url }}" alt="{{ similar_car.title }}" loading="lazy">
           </div>

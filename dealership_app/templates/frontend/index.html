@@ -1153,7 +1153,7 @@
         
         <div class="carousel-track" id="carouselTrack">
           {% for car in featured_cars %}
-          <a href="{% url 'frontend_vehicle_detail' car.pk %}" class="car-card carousel-slide">
+          <a href="{% url 'frontend_vehicle_detail' car.pk %}?back=vehicles" class="car-card carousel-slide">
             <div class="car-image">
               <img src="{{ car.main_image.url }}" alt="{{ car.title }}">
             </div>
@@ -1247,7 +1247,7 @@
 
   <!-- Image Container Outside Bootstrap Container for Full Width -->
   <div class="exclusive-car-container">
-    <a href="{% url 'frontend_vehicle_detail' exclusive_car.id %}" class="exclusive-car-link">
+    <a href="{% url 'frontend_vehicle_detail' exclusive_car.id %}?back=vehicles" class="exclusive-car-link">
       <div class="exclusive-car-image">
         <img src="{{ exclusive_car.main_image_web.url }}"
              alt="{{ exclusive_car.title }}"
