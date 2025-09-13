@@ -1704,29 +1704,24 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--dark-gray);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 1.3;
   }
 
-  .similar-car-card .car-price {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-red);
-    margin-bottom: 20px;
-  }
-
   .similar-car-card .car-specs {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
     margin-top: auto;
     padding-top: 20px;
     border-top: 1px solid #f1f3f4;
   }
 
   .similar-car-card .spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    flex: 1;
   }
 
   .similar-car-card .spec-icon {
@@ -1827,8 +1822,9 @@
       font-size: 1.1rem;
     }
 
-    .similar-car-card .car-price {
-      font-size: 1.6rem;
+    .similar-car-card .car-specs {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
   }
 
@@ -1851,6 +1847,11 @@
 
     .similar-car-card .car-details {
       padding: 18px;
+    }
+
+    .similar-car-card .car-specs {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
 
     .similar-car-card .spec-value {
@@ -2099,7 +2100,6 @@
           </div>
           <div class="car-details">
             <h3 class="car-title">{{ similar_car.title }}</h3>
-            <div class="car-price">€{{ similar_car.price|floatformat:0 }}</div>
             <div class="car-specs">
               <div class="spec-item">
                 <div class="spec-icon"><i class="fas fa-calendar-alt"></i></div>
@@ -2112,9 +2112,9 @@
                 <div class="spec-label">{% trans "Гориво" %}</div>
               </div>
               <div class="spec-item">
-                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
-                <div class="spec-value">{{ similar_car.mileage|default:"N/A" }}{% if similar_car.mileage %} km{% endif %}</div>
-                <div class="spec-label">{% trans "км" %}</div>
+                <div class="spec-icon"><i class="fas fa-cog"></i></div>
+                <div class="spec-value">{{ similar_car|get_transmission_display_lang }}</div>
+                <div class="spec-label">{% trans "Менувач" %}</div>
               </div>
             </div>
           </div>
