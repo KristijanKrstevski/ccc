@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.utils import translation
 from .models import Car, CarBrand, CarModel
 
 def index(request):
@@ -10,10 +11,13 @@ def index(request):
     # Only show brands that have available cars
     brands = CarBrand.objects.filter(car__sold=False).distinct().order_by('name')
     
+    # Get current language
+    current_language = translation.get_language()
+    
     # Get only fuel choices that exist in available cars for the search form
     base_qs = Car.objects.filter(sold=False)
     available_fuels = base_qs.values_list('fuel_type', flat=True).distinct()
-    fuel_choices = [(key, label) for key, label in Car.FUEL_CHOICES if key in available_fuels]
+    fuel_choices = [(key, label) for key, label in Car.get_fuel_choices(current_language) if key in available_fuels]
     
     return render(request, 'frontend/index.html', {
         'featured_cars': featured_cars,
@@ -113,15 +117,18 @@ def vehicle_list(request):
         car__sold=False
     ).distinct().order_by('name') if brand else []
 
+    # Get current language
+    current_language = translation.get_language()
+    
     # Get only choices that exist in available cars
     available_transmissions = base_qs.values_list('transmission', flat=True).distinct()
-    transmission_choices = [(key, label) for key, label in Car.TRANSMISSION_CHOICES if key in available_transmissions]
+    transmission_choices = [(key, label) for key, label in Car.get_transmission_choices(current_language) if key in available_transmissions]
     
     available_fuels = base_qs.values_list('fuel_type', flat=True).distinct()
-    fuel_choices = [(key, label) for key, label in Car.FUEL_CHOICES if key in available_fuels]
+    fuel_choices = [(key, label) for key, label in Car.get_fuel_choices(current_language) if key in available_fuels]
     
     available_bodies = base_qs.values_list('body_type', flat=True).distinct()
-    vehicle_bodies = [(key, label) for key, label in Car.BODY_CHOICES if key in available_bodies]
+    vehicle_bodies = [(key, label) for key, label in Car.get_body_choices(current_language) if key in available_bodies]
 
     return render(request, 'frontend/vehicles.html', {
         'cars': cars,
@@ -131,12 +138,15 @@ def vehicle_list(request):
         'transmission_choices': transmission_choices,
         'fuel_choices':        fuel_choices,
         'vehicle_bodies':      vehicle_bodies,
-        'colors':              Car.COLOR_CHOICES,
+        'colors':              Car.get_color_choices(current_language),
         'no_results_fallback': no_results_fallback,
     })
 
 def vehicle_detail(request, pk):
     car = get_object_or_404(Car, pk=pk)
+    
+    # Get current language
+    current_language = translation.get_language()
     
     # Get ALL available cars as recommendations
     recommended_cars = get_recommended_cars(car, limit=None)
@@ -144,6 +154,7 @@ def vehicle_detail(request, pk):
     context = {
         'car': car,
         'recommended_cars': recommended_cars,
+        'current_language': current_language,
     }
     return render(request, 'frontend/vehicle_detail.html', context)
 

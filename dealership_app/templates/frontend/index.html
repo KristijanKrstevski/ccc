@@ -1,6 +1,7 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
 {% load i18n %}
+{% load car_tags %}
 {% block title %}AUTO DINERO Macedonia - {% trans "Добредојдовте во модерното време на квалитетните автомобили" %}{% endblock %}
 
 {% block extra_css %}
@@ -971,14 +972,14 @@
                   <div class="spec-icon">
                     <i class="fas fa-gas-pump"></i>
                   </div>
-                  <div class="spec-value">{{ car.get_fuel_type_display }}</div>
+                  <div class="spec-value">{{ car|get_fuel_display_lang }}</div>
                   <div class="spec-label">{% trans "Гориво" %}</div>
                 </div>
                 <div class="spec-item">
                   <div class="spec-icon">
                     <i class="fas fa-cog"></i>
                   </div>
-                  <div class="spec-value">{{ car.get_transmission_display }}</div>
+                  <div class="spec-value">{{ car|get_transmission_display_lang }}</div>
                   <div class="spec-label">{% trans "Менувач" %}</div>
                 </div>
               </div>

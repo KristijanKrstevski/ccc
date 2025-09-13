@@ -1,6 +1,7 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
 {% load i18n %}
+{% load car_tags %}
 
 {% block title %}{% trans "Возила" %} - AUTO DINERO Macedonia{% endblock %}
 
@@ -193,7 +194,7 @@
   .car-card {
     background: var(--white);
     border-radius: 16px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: var(--shadow);
     transition: all 0.4s ease;
     border: 1px solid #F1F3F4;
@@ -203,6 +204,7 @@
     display: flex;
     flex-direction: column;
     height: 460px;
+    position: relative;
   }
   
   .car-card:hover {
@@ -220,11 +222,11 @@
   .car-image {
     position: relative;
     height: 280px;
-    overflow: hidden;
     background: #f8f9fa;
     border-radius: 12px 12px 0 0;
     aspect-ratio: 1/1;
     flex-shrink: 0;
+    overflow: hidden;
   }
 
   .car-image img {
@@ -233,6 +235,7 @@
     object-fit: cover;
     background: #f8f9fa;
     transition: transform 0.3s ease;
+    display: block;
   }
 
   .car-card:hover .car-image img {
@@ -250,6 +253,92 @@
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
+  }
+  
+  /* Simple Corner Banner - Full left to top stretch */
+  .car-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+  }
+  
+  .car-banner::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 18px;
+    left: -30px;
+    width: 140px;
+    height: 30px;
+    background: #dc3545;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transform: rotate(-42deg);
+  }
+  
+  .car-banner.banner-sold::before {
+    content: "SOLD";
+    background: #dc3545;
+    color: white;
+  }
+  
+  .car-banner.banner-pending::before {
+    content: "PENDING";
+    background: white;
+    color: #333;
+    border: 2px solid #333;
+  }
+  
+  .car-banner.banner-coming-soon::before {
+    content: "COMING SOON";
+    background: #6c757d;
+    color: #f8f9fa;
+    font-size: 10px;
+  }
+
+  /* Responsive banner adjustments */
+  @media (max-width: 768px) {
+    .car-banner {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .car-banner::before {
+      top: 15px;
+      left: -25px;
+      width: 120px;
+      height: 26px;
+      font-size: 10px;
+      line-height: 26px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .car-banner {
+      width: 70px;
+      height: 70px;
+    }
+    
+    .car-banner::before {
+      top: 13px;
+      left: -22px;
+      width: 100px;
+      height: 22px;
+      font-size: 9px;
+      line-height: 22px;
+    }
+    
+    .car-banner.banner-coming-soon::before {
+      font-size: 8px;
+    }
   }
 
   .car-details {
@@ -805,6 +894,14 @@
     <a href="{% url 'frontend_vehicle_detail' car.pk %}?back=vehicles&page={{ cars.number }}&brand={{ brand }}&model_name={{ model_name }}&transmission={{ transmission }}&vehicle_body={{ vehicle_body }}&fuel={{ fuel }}&color={{ color }}&for_beginners={{ for_beginners }}&price_from={{ price_from }}&price_to={{ price_to }}&year_from={{ year_from }}&sort_price={{ sort_price }}&sort_mileage={{ sort_mileage }}&sort_year={{ sort_year }}" class="car-card" id="car-{{ car.pk }}">
       <div class="car-image">
         <img src="{{ car.main_image.url }}" alt="{{ car.title }}">
+        <!-- Car Banner -->
+        {% if car.banner_type == 'sold' %}
+        <div class="car-banner banner-sold"></div>
+        {% elif car.banner_type == 'pending' %}
+        <div class="car-banner banner-pending"></div>
+        {% elif car.banner_type == 'coming_soon' %}
+        <div class="car-banner banner-coming-soon"></div>
+        {% endif %}
       </div>
       <div class="car-details">
         <h3 class="car-title">{{ car.brand.name }} {{ car.model_name.name }}</h3>
@@ -821,14 +918,14 @@
             <div class="spec-icon">
               <i class="fas fa-gas-pump"></i>
             </div>
-            <div class="spec-value">{{ car.get_fuel_type_display }}</div>
+            <div class="spec-value">{{ car|get_fuel_display_lang }}</div>
             <div class="spec-label">{% trans "Гориво" %}</div>
           </div>
           <div class="spec-item">
             <div class="spec-icon">
               <i class="fas fa-cog"></i>
             </div>
-            <div class="spec-value">{{ car.get_transmission_display }}</div>
+            <div class="spec-value">{{ car|get_transmission_display_lang }}</div>
             <div class="spec-label">{% trans "Менувач" %}</div>
           </div>
         </div>

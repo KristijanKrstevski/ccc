@@ -1,6 +1,7 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
 {% load i18n %}
+{% load car_tags %}
 
 {% block title %}{{ car.brand.name }} {{ car.model_name.name }} - AUTO DINERO Macedonia{% endblock %}
 
@@ -303,13 +304,14 @@
     padding: 30px;
     box-shadow: var(--shadow);
     box-sizing: border-box;
+    overflow: visible;
   }
 
   .main-image {
     position: relative;
     margin-bottom: 20px;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     background: #f8f9fa;
     width: 100%;
     height: 0;
@@ -328,6 +330,8 @@
     object-fit: cover;
     background: #f8f9fa;
     transition: transform 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
   }
 
   .image-badge {
@@ -836,7 +840,7 @@
     position: relative;
     max-width: 90vw;
     max-height: 90vh;
-    border-radius: 16px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     animation: zoomIn 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -939,6 +943,93 @@
   /* Open button for main image */
   .main-image {
     position: relative;
+    overflow: visible;
+  }
+
+  /* Simple Corner Banner - Full left to top stretch for detail */
+  .car-status-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+  }
+  
+  .car-status-banner::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 22px;
+    left: -35px;
+    width: 170px;
+    height: 36px;
+    background: #dc3545;
+    color: white;
+    text-align: center;
+    line-height: 36px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transform: rotate(-42deg);
+  }
+  
+  .car-status-banner.banner-sold::before {
+    content: "SOLD";
+    background: #dc3545;
+    color: white;
+  }
+  
+  .car-status-banner.banner-pending::before {
+    content: "PENDING";
+    background: white;
+    color: #333;
+    border: 2px solid #333;
+  }
+  
+  .car-status-banner.banner-coming-soon::before {
+    content: "COMING SOON";
+    background: #6c757d;
+    color: #f8f9fa;
+    font-size: 12px;
+  }
+
+  /* Responsive banner adjustments for detail page */
+  @media (max-width: 768px) {
+    .car-status-banner {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .car-status-banner::before {
+      top: 18px;
+      left: -30px;
+      width: 140px;
+      height: 30px;
+      font-size: 12px;
+      line-height: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .car-status-banner {
+      width: 90px;
+      height: 90px;
+    }
+    
+    .car-status-banner::before {
+      top: 16px;
+      left: -27px;
+      width: 120px;
+      height: 26px;
+      font-size: 11px;
+      line-height: 26px;
+    }
+    
+    .car-status-banner.banner-coming-soon::before {
+      font-size: 10px;
+    }
   }
 
   .open-popup-btn {
@@ -948,9 +1039,9 @@
     background: var(--primary-red);
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     opacity: 0;
@@ -959,7 +1050,7 @@
     z-index: 5;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .main-image:hover .open-popup-btn {
@@ -996,7 +1087,7 @@
     .image-popup-content {
       max-width: 95vw;
       max-height: 85vh;
-      border-radius: 12px;
+      border-radius: 0;
     }
 
     .image-popup-close,
@@ -1028,10 +1119,11 @@
     }
 
     .open-popup-btn {
-      padding: 6px 12px;
-      font-size: 0.8rem;
+      padding: 10px 18px;
+      font-size: 0.9rem;
       bottom: 12px;
       right: 12px;
+      gap: 8px;
     }
   }
 
@@ -1043,7 +1135,7 @@
     .image-popup-content {
       max-width: 98vw;
       max-height: 80vh;
-      border-radius: 8px;
+      border-radius: 0;
     }
 
     .image-popup-nav {
@@ -1061,10 +1153,11 @@
     }
     
     .open-popup-btn {
-      padding: 5px 10px;
-      font-size: 0.75rem;
+      padding: 8px 14px;
+      font-size: 0.8rem;
       bottom: 10px;
       right: 10px;
+      gap: 6px;
     }
   }
 
@@ -1577,21 +1670,28 @@
             <i class="fas fa-gas-pump spec-icon"></i>
             {% trans "Гориво" %}
           </div>
-          <div class="spec-value">{{ car.get_fuel_type_display }}</div>
+          <div class="spec-value">{{ car|get_fuel_display_lang }}</div>
         </div>
         <div class="spec-item">
           <div class="spec-label">
             <i class="fas fa-cog spec-icon"></i>
             {% trans "Менувач" %}
           </div>
-          <div class="spec-value">{{ car.get_transmission_display }}</div>
+          <div class="spec-value">{{ car|get_transmission_display_lang }}</div>
         </div>
         <div class="spec-item">
           <div class="spec-label">
-            <i class="fas fa-car spec-icon"></i>
-            {% trans "Каросерија" %}
+            <i class="fas fa-bolt spec-icon"></i>
+            {% trans "Моќност" %}
           </div>
-          <div class="spec-value">{{ car.get_body_type_display }}</div>
+          <div class="spec-value">{{ car.kilowatts }}kW ({{ car.horsepower }}hp)</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">
+            <i class="fas fa-tint spec-icon"></i>
+            {% trans "Потрошувачка" %}
+          </div>
+          <div class="spec-value">{% if car.consumption %}{{ car.consumption }}/100км{% else %}N/A{% endif %}</div>
         </div>
       </div>
 
@@ -1627,7 +1727,7 @@
         <div class="spec-card-icon">
           <img src="{% static 'license-plate.png' %}" alt="Регистрација" loading="lazy" />
         </div>
-        <div class="spec-card-title">{{ car.get_registration_type_display }}</div>
+        <div class="spec-card-title">{{ car|get_registration_display_lang }}</div>
         <div class="spec-card-value">{% trans "Регистрација" %}</div>
       </div>
       <div class="spec-card">
@@ -1641,14 +1741,14 @@
         <div class="spec-card-icon">
           <img src="{% static 'car-seat.png' %}" alt="Број на седишта" loading="lazy" />
         </div>
-        <div class="spec-card-title">{{ car.get_seats_display }}</div>
+        <div class="spec-card-title">{{ car|get_seats_display_lang }}</div>
         <div class="spec-card-value">{% trans "Број на седишта" %}</div>
       </div>
       <div class="spec-card">
         <div class="spec-card-icon">
           <img src="{% static 'manual-transmission.png' %}" alt="Менувач" loading="lazy" />
         </div>
-        <div class="spec-card-title">{{ car.get_transmission_display }}</div>
+        <div class="spec-card-title">{{ car|get_transmission_display_lang }}</div>
         <div class="spec-card-value">{% trans "Менувач" %}</div>
       </div>
       <div class="spec-card">
@@ -1662,14 +1762,14 @@
         <div class="spec-card-icon">
           <img src="{% static 'palette.png' %}" alt="Боја" loading="lazy" />
         </div>
-        <div class="spec-card-title">{{ car.get_color_display }}</div>
+        <div class="spec-card-title">{{ car|get_color_display_lang }}</div>
         <div class="spec-card-value">{% trans "Боја" %}</div>
       </div>
       <div class="spec-card">
         <div class="spec-card-icon">
           <img src="{% static 'sedan.png' %}" alt="Каросерија" loading="lazy" />
         </div>
-        <div class="spec-card-title">{{ car.get_body_type_display }}</div>
+        <div class="spec-card-title">{{ car|get_body_type_display_lang }}</div>
         <div class="spec-card-value">{% trans "Каросерија" %}</div>
       </div>
     </div>
@@ -1718,11 +1818,11 @@
               <div class="recommended-specs">
                 <span class="spec-item">
                   <i class="fas fa-gas-pump"></i>
-                  {{ rec_car.get_fuel_type_display }}
+                  {{ rec_car|get_fuel_display_lang }}
                 </span>
                 <span class="spec-item">
                   <i class="fas fa-cog"></i>
-                  {{ rec_car.get_transmission_display }}
+                  {{ rec_car|get_transmission_display_lang }}
                 </span>
               </div>
             </div>

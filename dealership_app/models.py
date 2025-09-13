@@ -50,7 +50,18 @@ class Car(models.Model):
     year = models.PositiveSmallIntegerField("Година на производство")
     description = models.TextField("Опис", blank=True)
 
-    FUEL_CHOICES = [
+    FUEL_CHOICES_EN = [
+        ('petrol', 'Petrol'),
+        ('diesel', 'Diesel'),
+        ('electric', 'Electric'),
+        ('ethanol', 'Ethanol'),
+        ('methane', 'Methane'),
+        ('lpg', 'LPG/Petrol'),
+        ('hybrid_petrol', 'Hybrid/Petrol'),
+        ('hybrid_diesel', 'Hybrid/Diesel'),
+    ]
+    
+    FUEL_CHOICES_MK = [
         ('petrol', 'Бензин'),
         ('diesel', 'Дизел'),
         ('electric', 'Електричен'),
@@ -60,16 +71,41 @@ class Car(models.Model):
         ('hybrid_petrol', 'Хибрид/Бензин'),
         ('hybrid_diesel', 'Хибрид/Дизел'),
     ]
+    
+    # Default to Macedonian for compatibility
+    FUEL_CHOICES = FUEL_CHOICES_MK
     fuel_type = models.CharField("Тип на гориво", max_length=20, choices=FUEL_CHOICES)
 
-    TRANSMISSION_CHOICES = [
+    TRANSMISSION_CHOICES_EN = [
+        ('manual', 'Manual'),
+        ('automatic', 'Automatic'),
+        ('other', 'Other'),
+    ]
+    
+    TRANSMISSION_CHOICES_MK = [
         ('manual', 'Рачен'),
         ('automatic', 'Автоматски'),
         ('other', 'Друго'),
     ]
+    
+    TRANSMISSION_CHOICES = TRANSMISSION_CHOICES_MK
     transmission = models.CharField("Менувач", max_length=20, choices=TRANSMISSION_CHOICES)
 
-    BODY_CHOICES = [
+    BODY_CHOICES_EN = [
+        ('compact', 'Compact Car'),
+        ('sedan', 'Sedan'),
+        ('hatchback', 'Hatchback'),
+        ('wagon', 'Wagon'),
+        ('coupe', 'Coupe'),
+        ('cabriolet', 'Cabriolet'),
+        ('suv', 'SUV'),
+        ('minivan', 'Minivan'),
+        ('kombe', 'Van'),
+        ('pickup', 'Pickup'),
+        ('motorcycle', 'Motorcycle'),
+    ]
+    
+    BODY_CHOICES_MK = [
         ('compact', 'Мал автомобил'),
         ('sedan', 'Седан'),
         ('hatchback', 'Хеџбек'),
@@ -82,25 +118,62 @@ class Car(models.Model):
         ('pickup', 'Пикап'),
         ('motorcycle', 'Мотор'),
     ]
+    
+    BODY_CHOICES = BODY_CHOICES_MK
     body_type = models.CharField("Тип на каросерија", max_length=20, choices=BODY_CHOICES)
 
-    REGISTRATION_CHOICES = [
+    REGISTRATION_CHOICES_EN = [
+        ('mk', 'Macedonian'),
+        ('foreign', 'Foreign'),
+        ('none', 'To be registered'),
+        ('other', 'Other'),
+    ]
+    
+    REGISTRATION_CHOICES_MK = [
         ('mk', 'Македонска'),
         ('foreign', 'Странска'),
         ('none', 'Останува да се регистрира'),
         ('other', 'Друго'),
     ]
+    
+    REGISTRATION_CHOICES = REGISTRATION_CHOICES_MK
     registration_type = models.CharField("Регистрација", max_length=20, choices=REGISTRATION_CHOICES)
 
     engine_capacity = models.PositiveIntegerField("Кубикажа (cm³)", null=True, blank=True)
 
     kilowatts = models.PositiveIntegerField("Киловати")
     price = models.PositiveIntegerField("Цена (во евра)")
-    sold = models.BooleanField("Продадено", default=False)
+    
+    # Banner field - single choice selection
+    BANNER_CHOICES = [
+        ('', 'Без банер'),
+        ('sold', 'SOLD'),
+        ('pending', 'PENDING'),
+        ('coming_soon', 'COMING SOON'),
+    ]
+    banner_type = models.CharField("Банер", max_length=20, choices=BANNER_CHOICES, blank=True, default='')
+    
+    sold = models.BooleanField("Продадено", default=False)  # Keep for backward compatibility
 
     mileage = models.PositiveIntegerField("Километража")
+    consumption = models.CharField("Потрошувачка (л/100км)", max_length=10, blank=True, null=True)
 
-    COLOR_CHOICES = [
+    COLOR_CHOICES_EN = [
+        ('black', 'Black'),
+        ('white', 'White'),
+        ('gray', 'Gray'),
+        ('red', 'Red'),
+        ('green', 'Green'),
+        ('blue', 'Blue'),
+        ('yellow', 'Yellow'),
+        ('orange', 'Orange'),
+        ('brown', 'Brown'),
+        ('gold', 'Gold'),
+        ('purple', 'Purple'),
+        ('other', 'Other'),
+    ]
+    
+    COLOR_CHOICES_MK = [
         ('black', 'Црна'),
         ('white', 'Бела'),
         ('gray', 'Сива'),
@@ -114,13 +187,23 @@ class Car(models.Model):
         ('purple', 'Виолетова'),
         ('other', 'Друго'),
     ]
+    
+    COLOR_CHOICES = COLOR_CHOICES_MK
     color = models.CharField("Боја", max_length=20, choices=COLOR_CHOICES)
 
-    SEATS_CHOICES = [
+    SEATS_CHOICES_EN = [
+        ('3', '3 seats'),
+        ('5', '5 seats'),
+        ('7', '7 seats'),
+    ]
+    
+    SEATS_CHOICES_MK = [
         ('3', '3 седишта'),
         ('5', '5 седишта'),
         ('7', '7 седишта'),
     ]
+    
+    SEATS_CHOICES = SEATS_CHOICES_MK
     seats = models.CharField("Број на седишта", max_length=2, choices=SEATS_CHOICES)
 
     equipment = models.ManyToManyField(CarEquipment, blank=True)
@@ -154,6 +237,66 @@ class Car(models.Model):
     position = models.PositiveIntegerField("Позиција", default=0, help_text="Позиција за подредување на возилата")
 
     created_at = models.DateTimeField("Креирано", auto_now_add=True)
+
+    @classmethod
+    def get_fuel_choices(cls, language='mk'):
+        """Return fuel choices based on language"""
+        return cls.FUEL_CHOICES_EN if language == 'en' else cls.FUEL_CHOICES_MK
+    
+    @classmethod
+    def get_transmission_choices(cls, language='mk'):
+        """Return transmission choices based on language"""
+        return cls.TRANSMISSION_CHOICES_EN if language == 'en' else cls.TRANSMISSION_CHOICES_MK
+    
+    @classmethod
+    def get_body_choices(cls, language='mk'):
+        """Return body choices based on language"""
+        return cls.BODY_CHOICES_EN if language == 'en' else cls.BODY_CHOICES_MK
+    
+    @classmethod
+    def get_registration_choices(cls, language='mk'):
+        """Return registration choices based on language"""
+        return cls.REGISTRATION_CHOICES_EN if language == 'en' else cls.REGISTRATION_CHOICES_MK
+    
+    @classmethod
+    def get_color_choices(cls, language='mk'):
+        """Return color choices based on language"""
+        return cls.COLOR_CHOICES_EN if language == 'en' else cls.COLOR_CHOICES_MK
+    
+    @classmethod
+    def get_seats_choices(cls, language='mk'):
+        """Return seats choices based on language"""
+        return cls.SEATS_CHOICES_EN if language == 'en' else cls.SEATS_CHOICES_MK
+
+    def get_fuel_type_display_lang(self, language='mk'):
+        """Return fuel type display value based on language"""
+        choices_dict = dict(self.get_fuel_choices(language))
+        return choices_dict.get(self.fuel_type, self.fuel_type)
+    
+    def get_transmission_display_lang(self, language='mk'):
+        """Return transmission display value based on language"""
+        choices_dict = dict(self.get_transmission_choices(language))
+        return choices_dict.get(self.transmission, self.transmission)
+    
+    def get_body_type_display_lang(self, language='mk'):
+        """Return body type display value based on language"""
+        choices_dict = dict(self.get_body_choices(language))
+        return choices_dict.get(self.body_type, self.body_type)
+    
+    def get_registration_type_display_lang(self, language='mk'):
+        """Return registration type display value based on language"""
+        choices_dict = dict(self.get_registration_choices(language))
+        return choices_dict.get(self.registration_type, self.registration_type)
+    
+    def get_color_display_lang(self, language='mk'):
+        """Return color display value based on language"""
+        choices_dict = dict(self.get_color_choices(language))
+        return choices_dict.get(self.color, self.color)
+    
+    def get_seats_display_lang(self, language='mk'):
+        """Return seats display value based on language"""
+        choices_dict = dict(self.get_seats_choices(language))
+        return choices_dict.get(self.seats, self.seats)
 
     class Meta:
         ordering = ['position', '-created_at']

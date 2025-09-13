@@ -470,6 +470,66 @@
         }
     }
     
+    /* Field Error Styles */
+    .field-error {
+        background: #fff5f5 !important;
+        border-color: #e53e3e !important;
+        box-shadow: 0 0 0 0.2rem rgba(229, 62, 62, 0.15) !important;
+    }
+    
+    .text-danger {
+        color: #e53e3e !important;
+        font-weight: 500 !important;
+    }
+    
+    .text-danger i {
+        margin-right: 5px;
+    }
+    
+    /* Banner Selection Styles */
+    .banner-selection {
+        margin-top: 15px;
+    }
+    
+    .banner-radio {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .banner-radio label {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+        font-weight: 500;
+    }
+    
+    .banner-radio input[type="radio"] {
+        margin-right: 10px;
+        transform: scale(1.3);
+        accent-color: #007bff;
+    }
+    
+    .banner-radio label:hover {
+        border-color: #007bff;
+        background: #e3f2fd;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0,123,255,0.15);
+    }
+    
+    .banner-radio input[type="radio"]:checked + label {
+        border-color: #007bff;
+        background: #007bff;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+    }
+    
     /* Loading Animation */
     .loading-save {
         position: relative;
@@ -744,6 +804,16 @@
                     {{ form.price }}
                     <span class="input-group-text">€</span>
                 </div>
+                {% if form.price.errors %}
+                    <div class="text-danger mt-1 small">
+                        {% for error in form.price.errors %}
+                            <div><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="field-validation-error text-danger mt-1 small" id="price_error" style="display: none;">
+                    <i class="fas fa-exclamation-circle me-1"></i>Invalid input
+                </div>
             </div>
             <div class="col-md-6">
                 <label for="{{ form.brand.id_for_label }}" class="form-label">{{ form.brand.label }}</label>
@@ -756,6 +826,16 @@
             <div class="col-md-6">
                 <label for="{{ form.year.id_for_label }}" class="form-label">{{ form.year.label }}</label>
                 {{ form.year }}
+                {% if form.year.errors %}
+                    <div class="text-danger mt-1 small">
+                        {% for error in form.year.errors %}
+                            <div><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="field-validation-error text-danger mt-1 small" id="year_error" style="display: none;">
+                    <i class="fas fa-exclamation-circle me-1"></i>Invalid input
+                </div>
             </div>
             <div class="col-md-6">
                 <label for="{{ form.color.id_for_label }}" class="form-label">{{ form.color.label }}</label>
@@ -765,7 +845,13 @@
                 <label for="{{ form.description.id_for_label }}" class="form-label">{{ form.description.label }}</label>
                 {{ form.description }}
             </div>
-            <div class="col-md-6">
+            <div class="col-12">
+                <label class="form-label">Банер за возилото</label>
+                <div class="banner-selection">
+                    {{ form.banner_type }}
+                </div>
+            </div>
+            <div class="col-md-6" style="display: none;">
                 <div class="form-check">
                     {{ form.sold }}
                     <label for="{{ form.sold.id_for_label }}" class="form-check-label">
@@ -798,6 +884,16 @@
                     {{ form.engine_capacity }}
                     <span class="input-group-text">L</span>
                 </div>
+                {% if form.engine_capacity.errors %}
+                    <div class="text-danger mt-1 small">
+                        {% for error in form.engine_capacity.errors %}
+                            <div><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="field-validation-error text-danger mt-1 small" id="engine_capacity_error" style="display: none;">
+                    <i class="fas fa-exclamation-circle me-1"></i>Invalid input
+                </div>
             </div>
             <div class="col-md-4">
                 <label for="{{ form.kilowatts.id_for_label }}" class="form-label">{{ form.kilowatts.label }}</label>
@@ -820,6 +916,30 @@
                     {{ form.mileage }}
                     <span class="input-group-text">km</span>
                 </div>
+                {% if form.mileage.errors %}
+                    <div class="text-danger mt-1 small">
+                        {% for error in form.mileage.errors %}
+                            <div><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="field-validation-error text-danger mt-1 small" id="mileage_error" style="display: none;">
+                    <i class="fas fa-exclamation-circle me-1"></i>Invalid input
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="{{ form.consumption.id_for_label }}" class="form-label">{{ form.consumption.label }}</label>
+                <div class="input-group">
+                    {{ form.consumption }}
+                    <span class="input-group-text">L/100км</span>
+                </div>
+                {% if form.consumption.errors %}
+                    <div class="text-danger mt-1 small">
+                        {% for error in form.consumption.errors %}
+                            <div><i class="fas fa-exclamation-circle me-1"></i>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -1019,6 +1139,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script>
+// ✅ NUMERIC FIELD VALIDATION FUNCTION
+function validateNumericField(field) {
+    const fieldName = field.name;
+    const value = field.value;
+    const errorDiv = document.getElementById(fieldName + '_error');
+    
+    // Hide error message first
+    if (errorDiv) {
+        errorDiv.style.display = 'none';
+    }
+    
+    // Check for invalid input (negative numbers, 'e', '+', '-')
+    if (value !== '' && (value < 0 || value.includes('-') || value.includes('e') || value.includes('+'))) {
+        // Prevent the invalid character/value
+        field.value = field.value.replace(/[-+e]/g, '');
+        
+        // Show error message only (no red border)
+        if (errorDiv) {
+            errorDiv.style.display = 'block';
+        }
+        return false;
+    }
+    
+    return true;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // DEBUG: Check if equipment search exists
     console.log('DOM LOADED - SEARCH DEBUG TEST 12345');
@@ -1615,6 +1761,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Initialize image limit text on page load
     updateImageLimitText();
+
+    // Note: Field error highlighting removed as per user request - only text errors should show
+    
+    // Note: Real-time validation simplified - removed red borders, keeping only oninput validation
+
+    // Banner functionality is now handled by standard radio buttons - no custom JS needed
 
     // ✅ SEQUENTIAL IMAGE UPLOAD FUNCTIONALITY
     const uploadDropZone = document.getElementById('upload-drop-zone');
