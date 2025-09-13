@@ -1180,19 +1180,25 @@
 
   .recommended-carousel-container {
     position: relative;
-    margin: 0 -20px; /* Expand outside container */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .recommended-carousel-wrapper {
     overflow: hidden;
     padding: 20px 80px; /* Proper padding for arrows */
-    margin: 0 20px; /* Restore container margins */
+    max-width: 100%;
+    flex: 1;
   }
 
   .recommended-carousel {
     display: flex;
     gap: 20px;
     transition: transform 0.5s ease-in-out;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .recommended-card {
@@ -1414,9 +1420,20 @@
       padding: 25px 10px;
     }
     
+    .recommended-carousel-container {
+      justify-content: center;
+    }
+    
+    .recommended-carousel {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
     .recommended-card {
       flex: 0 0 280px;
       height: 380px;
+      margin: 0 auto;
     }
     
     .recommended-image {
@@ -1424,7 +1441,8 @@
     }
     
     .recommended-carousel-wrapper {
-      padding: 20px 60px;
+      padding: 20px 10px;
+      overflow: visible;
     }
     
     .recommended-nav-btn {
@@ -1462,6 +1480,12 @@
     .recommended-card {
       flex: 0 0 260px;
       height: 360px;
+      margin: 0 auto;
+    }
+    
+    .recommended-carousel {
+      justify-content: center;
+      gap: 10px;
     }
     
     .recommended-image {
@@ -1473,7 +1497,8 @@
     }
     
     .recommended-carousel-wrapper {
-      padding: 20px 50px;
+      padding: 20px 5px;
+      overflow: visible;
     }
     
     .recommended-nav-btn {
@@ -1646,7 +1671,7 @@
       <div class="product-count-view" data-min="1" data-max="5" data-timeout="10000" data-id_product="{{ car.pk }}">
         <i class="fas fa-eye"></i>
         <span>{% load custom_tags %}{% random_number 1 5 %}</span>
-        {% trans "луѓето го гледаат ова во моментов" %}
+        {% trans "people are viewing this right now" %}
       </div>
       
       

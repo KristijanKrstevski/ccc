@@ -163,9 +163,14 @@ def vehicle_detail(request, pk):
 def get_recommended_cars(current_car, limit=None):
     """
     Intelligent recommendation system for similar cars
-    Priority: Same brand > Similar price > Same fuel type > Same body type > Newest
+    Only shows vehicles with the same model as the current car
+    Priority: Same model (required) > Same brand > Similar price > Same fuel type > Same body type > Newest
     """
-    all_cars = Car.objects.filter(sold=False).exclude(pk=current_car.pk)
+    # Only get cars with the same model as the current car
+    all_cars = Car.objects.filter(
+        sold=False, 
+        model_name_id=current_car.model_name_id
+    ).exclude(pk=current_car.pk)
     
     if not all_cars.exists():
         return []
@@ -180,13 +185,10 @@ def get_recommended_cars(current_car, limit=None):
     for car in all_cars:
         score = 0
         
-        # Same brand = +50 points
+        # Since all cars already have the same model, prioritize other factors:
+        # Same brand = +50 points (highest remaining priority)
         if car.brand_id == current_car.brand_id:
             score += 50
-            
-        # Same model = +30 points (if different brand, this won't apply)
-        if car.model_name_id == current_car.model_name_id:
-            score += 30
         
         # Similar price range (±30%) = +25 points
         if price_min <= car.price <= price_max:
