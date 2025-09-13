@@ -1161,165 +1161,195 @@
     }
   }
 
-  /* Recommended Cars Section */
-  .recommended-section {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 40px;
-    margin-bottom: 30px;
-    box-shadow: var(--shadow);
-  }
 
-  .section-subtitle {
-    text-align: center;
-    color: var(--medium-gray);
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    margin-top: -10px;
-  }
+
 
   .recommended-carousel-container {
     position: relative;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 80px;
   }
 
   .recommended-carousel-wrapper {
     overflow: hidden;
-    padding: 20px 80px; /* Proper padding for arrows */
-    max-width: 100%;
-    flex: 1;
+    border-radius: 16px;
+    position: relative;
   }
 
   .recommended-carousel {
     display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease-in-out;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 30px;
+    transition: transform 0.4s ease-in-out;
+    width: fit-content;
   }
 
-  .recommended-card {
-    flex: 0 0 320px;
-    height: 420px;
+  .carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: #FF0000 !important;
+    border: 3px solid #00FF00 !important;
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 999 !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-nav-btn:hover {
+    background: #e67a00;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 30px rgba(255, 140, 0, 0.5);
+  }
+
+  .prev-btn {
+    left: 10px !important;
+  }
+
+  .next-btn {
+    right: 10px !important;
+  }
+
+  /* Force visibility for specific buttons */
+  #recPrevBtn, #recNextBtn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    z-index: 9999 !important;
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 40px;
+  }
+
+  .carousel-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #DEE2E6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: var(--primary-red);
+    transform: scale(1.2);
+  }
+
+  .carousel-dot:hover {
+    background: var(--primary-red);
+    transform: scale(1.1);
+  }
+
+  /* ===== CAR CARD STYLING ===== */
+  .recommended-car-card {
     background: var(--white);
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
     overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+    border: 1px solid #F1F3F4;
+    text-decoration: none;
+    color: inherit;
     display: flex;
     flex-direction: column;
+    height: 460px;
+    cursor: pointer;
+    flex: 0 0 320px; /* For carousel */
   }
 
-  .recommended-card:hover {
+  .recommended-car-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(255, 140, 0, 0.15);
-  }
-
-  .recommended-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .recommended-link:hover {
+    box-shadow: var(--shadow-hover);
     text-decoration: none;
     color: inherit;
   }
 
-  .recommended-image {
+  .recommended-car-card .car-image {
     position: relative;
-    width: 100%;
-    height: 260px;
+    height: 280px;
+    background: #f8f9fa;
     overflow: hidden;
-    aspect-ratio: 1/1;
-    flex-shrink: 0;
   }
 
-  .recommended-image img {
+  .recommended-car-card .car-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
 
-  .recommended-card:hover .recommended-image img {
+  .recommended-car-card:hover .car-image img {
     transform: scale(1.05);
   }
 
-  .recommended-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: var(--primary-red);
-    color: var(--white);
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
-
-
-  .recommended-content {
-    padding: 16px;
+  .recommended-car-card .car-details {
+    padding: 20px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  .recommended-title {
+  .recommended-car-card .car-title {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--dark-gray);
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     line-height: 1.3;
   }
 
-  .recommended-year {
-    color: var(--medium-gray);
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-  }
-
-  .recommended-specs {
+  .recommended-car-card .car-specs {
     display: flex;
-    gap: 15px;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-top: 1px solid #F1F3F4;
     margin-top: auto;
-    padding-top: 12px;
   }
 
-  .recommended-specs .spec-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--medium-gray);
-    font-size: 0.85rem;
+  .recommended-car-card .spec-item {
+    text-align: center;
+    flex: 1;
   }
 
-  .recommended-specs .spec-item i {
+  .recommended-car-card .spec-icon {
+    font-size: 1.2rem;
     color: var(--primary-red);
+    margin-bottom: 6px;
+  }
+
+  .recommended-car-card .spec-value {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    margin-bottom: 4px;
+  }
+
+  .recommended-car-card .spec-label {
     font-size: 0.8rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .recommended-price {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--primary-red);
+  .recommended-car-card .car-footer {
+    height: 0;
   }
-
-  /* Carousel Navigation */
-  .recommended-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 55px;
-    height: 55px;
-    background: var(--primary-red);
     border: none;
     border-radius: 50%;
     color: var(--white);
@@ -1374,41 +1404,37 @@
     transform: scale(1.2);
   }
 
-  /* Responsive Design for Recommended Section */
+  /* ===== RESPONSIVE DESIGN ===== */
   @media (max-width: 1200px) {
-    .recommended-card {
-      flex: 0 0 300px;
-      height: 400px;
+    .recommended-grid-two,
+    .recommended-grid-normal,
+    .recommended-carousel-container {
+      max-width: 1000px;
     }
     
-    .recommended-image {
-      height: 240px;
+    .recommended-grid-two,
+    .recommended-grid-normal {
+      gap: 25px;
     }
   }
 
   @media (max-width: 992px) {
     .recommended-section {
-      padding: 30px 15px;
+      padding: 40px 30px;
     }
     
-    .recommended-card {
-      flex: 0 0 300px;
-      height: 400px;
+    .recommended-grid-two,
+    .recommended-grid-normal,
+    .recommended-carousel-container {
+      max-width: 800px;
     }
     
-    .recommended-image {
-      height: 240px;
+    .recommended-grid-two,
+    .recommended-grid-normal {
+      gap: 20px;
     }
     
-    .recommended-carousel {
-      gap: 15px;
-    }
-    
-    .recommended-carousel-wrapper {
-      padding: 20px 70px;
-    }
-    
-    .recommended-nav-btn {
+    .carousel-nav-btn {
       width: 50px;
       height: 50px;
       font-size: 1.2rem;
@@ -1417,114 +1443,98 @@
 
   @media (max-width: 768px) {
     .recommended-section {
-      padding: 25px 10px;
+      padding: 30px 20px;
+      margin: 30px 0;
     }
     
-    .recommended-carousel-container {
-      justify-content: center;
+    .recommended-header {
+      margin-bottom: 40px;
     }
     
-    .recommended-carousel {
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
+    .recommended-header .section-title {
+      font-size: 1.8rem;
     }
     
-    .recommended-card {
-      flex: 0 0 280px;
-      height: 380px;
+    /* All grids become single column */
+    .recommended-grid-single,
+    .recommended-grid-two,
+    .recommended-grid-normal {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 20px;
+      max-width: 400px;
       margin: 0 auto;
     }
     
-    .recommended-image {
-      height: 220px;
+    /* Hide carousel navigation on mobile */
+    .carousel-nav-btn,
+    .carousel-indicators {
+      display: none !important;
+    }
+  }
+
+  /* Force show arrows on desktop */
+  @media (min-width: 769px) {
+    .carousel-nav-btn {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
     
     .recommended-carousel-wrapper {
-      padding: 20px 10px;
-      overflow: visible;
+      margin: 0 !important;
+      overflow: visible !important;
     }
     
-    .recommended-nav-btn {
-      width: 45px;
-      height: 45px;
-      font-size: 1.1rem;
+    .recommended-carousel {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 20px;
+      width: auto !important;
     }
     
-    .recommended-nav-btn.prev {
-      left: 15px;
+    .recommended-car-card {
+      height: 400px;
+      max-width: none;
+      flex: none !important;
     }
     
-    .recommended-nav-btn.next {
-      right: 15px;
-    }
-    
-    .recommended-image {
-      height: 160px;
-    }
-    
-    .recommended-content {
-      padding: 15px;
-    }
-    
-    .recommended-title {
-      font-size: 1.1rem;
-    }
-    
-    .recommended-price {
-      font-size: 1.2rem;
+    .recommended-car-card .car-image {
+      height: 240px;
     }
   }
 
   @media (max-width: 576px) {
-    .recommended-card {
-      flex: 0 0 260px;
-      height: 360px;
-      margin: 0 auto;
+    .recommended-section {
+      padding: 25px 15px;
     }
     
-    .recommended-carousel {
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .recommended-image {
-      height: 200px;
-    }
-    
-    .recommended-title {
-      font-size: 1rem;
-    }
-    
-    .recommended-carousel-wrapper {
-      padding: 20px 5px;
-      overflow: visible;
-    }
-    
-    .recommended-nav-btn {
-      width: 42px;
-      height: 42px;
-      font-size: 1rem;
-    }
-    
-    .recommended-nav-btn.prev {
-      left: 10px;
-    }
-    
-    .recommended-nav-btn.next {
-      right: 10px;
-    }
-    
-    .recommended-image {
-      height: 140px;
-    }
-    
-    .section-title {
+    .recommended-header .section-title {
       font-size: 1.6rem;
     }
     
-    .section-subtitle {
+    .recommended-car-card {
+      height: 380px;
+    }
+    
+    .recommended-car-card .car-image {
+      height: 220px;
+    }
+    
+    .recommended-car-card .car-title {
       font-size: 1rem;
+    }
+    
+    .recommended-car-card .car-details {
+      padding: 15px;
+    }
+    
+    .recommended-car-card .spec-value {
+      font-size: 0.8rem;
+    }
+    
+    .recommended-car-card .spec-label {
+      font-size: 0.7rem;
     }
   }
 
@@ -1594,6 +1604,261 @@
       padding: 8px 12px;
       font-size: 0.85rem;
       gap: 4px;
+    }
+  }
+
+  /* Similar Cars Section */
+  .similar-cars-section {
+    background: var(--white);
+    padding: 60px 0;
+    margin: 40px 0;
+  }
+
+  .similar-cars-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .similar-cars-header .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 0;
+  }
+
+  .similar-cars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+  }
+
+  /* Single car - center in middle position */
+  .similar-cars-grid:has(.similar-car-card:nth-child(1):last-child) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .similar-cars-grid .similar-car-card:nth-child(1):last-child {
+    grid-column: 2;
+  }
+
+  /* Two cars - center them */
+  .similar-cars-grid:has(.similar-car-card:nth-child(2):last-child) {
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .similar-car-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+    width: 100%;
+    max-width: 350px;
+    border: 1px solid #f1f3f4;
+  }
+
+  .similar-car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .similar-car-card .car-image {
+    position: relative;
+    height: 240px;
+    background: #f8f9fa;
+    overflow: hidden;
+  }
+
+  .similar-car-card .car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .similar-car-card:hover .car-image img {
+    transform: scale(1.1);
+  }
+
+  .similar-car-card .car-details {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .similar-car-card .car-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  .similar-car-card .car-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin-bottom: 20px;
+  }
+
+  .similar-car-card .car-specs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #f1f3f4;
+  }
+
+  .similar-car-card .spec-item {
+    text-align: center;
+    flex: 1;
+  }
+
+  .similar-car-card .spec-icon {
+    font-size: 1.4rem;
+    color: var(--primary-red);
+    margin-bottom: 8px;
+  }
+
+  .similar-car-card .spec-value {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--dark-gray);
+    margin-bottom: 4px;
+    word-break: break-word;
+  }
+
+  .similar-car-card .spec-label {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Responsive Design for Similar Cars */
+  @media (max-width: 1200px) {
+    .similar-cars-grid {
+      max-width: 1000px;
+      gap: 25px;
+    }
+
+    .similar-car-card {
+      max-width: 320px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .similar-cars-section {
+      padding: 50px 0;
+    }
+
+    .similar-cars-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      max-width: 700px;
+    }
+
+    /* Single car in 2-column grid */
+    .similar-cars-grid:has(.similar-car-card:nth-child(1):last-child) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .similar-cars-grid .similar-car-card:nth-child(1):last-child {
+      grid-column: 1 / 3;
+      max-width: 350px;
+      justify-self: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .similar-cars-section {
+      padding: 40px 0;
+      margin: 30px 0;
+    }
+
+    .similar-cars-header .section-title {
+      font-size: 2rem;
+    }
+
+    .similar-cars-grid {
+      grid-template-columns: 1fr;
+      gap: 25px;
+      max-width: 400px;
+    }
+
+    .similar-cars-grid:has(.similar-car-card:nth-child(1):last-child),
+    .similar-cars-grid:has(.similar-car-card:nth-child(2):last-child) {
+      grid-template-columns: 1fr;
+    }
+
+    .similar-cars-grid .similar-car-card:nth-child(1):last-child {
+      grid-column: 1;
+    }
+
+    .similar-car-card {
+      height: 380px;
+      max-width: none;
+    }
+
+    .similar-car-card .car-image {
+      height: 220px;
+    }
+
+    .similar-car-card .car-details {
+      padding: 20px;
+    }
+
+    .similar-car-card .car-title {
+      font-size: 1.1rem;
+    }
+
+    .similar-car-card .car-price {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .similar-cars-section {
+      padding: 30px 0;
+    }
+
+    .similar-cars-header .section-title {
+      font-size: 1.8rem;
+    }
+
+    .similar-car-card {
+      height: 360px;
+    }
+
+    .similar-car-card .car-image {
+      height: 200px;
+    }
+
+    .similar-car-card .car-details {
+      padding: 18px;
+    }
+
+    .similar-car-card .spec-value {
+      font-size: 0.85rem;
+    }
+
+    .similar-car-card .spec-label {
+      font-size: 0.75rem;
     }
   }
 </style>
@@ -1815,55 +2080,50 @@
   </div>
   {% endif %}
 
-  <!-- Recommended Cars Section -->
-  {% if recommended_cars %}
-  <div class="recommended-section">
-    <h2 class="section-title">{% trans "Препорачани возила" %}</h2>
-    <p class="section-subtitle">{% trans "Слични возила што можеби ќе ве интересираат" %}</p>
-    
-    <div class="recommended-carousel-container">
-      <button class="recommended-nav-btn prev" id="recPrevBtn" onclick="slideRecommended(-1)">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="recommended-nav-btn next" id="recNextBtn" onclick="slideRecommended(1)">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-      
-      <div class="recommended-carousel-wrapper">
-        <div class="recommended-carousel" id="recommendedCarousel">
-        {% for rec_car in recommended_cars %}
-        <div class="recommended-card">
-          <a href="{% url 'frontend_vehicle_detail' rec_car.pk %}?back=vehicles{% if request.GET.page %}&page={{ request.GET.page }}{% endif %}{% if request.GET.brand %}&brand={{ request.GET.brand }}{% endif %}{% if request.GET.model_name %}&model_name={{ request.GET.model_name }}{% endif %}{% if request.GET.transmission %}&transmission={{ request.GET.transmission }}{% endif %}{% if request.GET.vehicle_body %}&vehicle_body={{ request.GET.vehicle_body }}{% endif %}{% if request.GET.fuel %}&fuel={{ request.GET.fuel }}{% endif %}{% if request.GET.color %}&color={{ request.GET.color }}{% endif %}{% if request.GET.for_beginners %}&for_beginners={{ request.GET.for_beginners }}{% endif %}{% if request.GET.price_from %}&price_from={{ request.GET.price_from }}{% endif %}{% if request.GET.price_to %}&price_to={{ request.GET.price_to }}{% endif %}{% if request.GET.year_from %}&year_from={{ request.GET.year_from }}{% endif %}{% if request.GET.sort_price %}&sort_price={{ request.GET.sort_price }}{% endif %}{% if request.GET.sort_mileage %}&sort_mileage={{ request.GET.sort_mileage }}{% endif %}{% if request.GET.sort_year %}&sort_year={{ request.GET.sort_year }}{% endif %}" class="recommended-link">
-            <div class="recommended-image">
-              <img src="{{ rec_car.main_image.url }}" alt="{{ rec_car.title }}" loading="lazy">
-            </div>
-            <div class="recommended-content">
-              <h4 class="recommended-title">{{ rec_car.brand.name }} {{ rec_car.model_name.name }}</h4>
-              <p class="recommended-year">{{ rec_car.year }} • {{ rec_car.get_mileage_display }}</p>
-              <div class="recommended-specs">
-                <span class="spec-item">
-                  <i class="fas fa-gas-pump"></i>
-                  {{ rec_car|get_fuel_display_lang }}
-                </span>
-                <span class="spec-item">
-                  <i class="fas fa-cog"></i>
-                  {{ rec_car|get_transmission_display_lang }}
-                </span>
-              </div>
-            </div>
-          </a>
-        </div>
-        {% endfor %}
-        </div>
-      </div>
-      
-      <!-- Carousel dots/indicators -->
-      <div class="recommended-indicators" id="recommendedIndicators"></div>
-    </div>
-  </div>
-  {% endif %}
   </div>
 </section>
+
+<!-- Similar Cars Section -->
+{% if recommended_cars %}
+<section class="similar-cars-section">
+  <div class="container">
+    <div class="similar-cars-header">
+      <h2 class="section-title">{% trans "Погледни слични автомобили" %}</h2>
+    </div>
+
+    <div class="similar-cars-grid">
+      {% for similar_car in recommended_cars|slice:":3" %}
+        <a href="{% url 'frontend_vehicle_detail' similar_car.id %}" class="similar-car-card">
+          <div class="car-image">
+            <img src="{{ similar_car.main_image_web.url }}" alt="{{ similar_car.title }}" loading="lazy">
+          </div>
+          <div class="car-details">
+            <h3 class="car-title">{{ similar_car.title }}</h3>
+            <div class="car-price">€{{ similar_car.price|floatformat:0 }}</div>
+            <div class="car-specs">
+              <div class="spec-item">
+                <div class="spec-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="spec-value">{{ similar_car.year }}</div>
+                <div class="spec-label">{% trans "Год." %}</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-icon"><i class="fas fa-gas-pump"></i></div>
+                <div class="spec-value">{{ similar_car|get_fuel_display_lang }}</div>
+                <div class="spec-label">{% trans "Гориво" %}</div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <div class="spec-value">{{ similar_car.mileage|default:"N/A" }}{% if similar_car.mileage %} km{% endif %}</div>
+                <div class="spec-label">{% trans "км" %}</div>
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 <!-- Floating Back Button -->
 {% if request.GET.back == 'vehicles' %}
@@ -2279,16 +2539,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize view counter
   initializeViewCounter();
   
-  // Initialize recommended carousel
-  initializeRecommendedCarousel();
-  initializeRecommendedTouch();
-  
-  // Handle window resize
-  let resizeTimeout;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(handleRecommendedResize, 250);
-  });
   
   const equipmentItems = document.querySelectorAll('.equipment-item');
   
