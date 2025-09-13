@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'dealership_app.middleware.Custom404RedirectMiddleware',  # Disabled - using URL patterns instead
 ]
 
 ROOT_URLCONF = 'dealership_menagment.urls'

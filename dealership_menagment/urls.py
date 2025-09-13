@@ -63,6 +63,9 @@ urlpatterns = [
     path('dashboard/cars/<int:pk>/edit/', views.admin_car_edit, name="admin_car_edit"),
     path('dashboard/cars/<int:pk>/delete/', views.admin_car_delete, name="admin_car_delete"),
     path('dashboard/cars/reorder/', views.admin_car_reorder, name="admin_car_reorder"),
+    
+    # Catch-all for invalid dashboard URLs - redirect to dashboard home
+    path('dashboard/<path:invalid>/', views.redirect_to_dashboard, name="invalid_dashboard_redirect"),
 ]
 
 # Language-dependent URLs (frontend)
@@ -76,6 +79,26 @@ urlpatterns += i18n_patterns(
     path('contact/', frontend_views.contact, name='frontend_contact'),
     path('terms/', frontend_views.terms, name='frontend_terms'),
     path('privacy/', frontend_views.privacy, name='frontend_privacy'),
+    
+    # Catch-all patterns for invalid frontend URLs - these should be at the end
+    path('vehicles/<str:invalid>/', frontend_views.redirect_to_vehicles, name='invalid_vehicle_redirect'),
+    path('services/<path:invalid>/', frontend_views.redirect_to_services, name='invalid_services_redirect'),
+    path('collaboration/<path:invalid>/', frontend_views.redirect_to_collaboration, name='invalid_collaboration_redirect'),
+    path('about/<path:invalid>/', frontend_views.redirect_to_about, name='invalid_about_redirect'),
+    path('contact/<path:invalid>/', frontend_views.redirect_to_contact, name='invalid_contact_redirect'),
+    path('terms/<path:invalid>/', frontend_views.redirect_to_terms, name='invalid_terms_redirect'),
+    path('privacy/<path:invalid>/', frontend_views.redirect_to_privacy, name='invalid_privacy_redirect'),
+    
+    # Specific patterns for common typos of valid frontend pages
+    path('vehicle/', frontend_views.redirect_to_vehicles, name='vehicle_singular_redirect'),
+    path('service/', frontend_views.redirect_to_services, name='service_singular_redirect'),
+    path('car/', frontend_views.redirect_to_vehicles, name='car_redirect'),
+    path('cars/', frontend_views.redirect_to_vehicles, name='cars_redirect'),
+    path('kontakt/', frontend_views.redirect_to_contact, name='kontakt_redirect'),
+    path('za-nas/', frontend_views.redirect_to_about, name='za_nas_redirect'),
+    
+    # Final catch-all for any other invalid frontend URLs (not admin/dashboard)
+    path('<str:invalid>/', frontend_views.redirect_to_home_if_frontend, name='final_frontend_redirect'),
 )
 
 # Serve static and media files
@@ -87,3 +110,6 @@ else:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Custom error handlers - disabled to avoid interfering with admin
+# handler404 = 'dealership_app.frontend_views.custom_404_handler'

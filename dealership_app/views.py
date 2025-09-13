@@ -591,3 +591,9 @@ def ajax_check_image_status(request, image_id):
         
     except CarImage.DoesNotExist:
         return JsonResponse({"success": False, "error": "Image not found"})
+
+def redirect_to_dashboard(request, invalid=None):
+    """
+    Redirect invalid dashboard URLs to the main dashboard
+    """
+    return redirect('/dashboard/')
