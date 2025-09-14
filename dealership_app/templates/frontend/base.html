@@ -7,7 +7,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block title %}Car Dealership{% endblock %}</title>
-  
+
+  <!-- Standard Meta Tags -->
+  <meta name="description" content="{% block meta_description %}AUTO DINERO - Квалитетни возила, професионални услуги. Пронајдете го вашиот совршен автомобил кај нас.{% endblock %}" />
+
+  <!-- Performance optimizations -->
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="{% block og_title %}AUTO DINERO - Car Dealership{% endblock %}" />
   <meta property="og:description" content="{% block og_description %}Find your perfect car at AUTO DINERO. Quality vehicles with excellent service.{% endblock %}" />
@@ -22,28 +31,57 @@
   <meta name="twitter:description" content="{% block twitter_description %}Find your perfect car at AUTO DINERO. Quality vehicles with excellent service.{% endblock %}" />
   <meta name="twitter:image" content="{% static 'logo-grey.jpg' %}" />
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <!-- Custom CSS -->
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"></noscript>
+
+  <!-- Font Awesome - Load non-blocking -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+  <!-- Custom CSS - Load immediately as it's critical -->
   <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
   {% block extra_css %}{% endblock %}
   <style>
-    /* Footer stick to bottom if content is short */
+    /* Critical CSS for above-the-fold content */
     html, body {
       height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      margin: 0;
+      padding: 0;
     }
     main {
       flex: 1 0 auto;
     }
     footer {
       flex-shrink: 0;
+    }
+
+    /* Critical navbar styles */
+    .navbar {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Critical hero section styles */
+    .hero-section {
+      background: linear-gradient(135deg, #1D3557 0%, #ff8c00 100%);
+      color: white;
+      padding: 60px 0 40px;
+    }
+
+    /* Critical font display */
+    .hero-title {
+      font-family: 'Poppins', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
     }
     
     /* Navbar Scroll Animation */
@@ -84,6 +122,19 @@
       }
     }
     
+    /* Accessibility: Visually hidden class for screen reader only content */
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
     /* Remove focus outlines from buttons and links to prevent black borders */
     button:focus,
     .btn:focus,
@@ -935,7 +986,7 @@
     }
 
     .footer-brand .brand-description {
-      color: #6C757D;
+      color: #495057;
       line-height: 1.6;
       margin-bottom: 1.5rem;
       font-size: 1rem;
@@ -947,7 +998,7 @@
     }
 
     .social-link {
-      color: #6C757D;
+      color: #495057;
       font-size: 1.3rem;
       transition: all 0.3s ease;
       text-decoration: none;
@@ -1638,8 +1689,8 @@
     </div>
   </div>
 
-  <!-- Bootstrap Bundle JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap Bundle JS - Load with defer for better performance -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
   {% block extra_js %}{% endblock %}
   
   <!-- Scroll to Top Script -->

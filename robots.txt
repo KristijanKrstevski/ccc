@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Block access to admin areas
+Disallow: /admin/
+Disallow: /cgi-bin/
+
+# Block access to internal directories and files
+Disallow: /dealership_menagment/
+Disallow: /__pycache__/
+Disallow: /*.py$
+Disallow: /*.pyc$
+Disallow: /.git/
+Disallow: /.idea/
+Disallow: /logs/
+Disallow: /tmp/
+
+# Allow specific important pages
+Allow: /static/
+Allow: /media/
+
+# Sitemap location (add when available)
+# Sitemap: https://autodinero.krstevski.me/sitemap.xml
+
+# Crawl delay (optional - remove if not needed)
+Crawl-delay: 1

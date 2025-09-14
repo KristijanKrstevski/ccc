@@ -5,7 +5,11 @@
 {% block title %}AUTO DINERO Macedonia - {% trans "Добредојдовте во модерното време на квалитетните автомобили" %}{% endblock %}
 
 {% block extra_css %}
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Preload critical fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
   :root {
     --primary-red: #ff8c00;
@@ -123,11 +127,12 @@
 
   .form-control {
     padding: 12px 16px;
-    border: 2px solid #999 !important;
+    border: 2px solid #666 !important;
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
     background: var(--white);
+    color: #212529;
   }
 
   .form-control:hover {
@@ -1076,12 +1081,13 @@
 <!-- Advanced Search -->
 <section class="container">
   <div class="search-container">
-    <h3 class="search-title">{% trans "МЕНИ ЗА ПРЕБАРУВАЊЕ" %}</h3>
+    <h2 class="search-title">{% trans "МЕНИ ЗА ПРЕБАРУВАЊЕ" %}</h2>
     
     <form class="search-form" method="get" action="{% url 'frontend_vehicles' %}">
       <!-- Brand - Order 1 on all devices -->
       <div class="form-group form-brand">
-        <select class="form-control" name="brand" id="brand">
+        <label for="brand" class="visually-hidden">{% trans "Избери марка" %}</label>
+        <select class="form-control" name="brand" id="brand" aria-label="{% trans 'Избери марка' %}">
           <option value="">{% trans "Избери марка" %}</option>
           {% for brand in brands %}
           <option value="{{ brand.id }}">{{ brand.name }}</option>
@@ -1091,24 +1097,28 @@
       
       <!-- Model - Order 2 on mobile, Order 4 on desktop -->
       <div class="form-group form-model">
-        <select class="form-control" name="model" id="model">
+        <label for="model" class="visually-hidden">{% trans "Избери модел" %}</label>
+        <select class="form-control" name="model" id="model" aria-label="{% trans 'Избери модел' %}">
           <option value="">{% trans "Избери модел" %}</option>
         </select>
       </div>
       
       <!-- Year From - Order 3 on mobile, Order 2 on desktop -->
       <div class="form-group form-year-from">
-        <input type="number" class="form-control" name="year_from" id="year_from" placeholder="{% trans 'Година од' %}">
+        <label for="year_from" class="visually-hidden">{% trans "Година од" %}</label>
+        <input type="number" class="form-control" name="year_from" id="year_from" placeholder="{% trans 'Година од' %}" aria-label="{% trans 'Година од' %}">
       </div>
       
       <!-- Year To - Order 4 on mobile, Order 5 on desktop -->
       <div class="form-group form-year-to">
-        <input type="number" class="form-control" name="year_to" id="year_to" placeholder="{% trans 'Година до' %}">
+        <label for="year_to" class="visually-hidden">{% trans "Година до" %}</label>
+        <input type="number" class="form-control" name="year_to" id="year_to" placeholder="{% trans 'Година до' %}" aria-label="{% trans 'Година до' %}">
       </div>
       
       <!-- Fuel - Order 5 on mobile, Order 3 on desktop -->
       <div class="form-group form-fuel">
-        <select class="form-control" name="fuel" id="fuel">
+        <label for="fuel" class="visually-hidden">{% trans "Избери гориво" %}</label>
+        <select class="form-control" name="fuel" id="fuel" aria-label="{% trans 'Избери гориво' %}">
           <option value="">{% trans "Избери гориво" %}</option>
           {% for key, label in fuel_choices %}
           <option value="{{ key }}">{{ label }}</option>
@@ -1118,7 +1128,8 @@
       
       <!-- Transmission - Order 6 on all devices -->
       <div class="form-group form-transmission">
-        <select class="form-control" name="transmission" id="transmission">
+        <label for="transmission" class="visually-hidden">{% trans "Избери менувач" %}</label>
+        <select class="form-control" name="transmission" id="transmission" aria-label="{% trans 'Избери менувач' %}">
           <option value="">{% trans "Избери менувач" %}</option>
           <option value="manual">{% trans "Рачен" %}</option>
           <option value="automatic">{% trans "Автоматски" %}</option>
@@ -1148,18 +1159,18 @@
   <!-- Carousel Outside Container for Full Width -->
   <div class="carousel-container">
       <div class="carousel-wrapper">
-        <button class="carousel-arrow carousel-arrow-left" onclick="moveCarousel(-1)">
-          <i class="fas fa-chevron-left"></i>
+        <button class="carousel-arrow carousel-arrow-left" onclick="moveCarousel(-1)" aria-label="{% trans 'Претходен автомобил' %}">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
         </button>
-        <button class="carousel-arrow carousel-arrow-right" onclick="moveCarousel(1)">
-          <i class="fas fa-chevron-right"></i>
+        <button class="carousel-arrow carousel-arrow-right" onclick="moveCarousel(1)" aria-label="{% trans 'Следен автомобил' %}">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
         </button>
         
         <div class="carousel-track" id="carouselTrack">
           {% for car in featured_cars %}
-          <a href="{% url 'frontend_vehicle_detail' car.pk %}?back=vehicles" class="car-card carousel-slide">
+          <a href="{% url 'frontend_vehicle_detail' car.pk %}?back=vehicles" class="car-card carousel-slide" aria-label="{% trans 'Погледај детали за' %} {{ car.brand.name }} {{ car.model_name.name }} {{ car.year }}">
             <div class="car-image">
-              <img src="{{ car.main_image.url }}" alt="{{ car.title }}">
+              <img src="{{ car.main_image.url }}" alt="{{ car.brand.name }} {{ car.model_name.name }} {{ car.year }} - {% trans 'Слика на автомобил' %}" loading="lazy" decoding="async">
             </div>
             <div class="car-details">
               <h3 class="car-title">{{ car.brand.name }} {{ car.model_name.name }}</h3>
@@ -1205,7 +1216,7 @@
         {% if featured_cars %}
         <div class="carousel-indicators">
           {% for car in featured_cars %}
-          <button class="indicator {% if forloop.first %}active{% endif %}" onclick="goToSlide({{ forloop.counter0 }})"></button>
+          <button class="indicator {% if forloop.first %}active{% endif %}" onclick="goToSlide({{ forloop.counter0 }})" aria-label="{% trans 'Оди на слајд' %} {{ forloop.counter }}"></button>
           {% endfor %}
         </div>
         {% endif %}
@@ -1251,11 +1262,11 @@
 
   <!-- Image Container Outside Bootstrap Container for Full Width -->
   <div class="exclusive-car-container">
-    <a href="{% url 'frontend_vehicle_detail' exclusive_car.id %}?back=vehicles" class="exclusive-car-link">
+    <a href="{% url 'frontend_vehicle_detail' exclusive_car.id %}?back=vehicles" class="exclusive-car-link" aria-label="{% trans 'Погледај ексклузивно возило' %} {{ exclusive_car.brand.name }} {{ exclusive_car.model_name.name }}">
       <div class="exclusive-car-image">
         <img src="{{ exclusive_car.main_image_web.url }}"
-             alt="{{ exclusive_car.title }}"
-             class="exclusive-img">
+             alt="{{ exclusive_car.brand.name }} {{ exclusive_car.model_name.name }} - {% trans 'Ексклузивно возило' %}"
+             class="exclusive-img" loading="lazy" decoding="async">
       </div>
     </a>
   </div>
@@ -1456,59 +1467,65 @@ function handleKeyNavigation(e) {
   }
 }
 
-// Initialize carousel
+// Initialize carousel with performance optimizations
 function initCarousel() {
   if (slides.length === 0) return;
-  
-  // Set up touch events
+
+  // Use passive listeners for better performance
   if (track) {
     track.addEventListener('touchstart', handleTouchStart, { passive: true });
     track.addEventListener('touchend', handleTouchEnd, { passive: true });
   }
-  
+
   // Set up keyboard navigation
-  document.addEventListener('keydown', handleKeyNavigation);
-  
+  document.addEventListener('keydown', handleKeyNavigation, { passive: true });
+
   // Set up hover pause
   setupHoverPause();
-  
-  // Initial setup with proper delay
-  setTimeout(() => {
+
+  // Use requestIdleCallback if available, fallback to setTimeout
+  const scheduleInit = window.requestIdleCallback ?
+    callback => window.requestIdleCallback(callback, { timeout: 300 }) :
+    callback => setTimeout(callback, 100);
+
+  scheduleInit(() => {
     currentSlide = getInitialSlide();
     updateCarousel();
     startAutoPlay();
-  }, 300);
-  
-  // Handle window resize with proper debouncing
+  });
+
+  // Optimized resize handler with throttling
   let resizeTimeout;
   let lastScreenType = window.innerWidth <= 768 ? 'mobile' : 'desktop';
-  
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
+
+  const optimizedResize = () => {
+    if (resizeTimeout) return;
+    resizeTimeout = requestAnimationFrame(() => {
       const currentScreenType = window.innerWidth <= 768 ? 'mobile' : 'desktop';
-      
-      // Reset to appropriate starting position if screen type changed
+
       if (lastScreenType !== currentScreenType) {
         currentSlide = getInitialSlide();
         lastScreenType = currentScreenType;
       }
-      
+
       updateCarousel();
-    }, 100);
-  });
-  
+      resizeTimeout = null;
+    });
+  };
+
+  window.addEventListener('resize', optimizedResize, { passive: true });
+
   // Handle orientation change
   window.addEventListener('orientationchange', () => {
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const newScreenType = window.innerWidth <= 768 ? 'mobile' : 'desktop';
       if (lastScreenType !== newScreenType) {
         currentSlide = getInitialSlide();
         lastScreenType = newScreenType;
       }
       updateCarousel();
-    }, 300);
-  });
+    });
+  }, { passive: true });
 }
 
 // Initialize when DOM is loaded
