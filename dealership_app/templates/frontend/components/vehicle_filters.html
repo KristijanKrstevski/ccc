@@ -169,12 +169,12 @@
 
     <!-- Actions -->
     <div class="row mt-4">
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary px-4">
+      <div class="col-12 d-flex justify-content-center gap-3">
+        <button type="submit" class="btn btn-primary" style="max-width: 200px; padding: 12px 24px; font-size: 0.9rem;">
           <i class="fas fa-search me-2"></i>{% trans "Примени" %}
         </button>
         <a href="{% url 'frontend_vehicles' %}"
-           class="btn btn-outline-secondary px-4 ms-2">
+           class="btn btn-outline-secondary" style="max-width: 200px; padding: 12px 24px; font-size: 0.9rem;">
           <i class="fas fa-undo me-2"></i>{% trans "Ресетирај" %}
         </a>
       </div>

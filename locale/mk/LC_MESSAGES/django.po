@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-13 00:42+0000\n"
+"POT-Creation-Date: 2025-09-13 18:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,29 +19,26 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
 
 #: dealership_app/templates/admin_custom/car_list.html:258
-#: dealership_app/templates/frontend/index.html:969
-#: dealership_app/templates/frontend/vehicle_detail.html:1657
-#: dealership_app/templates/frontend/vehicles.html:915
+#: dealership_app/templates/frontend/index.html:978
+#: dealership_app/templates/frontend/vehicle_detail.html:1682
+#: dealership_app/templates/frontend/vehicles.html:866
 msgid "Година"
 msgstr "Година"
 
 #: dealership_app/templates/admin_custom/car_list.html:265
 #: dealership_app/templates/frontend/components/vehicle_filters.html:95
-#: dealership_app/templates/frontend/index.html:917
-#: dealership_app/templates/frontend/index.html:976
-#: dealership_app/templates/frontend/vehicle_detail.html:1671
-#: dealership_app/templates/frontend/vehicles.html:800
-#: dealership_app/templates/frontend/vehicles.html:922
+#: dealership_app/templates/frontend/index.html:985
+#: dealership_app/templates/frontend/vehicle_detail.html:1696
+#: dealership_app/templates/frontend/vehicles.html:873
 msgid "Гориво"
 msgstr "Гориво"
 
 #: dealership_app/templates/admin_custom/car_list.html:272
 #: dealership_app/templates/frontend/components/vehicle_filters.html:67
-#: dealership_app/templates/frontend/index.html:983
-#: dealership_app/templates/frontend/vehicle_detail.html:1678
-#: dealership_app/templates/frontend/vehicle_detail.html:1752
-#: dealership_app/templates/frontend/vehicles.html:814
-#: dealership_app/templates/frontend/vehicles.html:929
+#: dealership_app/templates/frontend/index.html:992
+#: dealership_app/templates/frontend/vehicle_detail.html:1703
+#: dealership_app/templates/frontend/vehicle_detail.html:1777
+#: dealership_app/templates/frontend/vehicles.html:880
 msgid "Менувач"
 msgstr "Менувач"
 
@@ -307,13 +304,13 @@ msgid "Линкови"
 msgstr "Линкови"
 
 #: dealership_app/templates/frontend/base.html:836
-#: dealership_app/templates/frontend/vehicle_detail.html:1583
+#: dealership_app/templates/frontend/vehicle_detail.html:1608
 msgid "Дома"
 msgstr "Дома"
 
 #: dealership_app/templates/frontend/base.html:837
-#: dealership_app/templates/frontend/vehicle_detail.html:1586
-#: dealership_app/templates/frontend/vehicle_detail.html:1588
+#: dealership_app/templates/frontend/vehicle_detail.html:1611
+#: dealership_app/templates/frontend/vehicle_detail.html:1613
 #: dealership_app/templates/frontend/vehicles.html:6
 msgid "Возила"
 msgstr "Возила"
@@ -815,26 +812,20 @@ msgid "Филтери"
 msgstr "Филтери"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:10
-#: dealership_app/templates/frontend/index.html:890
-#: dealership_app/templates/frontend/vehicles.html:772
 msgid "Марка"
 msgstr "Марка"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:12
-#: dealership_app/templates/frontend/vehicles.html:774
 msgid "Сите марки"
 msgstr "Сите марки"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:24
-#: dealership_app/templates/frontend/index.html:899
-#: dealership_app/templates/frontend/vehicles.html:786
 msgid "Модел"
 msgstr "Модел"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:27
 #: dealership_app/templates/frontend/components/vehicle_filters.html:192
-#: dealership_app/templates/frontend/vehicles.html:788
-#: dealership_app/templates/frontend/vehicles.html:1006
+#: dealership_app/templates/frontend/vehicles.html:957
 msgid "Сите модели"
 msgstr "Сите модели"
 
@@ -843,7 +834,6 @@ msgid "Ценовен опсег"
 msgstr "Ценовен опсег"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:41
-#: dealership_app/templates/frontend/vehicles.html:845
 msgid "Сите цени"
 msgstr "Сите цени"
 
@@ -860,8 +850,7 @@ msgid "Сите менувачи"
 msgstr "Сите менувачи"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:81
-#: dealership_app/templates/frontend/vehicle_detail.html:1773
-#: dealership_app/templates/frontend/vehicles.html:829
+#: dealership_app/templates/frontend/vehicle_detail.html:1798
 msgid "Каросерија"
 msgstr "Каросерија"
 
@@ -874,7 +863,7 @@ msgid "Сите горива"
 msgstr "Сите горива"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:109
-#: dealership_app/templates/frontend/vehicle_detail.html:1766
+#: dealership_app/templates/frontend/vehicle_detail.html:1791
 msgid "Боја"
 msgstr "Боја"
 
@@ -907,12 +896,10 @@ msgid "По километража"
 msgstr "По километража"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:155
-#: dealership_app/templates/frontend/vehicles.html:857
 msgid "Малку → Многу"
 msgstr "Малку → Многу"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:156
-#: dealership_app/templates/frontend/vehicles.html:858
 msgid "Многу → Малку"
 msgstr "Многу → Малку"
 
@@ -929,12 +916,11 @@ msgid "Нови → Стари"
 msgstr "Нови → Стари"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:174
-#: dealership_app/templates/frontend/vehicles.html:878
 msgid "Примени"
 msgstr "Примени"
 
 #: dealership_app/templates/frontend/components/vehicle_filters.html:178
-#: dealership_app/templates/frontend/vehicles.html:881
+#: dealership_app/templates/frontend/vehicles.html:834
 msgid "Ресетирај"
 msgstr "Ресетирај"
 
@@ -1127,96 +1113,125 @@ msgstr ""
 "Вашата порака е успешно испратена! Ќе ви одговориме во најкратко време."
 
 #: dealership_app/templates/frontend/index.html:5
-#: dealership_app/templates/frontend/index.html:878
+#: dealership_app/templates/frontend/index.html:883
+#: dealership_app/templates/frontend/vehicles.html:742
 msgid "Добредојдовте во модерното време на квалитетните автомобили"
 msgstr "Добредојдовте во модерното време на квалитетните автомобили"
 
-#: dealership_app/templates/frontend/index.html:879
+#: dealership_app/templates/frontend/index.html:884
 msgid "Внимателно одбрани возила • Проверена историја • Најдобри цени"
 msgstr "Внимателно одбрани возила • Проверена историја • Најдобри цени"
 
 #: dealership_app/templates/frontend/index.html:892
+#: dealership_app/templates/frontend/vehicles.html:759
+msgid "МЕНИ ЗА ПРЕБАРУВАЊЕ"
+msgstr ""
+
+#: dealership_app/templates/frontend/index.html:898
+#: dealership_app/templates/frontend/vehicles.html:777
 #, fuzzy
 #| msgid "Избери прво марка"
 msgid "Избери марка"
 msgstr "Избери прво марка"
 
-#: dealership_app/templates/frontend/index.html:901
-#: dealership_app/templates/frontend/index.html:1044
-#: dealership_app/templates/frontend/index.html:1053
-#: dealership_app/templates/frontend/vehicles.html:788
-msgid "Избери прво марка"
-msgstr "Избери прво марка"
-
 #: dealership_app/templates/frontend/index.html:905
-msgid "Цена од (€)"
-msgstr "Цена од (€)"
-
-#: dealership_app/templates/frontend/index.html:909
-msgid "Цена до (€)"
-msgstr "Цена до (€)"
-
-#: dealership_app/templates/frontend/index.html:913
+#: dealership_app/templates/frontend/vehicles.html:787
 #, fuzzy
 #| msgid "Година"
 msgid "Година од"
 msgstr "Година"
 
-#: dealership_app/templates/frontend/index.html:919
+#: dealership_app/templates/frontend/index.html:909
+#: dealership_app/templates/frontend/vehicles.html:792
 #, fuzzy
 #| msgid "Избери бренд"
 msgid "Избери гориво"
 msgstr "Избери бренд"
 
-#: dealership_app/templates/frontend/index.html:927
-msgid "Пребарај"
-msgstr "Пребарај"
+#: dealership_app/templates/frontend/index.html:919
+#: dealership_app/templates/frontend/vehicles.html:804
+#, fuzzy
+#| msgid "Избери бренд"
+msgid "Избери модел"
+msgstr "Избери бренд"
 
-#: dealership_app/templates/frontend/index.html:939
+#: dealership_app/templates/frontend/index.html:923
+#: dealership_app/templates/frontend/vehicles.html:814
+#, fuzzy
+#| msgid "Година"
+msgid "Година до"
+msgstr "Година"
+
+#: dealership_app/templates/frontend/index.html:927
+#: dealership_app/templates/frontend/vehicles.html:819
+#, fuzzy
+#| msgid "Избери прво марка"
+msgid "Избери менувач"
+msgstr "Избери прво марка"
+
+#: dealership_app/templates/frontend/index.html:928
+msgid "Рачен"
+msgstr ""
+
+#: dealership_app/templates/frontend/index.html:929
+msgid "Автоматски"
+msgstr ""
+
+#: dealership_app/templates/frontend/index.html:936
+#: dealership_app/templates/frontend/vehicles.html:831
+msgid "ПРЕБАРУВАЈ"
+msgstr ""
+
+#: dealership_app/templates/frontend/index.html:948
 #, fuzzy
 #| msgid "Препорачани возила"
 msgid "Препорачани автомобили"
 msgstr "Препорачани возила"
 
-#: dealership_app/templates/frontend/index.html:940
+#: dealership_app/templates/frontend/index.html:949
 msgid "Ексклузивен избор на најдобрите понуди од нашиот инвентар"
 msgstr "Ексклузивен избор на најдобрите понуди од нашиот инвентар"
 
-#: dealership_app/templates/frontend/index.html:994
+#: dealership_app/templates/frontend/index.html:1003
 #, fuzzy
 #| msgid "Нема пронајдени возила"
 msgid "Нема достапни возила"
 msgstr "Нема пронајдени возила"
 
-#: dealership_app/templates/frontend/index.html:995
+#: dealership_app/templates/frontend/index.html:1004
 #, fuzzy
 #| msgid "Проследете не на социјални мрежи"
 msgid "Проверете подоцна за нови понуди"
 msgstr "Проследете не на социјални мрежи"
 
-#: dealership_app/templates/frontend/index.html:1017
+#: dealership_app/templates/frontend/index.html:1026
 msgid "Why choose us?"
 msgstr "Зошто да не изберете?"
 
-#: dealership_app/templates/frontend/index.html:1022
+#: dealership_app/templates/frontend/index.html:1031
 msgid "Installment option"
 msgstr "Можност за рати"
 
-#: dealership_app/templates/frontend/index.html:1025
+#: dealership_app/templates/frontend/index.html:1034
 msgid "Leasing option"
 msgstr "Можност за лизинг"
 
-#: dealership_app/templates/frontend/index.html:1028
+#: dealership_app/templates/frontend/index.html:1037
 msgid "Trade-in option"
 msgstr "Можност за замена"
 
-#: dealership_app/templates/frontend/index.html:1048
-#: dealership_app/templates/frontend/vehicles.html:1001
+#: dealership_app/templates/frontend/index.html:1053
+#: dealership_app/templates/frontend/index.html:1062
+msgid "Избери прво марка"
+msgstr "Избери прво марка"
+
+#: dealership_app/templates/frontend/index.html:1057
+#: dealership_app/templates/frontend/vehicles.html:952
 msgid "Се вчитува..."
 msgstr "Се вчитува..."
 
-#: dealership_app/templates/frontend/index.html:1063
-#: dealership_app/templates/frontend/vehicles.html:1020
+#: dealership_app/templates/frontend/index.html:1072
+#: dealership_app/templates/frontend/vehicles.html:971
 msgid "Грешка при вчитување"
 msgstr "Грешка при вчитување"
 
@@ -1977,159 +1992,164 @@ msgstr "Контакт"
 msgid "За прашања во врска со овие услови, контактирајте не на:"
 msgstr "За прашања во врска со овие услови, контактирајте не на:"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1599
+#: dealership_app/templates/frontend/vehicle_detail.html:1624
 msgid "Назад кон листа"
 msgstr "Назад кон листа"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1604
+#: dealership_app/templates/frontend/vehicle_detail.html:1629
 msgid "Детални информации за возилото"
 msgstr "Детални информации за возилото"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1618
+#: dealership_app/templates/frontend/vehicle_detail.html:1643
 msgid "Отвори"
 msgstr "Отвори"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1649
+#: dealership_app/templates/frontend/vehicle_detail.html:1674
 msgid "people are viewing this right now"
 msgstr "луѓе во моментов го гледаат ова"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1664
-#: dealership_app/templates/frontend/vehicle_detail.html:1738
-#: dealership_app/templates/frontend/vehicles.html:854
+#: dealership_app/templates/frontend/vehicle_detail.html:1689
+#: dealership_app/templates/frontend/vehicle_detail.html:1763
 msgid "Километража"
 msgstr "Километража"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1685
+#: dealership_app/templates/frontend/vehicle_detail.html:1710
 #, fuzzy
 #| msgid "Политика за приватност"
 msgid "Моќност"
 msgstr "Политика за приватност"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1692
+#: dealership_app/templates/frontend/vehicle_detail.html:1717
 msgid "Потрошувачка"
 msgstr ""
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1699
+#: dealership_app/templates/frontend/vehicle_detail.html:1724
 msgid "Заинтересирани сте?"
 msgstr "Заинтересирани сте?"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1701
+#: dealership_app/templates/frontend/vehicle_detail.html:1726
 msgid "Повикајте нас"
 msgstr "Повикајте нас"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1704
+#: dealership_app/templates/frontend/vehicle_detail.html:1729
 msgid "Испратете е-мејл"
 msgstr "Испратете е-мејл"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1717
+#: dealership_app/templates/frontend/vehicle_detail.html:1742
 msgid "Детални спецификации"
 msgstr "Детални спецификации"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1724
+#: dealership_app/templates/frontend/vehicle_detail.html:1749
 msgid "МОЌНОСТ"
 msgstr "МОЌНОСТ"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1731
+#: dealership_app/templates/frontend/vehicle_detail.html:1756
 msgid "Регистрација"
 msgstr "Регистрација"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1745
+#: dealership_app/templates/frontend/vehicle_detail.html:1770
 msgid "Број на седишта"
 msgstr "Број на седишта"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1759
+#: dealership_app/templates/frontend/vehicle_detail.html:1784
 msgid "Мотор"
 msgstr "Мотор"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1781
+#: dealership_app/templates/frontend/vehicle_detail.html:1806
 msgid "Опрема"
 msgstr "Опрема"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1796
+#: dealership_app/templates/frontend/vehicle_detail.html:1821
 msgid "Препорачани возила"
 msgstr "Препорачани возила"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1797
+#: dealership_app/templates/frontend/vehicle_detail.html:1822
 msgid "Слични возила што можеби ќе ве интересираат"
 msgstr "Слични возила што можеби ќе ве интересираат"
 
-#: dealership_app/templates/frontend/vehicle_detail.html:1847
-#: dealership_app/templates/frontend/vehicle_detail.html:1852
+#: dealership_app/templates/frontend/vehicle_detail.html:1872
+#: dealership_app/templates/frontend/vehicle_detail.html:1877
 msgid "Назад"
 msgstr "Назад"
 
-#: dealership_app/templates/frontend/vehicles.html:747
-#: dealership_app/templates/frontend/vehicles.html:1038
-#: dealership_app/templates/frontend/vehicles.html:1053
+#: dealership_app/templates/frontend/vehicles.html:743
+#, fuzzy
+#| msgid "Внимателно одбрани возила • Проверена историја • Најдобри цени"
+msgid "Внимателно избрани возила • Проверена историја • Најдобри цени"
+msgstr "Внимателно одбрани возила • Проверена историја • Најдобри цени"
+
+#: dealership_app/templates/frontend/vehicles.html:753
+#: dealership_app/templates/frontend/vehicles.html:989
+#: dealership_app/templates/frontend/vehicles.html:1004
 msgid "Затвори филтер"
 msgstr "Затвори филтер"
 
-#: dealership_app/templates/frontend/vehicles.html:753
-msgid "Филтрирај возила"
-msgstr "Филтрирај возила"
-
-#: dealership_app/templates/frontend/vehicles.html:755
+#: dealership_app/templates/frontend/vehicles.html:761
 msgid "vehicles"
 msgstr "возила"
 
-#: dealership_app/templates/frontend/vehicles.html:761
+#: dealership_app/templates/frontend/vehicles.html:767
 msgid "Не е пронајдено такво возило"
 msgstr "Не е пронајдено такво возило"
 
-#: dealership_app/templates/frontend/vehicles.html:802
-#: dealership_app/templates/frontend/vehicles.html:816
-#: dealership_app/templates/frontend/vehicles.html:831
-msgid "Сите типови"
-msgstr "Сите типови"
-
-#: dealership_app/templates/frontend/vehicles.html:843
-msgid "Цена"
-msgstr "Цена"
-
-#: dealership_app/templates/frontend/vehicles.html:846
-msgid "Ниска → Висока"
-msgstr "Ниска → Висока"
-
-#: dealership_app/templates/frontend/vehicles.html:847
-msgid "Висока → Ниска"
-msgstr "Висока → Ниска"
-
-#: dealership_app/templates/frontend/vehicles.html:856
-msgid "Сите километражи"
-msgstr "Сите километражи"
-
-#: dealership_app/templates/frontend/vehicles.html:868
-msgid "Автомобил за почетници"
-msgstr "Автомобил за почетници"
-
-#: dealership_app/templates/frontend/vehicles.html:942
+#: dealership_app/templates/frontend/vehicles.html:893
 msgid "Нема пронајдени возила"
 msgstr "Нема пронајдени возила"
 
-#: dealership_app/templates/frontend/vehicles.html:943
+#: dealership_app/templates/frontend/vehicles.html:894
 msgid "Пробајте со различни критериуми за пребарување"
 msgstr "Пробајте со различни критериуми за пребарување"
 
-#: dealership_app/templates/frontend/vehicles.html:945
+#: dealership_app/templates/frontend/vehicles.html:896
 msgid "Ресетирај пребарување"
 msgstr "Ресетирај пребарување"
 
-#: dealership_app/templates/frontend/vehicles.html:957
+#: dealership_app/templates/frontend/vehicles.html:908
 msgid "Претходна"
 msgstr "Претходна"
 
-#: dealership_app/templates/frontend/vehicles.html:977
+#: dealership_app/templates/frontend/vehicles.html:928
 msgid "Следна"
 msgstr "Следна"
 
-#: dealership_app/templates/frontend/vehicles.html:997
+#: dealership_app/templates/frontend/vehicles.html:948
 msgid "Избери бренд"
 msgstr "Избери бренд"
 
-#: dealership_app/templates/frontend/vehicles.html:1041
-#: dealership_app/templates/frontend/vehicles.html:1059
+#: dealership_app/templates/frontend/vehicles.html:992
+#: dealership_app/templates/frontend/vehicles.html:1010
 msgid "Филтри"
 msgstr "Филтри"
+
+#~ msgid "Цена од (€)"
+#~ msgstr "Цена од (€)"
+
+#~ msgid "Цена до (€)"
+#~ msgstr "Цена до (€)"
+
+#~ msgid "Пребарај"
+#~ msgstr "Пребарај"
+
+#~ msgid "Филтрирај возила"
+#~ msgstr "Филтрирај возила"
+
+#~ msgid "Сите типови"
+#~ msgstr "Сите типови"
+
+#~ msgid "Цена"
+#~ msgstr "Цена"
+
+#~ msgid "Ниска → Висока"
+#~ msgstr "Ниска → Висока"
+
+#~ msgid "Висока → Ниска"
+#~ msgstr "Висока → Ниска"
+
+#~ msgid "Сите километражи"
+#~ msgstr "Сите километражи"
+
+#~ msgid "Автомобил за почетници"
+#~ msgstr "Автомобил за почетници"
 
 #, fuzzy
 #~| msgid ""

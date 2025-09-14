@@ -11,19 +11,23 @@ def index(request):
     featured_cars = Car.objects.filter(sold=False).order_by('position', '-created_at')[:8]
     # Only show brands that have available cars
     brands = CarBrand.objects.filter(car__sold=False).distinct().order_by('name')
-    
+
+    # Get exclusive car
+    exclusive_car = Car.objects.filter(is_exclusive=True, sold=False).first()
+
     # Get current language
     current_language = translation.get_language()
-    
+
     # Get only fuel choices that exist in available cars for the search form
     base_qs = Car.objects.filter(sold=False)
     available_fuels = base_qs.values_list('fuel_type', flat=True).distinct()
     fuel_choices = [(key, label) for key, label in Car.get_fuel_choices(current_language) if key in available_fuels]
-    
+
     return render(request, 'frontend/index.html', {
         'featured_cars': featured_cars,
         'brands': brands,
         'fuel_choices': fuel_choices,
+        'exclusive_car': exclusive_car,
     })
 
 def ajax_models(request):

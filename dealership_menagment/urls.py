@@ -63,7 +63,8 @@ urlpatterns = [
     path('dashboard/cars/<int:pk>/edit/', views.admin_car_edit, name="admin_car_edit"),
     path('dashboard/cars/<int:pk>/delete/', views.admin_car_delete, name="admin_car_delete"),
     path('dashboard/cars/reorder/', views.admin_car_reorder, name="admin_car_reorder"),
-    
+    path('dashboard/cars/exclusive/', views.exclusive_car_management, name="exclusive_car_management"),
+
     # Catch-all for invalid dashboard URLs - redirect to dashboard home
     path('dashboard/<path:invalid>/', views.redirect_to_dashboard, name="invalid_dashboard_redirect"),
 ]

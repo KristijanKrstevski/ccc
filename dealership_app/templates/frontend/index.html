@@ -123,11 +123,15 @@
 
   .form-control {
     padding: 12px 16px;
-    border: 2px solid #E9ECEF;
+    border: 2px solid #999 !important;
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
     background: var(--white);
+  }
+
+  .form-control:hover {
+    border-color: var(--primary-red);
   }
 
   .form-control:focus {
@@ -148,7 +152,7 @@
     transition: all 0.3s ease;
     text-transform: none;
     letter-spacing: normal;
-    width: 100px;
+    /*width: 100px;*/
     height: 40px;
     display: block;
     margin: 0 auto;

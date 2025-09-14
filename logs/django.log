@@ -861,3 +861,1450 @@ Traceback (most recent call last):
   File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 19, in get_template
     raise TemplateDoesNotExist(template_name, chain=chain)
 django.template.exceptions.TemplateDoesNotExist: frontend/collaboration.html
+ERROR 2025-09-13 18:31:29,115 log 2124981 139687940684096 Internal Server Error: /en/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/middleware.py", line 101, in __call__
+    language_from_session = request.session.get(translation.LANGUAGE_SESSION_KEY)
+AttributeError: module 'django.utils.translation' has no attribute 'LANGUAGE_SESSION_KEY'
+ERROR 2025-09-13 20:09:12,451 log 2250000 139687940684096 Internal Server Error: /en/vehicles/24/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:13,855 log 2250000 139687940684096 Internal Server Error: /en/vehicles/24/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:38,071 log 2250226 139687940684096 Internal Server Error: /en/vehicles/24/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:38,803 log 2250226 139687940684096 Internal Server Error: /en/vehicles/24/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:39,943 log 2250226 139687940684096 Internal Server Error: /en/vehicles/24/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:47,940 log 2250226 139687940684096 Internal Server Error: /en/vehicles/24/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:50,737 log 2250226 139687940684096 Internal Server Error: /en/vehicles/6/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:54,515 log 2250226 139687940684096 Internal Server Error: /en/vehicles/25/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:55,778 log 2250226 139687940684096 Internal Server Error: /en/vehicles/24/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:56,702 log 2250226 139687940684096 Internal Server Error: /en/vehicles/23/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:57,621 log 2250226 139687940684096 Internal Server Error: /en/vehicles/22/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:58,456 log 2250226 139687940684096 Internal Server Error: /en/vehicles/21/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:09:59,283 log 2250226 139687940684096 Internal Server Error: /en/vehicles/20/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:10:00,148 log 2250226 139687940684096 Internal Server Error: /en/vehicles/6/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:10:02,329 log 2250226 139687940684096 Internal Server Error: /en/vehicles/7/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI DSG>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]
+ERROR 2025-09-13 20:10:20,427 log 2251271 139687940684096 Internal Server Error: /en/vehicles/23/
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'remaining_slots'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/krstevski/domains/autodinero.krstevski.me/public_html/dealership_app/frontend_views.py", line 160, in vehicle_detail
+    return render(request, 'frontend/vehicle_detail.html', context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 321, in render
+    return nodelist.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/home/krstevski/.local/lib/python3.9/site-packages/django/template/base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [remaining_slots] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'car': <Car: VW Golf 7 2.0 TDI R-Line (Copy 4)>, 'recommended_cars': [<Car: VW Golf 7 2.0 TDI R-Line (Copy 6)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 5)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 3)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy 2)>, <Car: VW Golf 7 2.0 TDI R-Line (Copy)>, <Car: VW Golf 7 2.0 TDI R-Line>, <Car: VW Golf 7 2.0 TDI DSG>], 'current_language': 'en', 'LANGUAGE_CODE': 'en', 'LANGUAGES': [('en', 'English'), ('mk', 'Македонски')], 'languages': [{'bidi': False, 'code': 'en', 'name': 'English', 'name_local': 'English', 'name_translated': 'English'}, {'bidi': False, 'code': 'mk', 'name': 'Macedonian', 'name_local': 'Македонски', 'name_translated': 'Macedonian'}]}]

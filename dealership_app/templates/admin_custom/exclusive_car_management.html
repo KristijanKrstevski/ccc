@@ -1,0 +1,242 @@
+{% extends 'admin_custom/base_admin.html' %}
+{% load static %}
+
+{% block title %}Ексклузивно возило - AUTO DINERO Admin{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="page-title">
+                <i class="fas fa-star me-3"></i>Ексклузивно возило
+            </h1>
+            <p class="page-subtitle">Изберете едно возило кое ќе биде прикажано како ексклузивно на почетната страница</p>
+        </div>
+        <div class="header-actions">
+            <a href="/dashboard/" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Назад кон дашборд
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Current Exclusive Car Section -->
+    <div class="col-12 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-crown me-2 text-warning"></i>Тековно ексклузивно возило
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if exclusive_car %}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="{{ exclusive_car.main_image_web.url }}"
+                                 alt="{{ exclusive_car.title }}"
+                                 class="img-fluid rounded shadow-sm">
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-primary mb-3">{{ exclusive_car.title }}</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mb-2"><strong>Марка:</strong> {{ exclusive_car.brand.name|default:"/" }}</p>
+                                    <p class="mb-2"><strong>Модел:</strong> {{ exclusive_car.model_name.name|default:"/" }}</p>
+                                    <p class="mb-2"><strong>Година:</strong> {{ exclusive_car.year }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-2"><strong>Гориво:</strong> {{ exclusive_car.get_fuel_type_display }}</p>
+                                    <p class="mb-2"><strong>Цена:</strong> {{ exclusive_car.display_price }}</p>
+                                    <p class="mb-2"><strong>Километража:</strong> {{ exclusive_car.get_mileage_display }}</p>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <form method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="remove_exclusive">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Дали сте сигурни дека сакате да го отстраните ексклузивното возило?')">
+                                        <i class="fas fa-times me-2"></i>Отстрани како ексклузивно
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-star-o fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">Нема избрано ексклузивно возило</h5>
+                        <p class="text-muted">Изберете возило од листата подолу за да го поставите како ексклузивно.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Car Selection Section -->
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fas fa-car me-2"></i>Изберете возило ({{ total_cars }} вкупно)
+                    </h5>
+                    <div class="search-bar">
+                        <form method="get" class="d-flex">
+                            <input type="text"
+                                   name="search"
+                                   class="form-control me-2"
+                                   placeholder="Пребарување..."
+                                   value="{{ search_query }}">
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for car in cars %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 car-card {% if car.is_exclusive %}border-warning{% endif %}">
+                            <div class="card-img-container position-relative">
+                                <img src="{{ car.main_image_thumbnail.url }}"
+                                     alt="{{ car.title }}"
+                                     class="card-img-top">
+                                {% if car.is_exclusive %}
+                                <span class="badge bg-warning position-absolute top-0 end-0 m-2">
+                                    <i class="fas fa-crown"></i> Ексклузивно
+                                </span>
+                                {% endif %}
+                                {% if car.banner_type %}
+                                <span class="badge bg-danger position-absolute top-0 start-0 m-2">
+                                    {{ car.banner_type|upper }}
+                                </span>
+                                {% endif %}
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title">{{ car.title }}</h6>
+                                <div class="car-details">
+                                    <small class="text-muted d-block">{{ car.brand.name|default:"/" }} {{ car.model_name.name|default:"/" }}</small>
+                                    <small class="text-muted d-block">{{ car.year }} • {{ car.get_fuel_type_display }}</small>
+                                    <div class="price-section mt-2">
+                                        <strong class="text-primary">{{ car.display_price }}</strong>
+                                    </div>
+                                </div>
+                                <div class="card-actions mt-auto pt-3">
+                                    {% if not car.is_exclusive %}
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="car_id" value="{{ car.id }}">
+                                        <input type="hidden" name="action" value="set_exclusive">
+                                        <button type="submit" class="btn btn-warning btn-sm w-100" onclick="return confirm('Поставете го ова возило како ексклузивно?')">
+                                            <i class="fas fa-star me-2"></i>Постави како ексклузивно
+                                        </button>
+                                    </form>
+                                    {% else %}
+                                    <button class="btn btn-warning btn-sm w-100" disabled>
+                                        <i class="fas fa-crown me-2"></i>Тековно ексклузивно
+                                    </button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <div class="text-center py-5">
+                            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">Нема пронајдени возила</h5>
+                            {% if search_query %}
+                            <p class="text-muted">Не се пронајдени резултати за "{{ search_query }}"</p>
+                            <a href="{% url 'exclusive_car_management' %}" class="btn btn-outline-primary">Прикажи ги сите</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                {% if cars.has_other_pages %}
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if cars.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}">First</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ cars.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">Previous</a>
+                            </li>
+                        {% endif %}
+
+                        <li class="page-item active">
+                            <span class="page-link">{{ cars.number }} of {{ cars.paginator.num_pages }}</span>
+                        </li>
+
+                        {% if cars.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ cars.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">Next</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ cars.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}">Last</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.car-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-img-container {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.car-card.border-warning {
+    border-width: 2px !important;
+    box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3) !important;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: var(--medium-gray);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.search-bar input {
+    min-width: 250px;
+}
+</style>
+{% endblock %}

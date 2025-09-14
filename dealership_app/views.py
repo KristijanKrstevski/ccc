@@ -592,6 +592,69 @@ def ajax_check_image_status(request, image_id):
     except CarImage.DoesNotExist:
         return JsonResponse({"success": False, "error": "Image not found"})
 
+@login_required
+def exclusive_car_management(request):
+    """
+    Dashboard view for managing exclusive car selection
+    """
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/admin/login/?next=/dashboard/cars/exclusive/')
+
+    if request.method == 'POST':
+        car_id = request.POST.get('car_id')
+        action = request.POST.get('action')
+
+        if action == 'set_exclusive' and car_id:
+            try:
+                # First, unset any existing exclusive car
+                Car.objects.filter(is_exclusive=True).update(is_exclusive=False)
+
+                # Set the selected car as exclusive
+                car = get_object_or_404(Car, id=car_id)
+                car.is_exclusive = True
+                car.save()
+
+                messages.success(request, f'Возилото "{car.title}" е поставено како ексклузивно.')
+            except Exception as e:
+                messages.error(request, f'Грешка: {str(e)}')
+
+        elif action == 'remove_exclusive':
+            try:
+                Car.objects.filter(is_exclusive=True).update(is_exclusive=False)
+                messages.success(request, 'Ексклузивното возило е отстрането.')
+            except Exception as e:
+                messages.error(request, f'Грешка: {str(e)}')
+
+        return redirect('exclusive_car_management')
+
+    # Get current exclusive car
+    exclusive_car = Car.objects.filter(is_exclusive=True).first()
+
+    # Get all cars for selection
+    search_query = request.GET.get('search', '')
+    cars = Car.objects.select_related('brand', 'model_name').order_by('-created_at')
+
+    if search_query:
+        cars = cars.filter(
+            Q(title__icontains=search_query) |
+            Q(brand__name__icontains=search_query) |
+            Q(model_name__name__icontains=search_query)
+        )
+
+    # Paginate cars
+    paginator = Paginator(cars, 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'exclusive_car': exclusive_car,
+        'cars': page_obj,
+        'search_query': search_query,
+        'total_cars': cars.count(),
+    }
+
+    return render(request, 'admin_custom/exclusive_car_management.html', context)
+
 def redirect_to_dashboard(request, invalid=None):
     """
     Redirect invalid dashboard URLs to the main dashboard

@@ -31,6 +31,9 @@ class CarModelForm(forms.ModelForm):
             "mileage": forms.NumberInput(attrs={"class": "form-control rounded", "placeholder": "Enter kilometers", "maxlength": "9", "min": "0", "oninput": "validateNumericField(this)"}),
             "consumption": forms.TextInput(attrs={"class": "form-control rounded", "placeholder": "e.g. 6.5", "maxlength": "10"}),
             "banner_type": forms.RadioSelect(attrs={"class": "banner-radio"}),
+            "show_registered_badge": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+            "show_serviced_badge": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+            "show_promo_badge": forms.CheckboxInput(attrs={"class": "form-check-input"}),
             "description": forms.Textarea(attrs={"class": "form-control rounded", "rows": 3, "placeholder": "Description..."}),
             "main_image": forms.ClearableFileInput(attrs={"class": "form-control"}),
         }

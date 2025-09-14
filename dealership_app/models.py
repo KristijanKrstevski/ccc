@@ -152,8 +152,14 @@ class Car(models.Model):
         ('coming_soon', 'COMING SOON'),
     ]
     banner_type = models.CharField("Банер", max_length=20, choices=BANNER_CHOICES, blank=True, default='')
-    
+
+    # Badge fields for the new badge system
+    show_registered_badge = models.BooleanField("Регистрирано значка", default=False, help_text="Прикажи зелена значка за регистрирано")
+    show_serviced_badge = models.BooleanField("Сервисирано значка", default=False, help_text="Прикажи жолта значка за сервисирано")
+    show_promo_badge = models.BooleanField("Промотивна цена значка", default=False, help_text="Прикажи црвена значка за промотивна цена")
+
     sold = models.BooleanField("Продадено", default=False)  # Keep for backward compatibility
+    is_exclusive = models.BooleanField("Ексклузивно возило", default=False, help_text="Само едно возило може да биде ексклузивно во исто време")
 
     mileage = models.PositiveIntegerField("Километража")
     consumption = models.CharField("Потрошувачка (л/100км)", max_length=10, blank=True, null=True)
@@ -298,6 +304,18 @@ class Car(models.Model):
         choices_dict = dict(self.get_seats_choices(language))
         return choices_dict.get(self.seats, self.seats)
 
+    def get_registered_badge_text(self, language='mk'):
+        """Return registered badge text based on language"""
+        return "Registered" if language == 'en' else "Регистрирано"
+
+    def get_serviced_badge_text(self, language='mk'):
+        """Return serviced badge text based on language"""
+        return "Serviced" if language == 'en' else "Сервисирано"
+
+    def get_promo_badge_text(self, language='mk'):
+        """Return promo badge text based on language"""
+        return "Promo Price" if language == 'en' else "Промо цена"
+
     class Meta:
         ordering = ['position', '-created_at']
         verbose_name = "Автомобил"
@@ -377,7 +395,11 @@ class Car(models.Model):
         """Override save method - ImageKit handles compression automatically"""
         # Run validation
         self.clean()
-        
+
+        # If this car is being marked as exclusive, unmark any other exclusive cars
+        if self.is_exclusive:
+            Car.objects.exclude(pk=self.pk).update(is_exclusive=False)
+
         super().save(*args, **kwargs)
 
     def __str__(self):

@@ -106,25 +106,39 @@
 
   .filter-form {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    align-items: end;
+    align-items: center;
   }
 
-  .form-group label {
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: var(--dark-gray);
-    font-size: 0.95rem;
+  /* Desktop grid order: Brand, Year From, Fuel, Model, Year To, Transmission */
+  .form-brand { order: 1; }
+  .form-year-from { order: 2; }
+  .form-fuel { order: 3; }
+  .form-model { order: 4; }
+  .form-year-to { order: 5; }
+  .form-transmission { order: 6; }
+
+  .filter-button-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    order: 7;
   }
+
 
   .form-control {
     padding: 12px 16px;
-    border: 2px solid #E9ECEF;
+    border: 2px solid #999 !important;
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
     background: var(--white);
+  }
+
+  .form-control:hover {
+    border-color: var(--primary-red);
   }
 
   .form-control:focus {
@@ -254,6 +268,97 @@
     font-weight: 600;
     text-transform: uppercase;
   }
+
+  /* Badge stack (top-right), vertical order */
+  .badge-stack {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+    z-index: 60;
+    pointer-events: auto;
+  }
+
+  /* Base rect (bigger) */
+  .badge-rect {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    max-width: 180px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--white);
+    box-shadow: 0 8px 18px rgba(12,16,28,0.08);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Specific colors */
+  .badge-registered {
+    background: linear-gradient(180deg, #18b56a, #0f8a50);
+    color: var(--white);
+  }
+
+  .badge-serviced {
+    background: linear-gradient(180deg, #ffd96a, #ffcf4d);
+    color: #111;
+    font-weight: 900;
+  }
+
+  .badge-promo {
+    background: linear-gradient(180deg, #ff6b7a, #ff4757);
+    color: var(--white);
+    clip-path: polygon(
+      0% 6%,
+      84% 6%,
+      98% 18%,
+      92% 30%,
+      98% 44%,
+      86% 56%,
+      98% 74%,
+      80% 84%,
+      12% 84%,
+      0% 70%,
+      6% 54%,
+      0% 34%
+    );
+    padding: 10px 16px;
+    min-width: 110px;
+    box-shadow: 0 10px 26px rgba(255,71,87,0.11), 0 3px 8px rgba(0,0,0,0.05) inset;
+  }
+
+  /* Smaller decorative "spray dots" behind promo using pseudo-element */
+  .badge-promo::before {
+    content: "";
+    position: absolute;
+    right: -14px;
+    top: -8px;
+    width: 36px;
+    height: 36px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.16) 0 5px, transparent 6px),
+                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.10) 0 3px, transparent 4px);
+    opacity: 0.16;
+    transform: rotate(10deg);
+    pointer-events: none;
+    filter: blur(0.5px);
+  }
+
+  /* Very compact variant for tight UI - optional utility */
+  .badge-rect.compact {
+    min-width: 90px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+  }
   
   /* Simple Corner Banner - Full left to top stretch */
   .car-banner {
@@ -338,6 +443,37 @@
     
     .car-banner.banner-coming-soon::before {
       font-size: 8px;
+    }
+
+    /* Badge responsive adjustments */
+    .badge-rect {
+      min-width: 95px;
+      font-size: 0.7rem;
+      padding: 6px 10px;
+    }
+
+    .badge-promo {
+      clip-path: polygon(
+        0% 8%,
+        80% 8%,
+        96% 20%,
+        90% 34%,
+        96% 48%,
+        82% 60%,
+        96% 76%,
+        78% 86%,
+        10% 86%,
+        0% 72%,
+        6% 52%,
+        0% 34%
+      );
+      padding: 8px 12px;
+    }
+
+    .badge-stack {
+      right: 6px;
+      top: 6px;
+      gap: 5px;
     }
   }
 
@@ -495,6 +631,27 @@
     
     .filter-form {
       grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    
+    /* Mobile order: Brand, Model, Year From, Year To, Fuel, Transmission */
+    .form-brand { order: 1; }
+    .form-model { order: 2; }
+    .form-year-from { order: 3; }
+    .form-year-to { order: 4; }
+    .form-fuel { order: 5; }
+    .form-transmission { order: 6; }
+    
+    .filter-button-container {
+      margin-top: 15px;
+      order: 7;
+    }
+    
+    .filter-btn {
+      width: auto;
+      max-width: 200px;
+      padding: 12px 24px;
+      font-size: 0.9rem;
     }
     
     .cars-grid {
@@ -733,8 +890,8 @@
 <section class="hero-section">
   <div class="container">
     <div class="hero-content">
-      <h1 class="hero-title">{% trans "Нашата колекција" %}</h1>
-      <p class="hero-subtitle">{% trans "Пронајдете го совршениот автомобил од нашиот широк избор" %}</p>
+      <h1 class="hero-title">{% trans "Добредојдовте во модерното време на квалитетните автомобили" %}</h1>
+      <p class="hero-subtitle">{% trans "Внимателно избрани возила • Проверена историја • Најдобри цени" %}</p>
     </div>
   </div>
 </section>
@@ -750,9 +907,9 @@
     <div class="collapse show" id="filterPanel">
       <div class="filter-header-wrapper">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h3 class="filters-title">{% trans "Филтрирај возила" %}</h3>
+          <h3 class="filters-title">{% trans "МЕНИ ЗА ПРЕБАРУВАЊЕ" %}</h3>
           <div class="results-count">
-            <i class="fas fa-car me-2"></i>{{ cars.paginator.count }} {% trans "возила" %}
+            <i class="fas fa-car me-2"></i>{{ cars.paginator.count }} {% trans "vehicles" %}
           </div>
         </div>
         {% if no_results_fallback %}
@@ -765,123 +922,72 @@
       </div>
 
       <form method="get" class="filter-form">
-        <div class="row g-3">
-          <!-- First Row -->
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <label for="brand">{% trans "Марка" %}</label>
-              <select name="brand" id="brand" class="form-control">
-                <option value="">{% trans "Сите марки" %}</option>
-                {% for b in brands %}
-                <option value="{{ b.id }}" {% if request.GET.brand == b.id|stringformat:"s" %}selected{% endif %}>
-                  {{ b.name }}
-                </option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <label for="model_name">{% trans "Модел" %}</label>
-              <select name="model_name" id="model_name" class="form-control" {% if not request.GET.brand %}disabled{% endif %}>
-                <option value="">{% if not request.GET.brand %}{% trans "Избери прво марка" %}{% else %}{% trans "Сите модели" %}{% endif %}</option>
-                {% for m in models %}
-                <option value="{{ m.id }}" {% if request.GET.model_name == m.id|stringformat:"s" %}selected{% endif %}>
-                  {{ m.name }}
-                </option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <label for="fuel">{% trans "Гориво" %}</label>
-              <select name="fuel" class="form-control">
-                <option value="">{% trans "Сите типови" %}</option>
-                {% for key,label in fuel_choices %}
-                <option value="{{ key }}" {% if request.GET.fuel == key %}selected{% endif %}>
-                  {{ label }}
-                </option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <label for="transmission">{% trans "Менувач" %}</label>
-              <select name="transmission" class="form-control">
-                <option value="">{% trans "Сите типови" %}</option>
-                {% for key,label in transmission_choices %}
-                <option value="{{ key }}" {% if request.GET.transmission == key %}selected{% endif %}>
-                  {{ label }}
-                </option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-
-          <!-- Second Row -->
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <label for="body_type">{% trans "Каросерија" %}</label>
-              <select name="body_type" class="form-control">
-                <option value="">{% trans "Сите типови" %}</option>
-                {% for key,label in vehicle_bodies %}
-                <option value="{{ key }}" {% if request.GET.body_type == key %}selected{% endif %}>
-                  {{ label }}
-                </option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <label for="sort_price">{% trans "Цена" %}</label>
-              <select name="sort_price" class="form-control">
-                <option value="">{% trans "Сите цени" %}</option>
-                <option value="asc" {% if request.GET.sort_price == 'asc' %}selected{% endif %}>{% trans "Ниска → Висока" %}</option>
-                <option value="desc" {% if request.GET.sort_price == 'desc' %}selected{% endif %}>{% trans "Висока → Ниска" %}</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <label for="sort_mileage">{% trans "Километража" %}</label>
-              <select name="sort_mileage" class="form-control">
-                <option value="">{% trans "Сите километражи" %}</option>
-                <option value="asc" {% if request.GET.sort_mileage == 'asc' %}selected{% endif %}>{% trans "Малку → Многу" %}</option>
-                <option value="desc" {% if request.GET.sort_mileage == 'desc' %}selected{% endif %}>{% trans "Многу → Малку" %}</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="form-group">
-              <div class="form-check mt-4">
-                <input class="form-check-input" type="checkbox" id="for_beginners" name="for_beginners" {% if request.GET.for_beginners %}checked{% endif %}>
-                <label class="form-check-label" for="for_beginners">
-                  {% trans "Автомобил за почетници" %}
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="col-12">
-            <div class="d-flex gap-3 mt-3">
-              <button type="submit" class="filter-btn flex-fill">
-                <i class="fas fa-search me-2"></i>{% trans "Примени" %}
-              </button>
-              <a href="{% url 'frontend_vehicles' %}" class="reset-btn">
-                <i class="fas fa-undo me-2"></i>{% trans "Ресетирај" %}
-              </a>
-            </div>
-          </div>
+        <!-- Brand - Order 1 on all devices -->
+        <div class="form-group form-brand">
+          <select name="brand" id="brand" class="form-control">
+            <option value="">{% trans "Избери марка" %}</option>
+            {% for b in brands %}
+            <option value="{{ b.id }}" {% if request.GET.brand == b.id|stringformat:"s" %}selected{% endif %}>
+              {{ b.name }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <!-- Model - Order 2 on mobile, Order 4 on desktop -->
+        <div class="form-group form-model">
+          <select name="model_name" id="model_name" class="form-control" {% if not request.GET.brand %}disabled{% endif %}>
+            <option value="">{% if not request.GET.brand %}{% trans "Избери модел" %}{% else %}{% trans "Избери модел" %}{% endif %}</option>
+            {% for m in models %}
+            <option value="{{ m.id }}" {% if request.GET.model_name == m.id|stringformat:"s" %}selected{% endif %}>
+              {{ m.name }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <!-- Year From - Order 3 on mobile, Order 2 on desktop -->
+        <div class="form-group form-year-from">
+          <input type="number" name="year_from" id="year_from" class="form-control" placeholder="{% trans 'Година од' %}" value="{{ request.GET.year_from }}">
+        </div>
+        
+        <!-- Year To - Order 4 on mobile, Order 5 on desktop -->
+        <div class="form-group form-year-to">
+          <input type="number" name="year_to" id="year_to" class="form-control" placeholder="{% trans 'Година до' %}" value="{{ request.GET.year_to }}">
+        </div>
+        
+        <!-- Fuel - Order 5 on mobile, Order 3 on desktop -->
+        <div class="form-group form-fuel">
+          <select name="fuel" id="fuel" class="form-control">
+            <option value="">{% trans "Избери гориво" %}</option>
+            {% for key,label in fuel_choices %}
+            <option value="{{ key }}" {% if request.GET.fuel == key %}selected{% endif %}>
+              {{ label }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <!-- Transmission - Order 6 on all devices -->
+        <div class="form-group form-transmission">
+          <select name="transmission" id="transmission" class="form-control">
+            <option value="">{% trans "Избери менувач" %}</option>
+            {% for key,label in transmission_choices %}
+            <option value="{{ key }}" {% if request.GET.transmission == key %}selected{% endif %}>
+              {{ label }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <!-- Search Button Row -->
+        <div class="form-group filter-button-container">
+          <button type="submit" class="filter-btn">
+            {% trans "ПРЕБАРУВАЈ" %}
+          </button>
+          <a href="{% url 'frontend_vehicles' %}" class="reset-btn ms-3">
+            <i class="fas fa-undo me-2"></i>{% trans "Ресетирај" %}
+          </a>
         </div>
       </form>
     </div>
@@ -901,6 +1007,21 @@
         <div class="car-banner banner-pending"></div>
         {% elif car.banner_type == 'coming_soon' %}
         <div class="car-banner banner-coming-soon"></div>
+        {% endif %}
+
+        <!-- Badge Stack -->
+        {% if car.show_registered_badge or car.show_serviced_badge or car.show_promo_badge %}
+        <div class="badge-stack">
+          {% if car.show_registered_badge %}
+          <div class="badge-rect badge-registered compact" role="img" aria-label="{{ car|get_registered_badge_text }}">{{ car|get_registered_badge_text }}</div>
+          {% endif %}
+          {% if car.show_serviced_badge %}
+          <div class="badge-rect badge-serviced compact" role="img" aria-label="{{ car|get_serviced_badge_text }}">{{ car|get_serviced_badge_text }}</div>
+          {% endif %}
+          {% if car.show_promo_badge %}
+          <div class="badge-rect badge-promo compact" role="img" aria-label="{{ car|get_promo_badge_text }}">{{ car|get_promo_badge_text }}</div>
+          {% endif %}
+        </div>
         {% endif %}
       </div>
       <div class="car-details">

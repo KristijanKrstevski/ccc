@@ -247,7 +247,7 @@ msgid "Работно време"
 msgstr "Working Hours"
 
 #: dealership_app/templates/frontend/base.html:221
-#, fuzzy
+
 #| msgid "Пон-Саб (08:00-16:00)"
 msgid "Пон-Саб"
 msgstr "Mon-Sat (08:00-16:00)"
@@ -1118,12 +1118,6 @@ msgid "1. Вовед"
 msgstr "1. Introduction"
 
 #: dealership_app/templates/frontend/privacy.html:25
-#, fuzzy
-#| msgid ""
-#| "AUTO DINERO се обврзува да ја заштити вашата приватност и да ги заштити "
-#| "вашите лични податоци. Оваа Политика за приватност објаснува како "
-#| "собираме, користиме и заштитуваме информации кога ја посетувате нашата "
-#| "веб-страница python.krstevski.me."
 msgid ""
 "AUTO DINERO се обврзува да ја заштити вашата приватност и да ги заштити "
 "вашите лични податоци. Оваа Политика за приватност објаснува како собираме, "
@@ -1200,7 +1194,7 @@ msgid "3. Колачиња (Cookies)"
 msgstr "3. Cookies"
 
 #: dealership_app/templates/frontend/privacy.html:53
-#, fuzzy
+
 #| msgid ""
 #| "Нашата веб-страница користи колачиња за подобрување на корисничкото "
 #| "искуство. Колачињата ни помагаат да:"
@@ -1241,28 +1235,24 @@ msgid "Вашите податоци ги користиме за:"
 msgstr "We use your data for:"
 
 #: dealership_app/templates/frontend/privacy.html:77
-#, fuzzy
-#| msgid "Одговори на најчесто поставувани прашања"
 msgid "Одговарање на вашите барања и прашања"
-msgstr "Answers to the most frequently asked questions"
+msgstr "Responding to your requests and questions"
 
 #: dealership_app/templates/frontend/privacy.html:78
-#, fuzzy
-#| msgid "Детални информации за возилото"
 msgid "Обезбедување информации за возила"
-msgstr "Detailed Vehicle Information"
+msgstr "Providing vehicle information"
 
 #: dealership_app/templates/frontend/privacy.html:79
-#, fuzzy
+
 #| msgid "Дојдете во нашиот салон"
 msgid "Подобрување на нашите услуги"
-msgstr "Visit our showroom"
+msgstr "Improving our services"
 
 #: dealership_app/templates/frontend/privacy.html:80
-#, fuzzy
+
 #| msgid "Користење на филтри за пребарување"
 msgid "Испраќање на важни известувања"
-msgstr "Using search filters"
+msgstr "Sending important notifications"
 
 #: dealership_app/templates/frontend/privacy.html:81
 msgid "Заштита од измами и злоупотреби"
@@ -1302,89 +1292,98 @@ msgstr "<strong>Objection</strong> - to object to processing"
 
 #: dealership_app/templates/frontend/privacy.html:107
 msgid "6. Безбедност на податоците"
-msgstr ""
+msgstr "6. Data Security"
 
 #: dealership_app/templates/frontend/privacy.html:108
 msgid ""
 "Ние презземаме соодветни технички и организациски мерки за заштита на вашите "
 "лични податоци:"
 msgstr ""
+"We take appropriate technical and organizational measures to protect your "
+"personal data:"
 
 #: dealership_app/templates/frontend/privacy.html:110
 msgid "SSL енкрипција за сите преноси на податоци"
-msgstr ""
+msgstr "SSL encryption for all data transfers"
 
 #: dealership_app/templates/frontend/privacy.html:111
 msgid "Безбедни сервери и бази на податоци"
-msgstr ""
+msgstr "Secure servers and databases"
 
 #: dealership_app/templates/frontend/privacy.html:112
 msgid "Ограничен пристап до податоците"
-msgstr ""
+msgstr "Limited access to data"
 
 #: dealership_app/templates/frontend/privacy.html:113
-#, fuzzy
+
 #| msgid "Последно ажурирано"
 msgid "Редовни безбедносни ажурирања"
-msgstr "Last Updated"
+msgstr "Regular security updates"
 
 #: dealership_app/templates/frontend/privacy.html:118
 msgid "7. Делење на податоци"
-msgstr ""
+msgstr "7. Data Sharing"
 
 #: dealership_app/templates/frontend/privacy.html:119
 msgid ""
 "Ние <strong>не ги продаваме, изнајмуваме или делиме</strong> вашите лични "
 "податоци со трети страни, освен:"
 msgstr ""
+"We <strong>do not sell, rent, or share</strong> your personal data with third "
+"parties, except:"
 
 #: dealership_app/templates/frontend/privacy.html:121
-#, fuzzy
+
 #| msgid "Ве молиме пополнете ги сите задолжителни полиња."
 msgid "Кога е тоа законски задолжително"
-msgstr "Please fill in all required fields."
+msgstr "When legally required"
 
 #: dealership_app/templates/frontend/privacy.html:122
 msgid "За заштита на нашите права или безбедност"
-msgstr ""
+msgstr "To protect our rights or security"
 
 #: dealership_app/templates/frontend/privacy.html:123
-#, fuzzy
+
 #| msgid "Политика за приватност"
 msgid "Со ваша изречна согласност"
-msgstr "Privacy Policy"
+msgstr "With your express consent"
 
 #: dealership_app/templates/frontend/privacy.html:128
-#, fuzzy
+
 #| msgid "Најди го твојот автомобил"
 msgid "8. Чување на податоци"
-msgstr "Find Your Car"
+msgstr "8. Data Retention"
 
 #: dealership_app/templates/frontend/privacy.html:129
 msgid ""
 "Вашите лични податоци ги чуваме само толку долго колку што е потребно за "
 "целите за кои се собрани, или според законските обврски."
 msgstr ""
+"We retain your personal data only as long as necessary for the purposes for "
+"which it was collected, or as required by legal obligations."
 
 #: dealership_app/templates/frontend/privacy.html:130
 msgid ""
 "Контактните податоци обично се чуваат до 3 години од последната комуникација."
 msgstr ""
+"Contact information is usually retained for 3 years from the last communication."
 
 #: dealership_app/templates/frontend/privacy.html:134
-#, fuzzy
+
 #| msgid "Види ги сите возила"
 msgid "9. Промени на политиката"
-msgstr "View All Vehicles"
+msgstr "9. Policy Changes"
 
 #: dealership_app/templates/frontend/privacy.html:135
 msgid ""
 "Ние може да ја ажурираме оваа Политика за приватност од време на време. "
 "Значајните промени ќе бидат објавени на нашата веб-страница."
 msgstr ""
+"We may update this Privacy Policy from time to time. Significant changes "
+"will be published on our website."
 
 #: dealership_app/templates/frontend/privacy.html:139
-#, fuzzy
+
 #| msgid "Контакт"
 msgid "10. Контакт"
 msgstr "Contact"
@@ -1394,6 +1393,7 @@ msgid ""
 "За прашања во врска со оваа политика или за остварување на вашите права, "
 "контактирајте не:"
 msgstr ""
+"For questions regarding this policy or to exercise your rights, contact us:"
 
 #: dealership_app/templates/frontend/privacy.html:142
 #: dealership_app/templates/frontend/terms.html:90
@@ -1607,7 +1607,7 @@ msgid "1. Општи одредби"
 msgstr "1. General Provisions"
 
 #: dealership_app/templates/frontend/terms.html:25
-#, fuzzy
+
 #| msgid ""
 #| "Со користењето на веб-страницата AUTO DINERO (python.krstevski.me), Вие "
 #| "се согласувате со овие Услови за користење. Овие услови се однесуваат на "
@@ -1618,7 +1618,7 @@ msgid ""
 "сите корисници на нашата веб-страница."
 msgstr ""
 "By using the AUTO DINERO website (autodinero.krstevski.me), you agree to "
-"these Terms of Service. These terms apply to all users of our website."
+"these Terms of Use. These terms apply to all users of our website."
 
 #: dealership_app/templates/frontend/terms.html:29
 msgid "2. Користење на услугите"
@@ -1681,7 +1681,7 @@ msgstr "Using the website for illegal purposes"
 
 #: dealership_app/templates/frontend/terms.html:54
 msgid "Нарушување на функционалноста на системот"
-msgstr ""
+msgstr "Disrupting system functionality"
 
 #: dealership_app/templates/frontend/terms.html:55
 msgid "Копирање на содржини без дозвола"
@@ -1705,28 +1705,28 @@ msgstr "Protect your personal data"
 
 #: dealership_app/templates/frontend/terms.html:65
 msgid "Барате согласност пред собирање на податоци"
-msgstr ""
+msgstr "Request consent before collecting data"
 
 #: dealership_app/templates/frontend/terms.html:66
 msgid "Ви даваме право на бришење на податоци"
 msgstr ""
 
 #: dealership_app/templates/frontend/terms.html:67
-#, fuzzy
+
 #| msgid "Анализираме го сообраќајот на веб-страницата"
 msgid "Обезбедуваме транспарентност во обработката"
 msgstr "Analyze website traffic"
 
 #: dealership_app/templates/frontend/terms.html:72
 msgid "6. Одговорност"
-msgstr ""
+msgstr "6. Responsibility"
 
 #: dealership_app/templates/frontend/terms.html:73
 msgid "AUTO DINERO не презема одговорност за:"
 msgstr "AUTO DINERO does not assume responsibility for:"
 
 #: dealership_app/templates/frontend/terms.html:75
-#, fuzzy
+
 #| msgid "Детални информации за возилото"
 msgid "Точноста на сите информации за возилата"
 msgstr "Detailed Vehicle Information"
@@ -1736,7 +1736,7 @@ msgid "Технички проблеми или недостапност на у
 msgstr ""
 
 #: dealership_app/templates/frontend/terms.html:77
-#, fuzzy
+
 #| msgid "Анализираме го сообраќајот на веб-страницата"
 msgid "Штета настаната од користењето на веб-страницата"
 msgstr "Analyze website traffic"
@@ -1750,9 +1750,11 @@ msgid ""
 "Ние си задржуваме право да ги менуваме овие услови во секое време. Промените "
 "ќе бидат објавени на оваа страница со ажурирана дата."
 msgstr ""
+"We reserve the right to change these terms at any time. Changes will be "
+"published on this page with an updated date."
 
 #: dealership_app/templates/frontend/terms.html:87
-#, fuzzy
+
 #| msgid "Контакт"
 msgid "8. Контакт"
 msgstr "Contact"
@@ -1963,12 +1965,12 @@ msgstr "Our weekly ace!"
 #~ msgid "Нашата колекција"
 #~ msgstr "Our Collection"
 
-#, fuzzy
+
 #~| msgid "Пронајди го совршениот автомобил за тебе"
 #~ msgid "Пронајдете го совршениот автомобил од нашиот широк избор"
 #~ msgstr "Find the Perfect Car for You"
 
-#, fuzzy
+
 #~| msgid "Возила"
 #~ msgid "возила"
 #~ msgstr "Vehicles"

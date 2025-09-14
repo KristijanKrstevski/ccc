@@ -9,8 +9,8 @@ from .forms import CarModelForm
 class CarAdmin(admin.ModelAdmin):
     form = CarModelForm
 
-    list_display = ["thumbnail", "title", "brand", "model_name", "year", "display_price", "sold"]
-    list_filter = ["brand", "fuel_type", "transmission", "body_type", "seats", "sold"]
+    list_display = ["thumbnail", "title", "brand", "model_name", "year", "display_price", "sold", "is_exclusive"]
+    list_filter = ["brand", "fuel_type", "transmission", "body_type", "seats", "sold", "is_exclusive"]
     search_fields = ["brand__name", "model_name__name", "description"]
     filter_horizontal = ["equipment"]
     readonly_fields = ("display_extra_images",)
@@ -24,7 +24,7 @@ class CarAdmin(admin.ModelAdmin):
                        "engine_capacity", "kilowatts", "mileage", "color", "seats")
         }),
         ("Цена и статус", {
-            "fields": ("price", "sold")
+            "fields": ("price", "sold", "is_exclusive")
         }),
         ("Слики и опрема", {
             "fields": ("main_image", "display_extra_images", "equipment")
